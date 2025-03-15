@@ -30,7 +30,6 @@ C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\NetCafeManager.dll
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\NetCafeManager.pdb
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\Guna.Charts.WinForms.dll
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\Guna.UI2.dll
-C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\Siticone.Desktop.UI.dll
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\System.Management.dll
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
@@ -120,3 +119,4 @@ C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\runtimes\win-x64\nati
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 C:\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.sourcelink.json

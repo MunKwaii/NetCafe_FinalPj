@@ -230,7 +230,7 @@
               "RelativeDocumentMoniker": "UserControls\\UC_MenuItem.cs",
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_MenuItem.cs",
               "RelativeToolTip": "UserControls\\UC_MenuItem.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAUwCIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAywCIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T13:40:41.784Z",
               "EditorCaption": ""
@@ -270,7 +270,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_ManageComputers.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_ManageComputers.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T01:49:36.337Z"
+              "WhenOpened": "2025-03-13T01:49:36.337Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -306,7 +307,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_MyAccount.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_MyAccount.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T14:22:53.39Z"
+              "WhenOpened": "2025-03-09T14:22:53.39Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -330,7 +332,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_Service.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T13:11:44.014Z"
+              "WhenOpened": "2025-03-09T13:11:44.014Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -340,9 +343,10 @@
               "RelativeDocumentMoniker": "UserControls\\UC_Service.Designer.cs",
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.Designer.cs",
               "RelativeToolTip": "UserControls\\UC_Service.Designer.cs",
-              "ViewState": "AgIAAFsBAAAAAAAAAAAgwHUBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwCAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T15:33:52.717Z"
+              "WhenOpened": "2025-03-13T15:33:52.717Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -353,7 +357,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_MenuItem.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_MenuItem.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T11:48:36.972Z"
+              "WhenOpened": "2025-03-11T11:48:36.972Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -364,7 +369,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_UserProfile.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_UserProfile.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:25:46.449Z"
+              "WhenOpened": "2025-03-10T15:25:46.449Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -375,7 +381,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Setting.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_Setting.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T16:26:36.808Z"
+              "WhenOpened": "2025-03-07T16:26:36.808Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -386,7 +393,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_TakeOrder.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_TakeOrder.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T07:27:11.297Z"
+              "WhenOpened": "2025-03-09T07:27:11.297Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -397,7 +405,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\AddEmployeeForm.cs [Design]",
               "RelativeToolTip": "AddEmployeeForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:54:40.042Z"
+              "WhenOpened": "2025-03-11T09:54:40.042Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -408,7 +417,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\AddFoodForm.cs [Design]",
               "RelativeToolTip": "AddFoodForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T06:00:44.503Z"
+              "WhenOpened": "2025-03-13T06:00:44.503Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -419,7 +429,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\ModifyComputerForm.cs [Design]",
               "RelativeToolTip": "ModifyComputerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:03:37.309Z"
+              "WhenOpened": "2025-03-11T09:03:37.309Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -430,7 +441,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\ManagerForm.cs [Design]",
               "RelativeToolTip": "ManagerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T12:51:55.132Z"
+              "WhenOpened": "2025-03-09T12:51:55.132Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -441,7 +453,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\EmployeeForm.cs [Design]",
               "RelativeToolTip": "EmployeeForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T03:05:52.661Z"
+              "WhenOpened": "2025-03-09T03:05:52.661Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -452,7 +465,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\WorkLogViewDetailsForm.cs [Design]",
               "RelativeToolTip": "WorkLogViewDetailsForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:22:22.23Z"
+              "WhenOpened": "2025-03-11T09:22:22.23Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -463,7 +477,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\AddBalanceForm.cs [Design]",
               "RelativeToolTip": "AddBalanceForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T02:30:39.371Z"
+              "WhenOpened": "2025-03-13T02:30:39.371Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -474,7 +489,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_WorkLog.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_WorkLog.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T07:34:56.276Z"
+              "WhenOpened": "2025-03-09T07:34:56.276Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -485,7 +501,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\AddCustomerForm.cs [Design]",
               "RelativeToolTip": "AddCustomerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T08:59:18.999Z"
+              "WhenOpened": "2025-03-11T08:59:18.999Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -496,7 +513,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\LoginForm.cs [Design]",
               "RelativeToolTip": "LoginForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T01:26:51.409Z"
+              "WhenOpened": "2025-03-08T01:26:51.409Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -508,7 +526,8 @@
               "RelativeToolTip": "LoginForm.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAswCcAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T02:39:44.151Z"
+              "WhenOpened": "2025-03-13T02:39:44.151Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -533,7 +552,8 @@
               "RelativeToolTip": "UserControls\\UC_TakeOrder.Designer.cs",
               "ViewState": "AgIAAP0AAAAAAAAAAAAUwAsBAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T15:35:01.78Z"
+              "WhenOpened": "2025-03-13T15:35:01.78Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -545,7 +565,8 @@
               "RelativeToolTip": "UserControls\\UC_TakeOrder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T07:58:31.639Z"
+              "WhenOpened": "2025-03-09T07:58:31.639Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -557,7 +578,8 @@
               "RelativeToolTip": "EmployeeForm.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAswE0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T04:25:16.984Z"
+              "WhenOpened": "2025-03-11T04:25:16.984Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -569,7 +591,8 @@
               "RelativeToolTip": "ManagerForm.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAAAswFUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:26:15.866Z"
+              "WhenOpened": "2025-03-10T15:26:15.866Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -580,7 +603,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\CustomerForm.cs [Design]",
               "RelativeToolTip": "CustomerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T12:24:41.005Z"
+              "WhenOpened": "2025-03-09T12:24:41.005Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -592,7 +616,8 @@
               "RelativeToolTip": "AddFoodForm.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAgwBUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T06:12:41.812Z"
+              "WhenOpened": "2025-03-13T06:12:41.812Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -604,7 +629,8 @@
               "RelativeToolTip": "UserControls\\UC_UserProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T05:26:36.459Z"
+              "WhenOpened": "2025-03-13T05:26:36.459Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -616,7 +642,8 @@
               "RelativeToolTip": "UserControls\\UC_Setting.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwBYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T06:11:07.118Z"
+              "WhenOpened": "2025-03-13T06:11:07.118Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -628,7 +655,8 @@
               "RelativeToolTip": "UserControls\\UC_WorkLog.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAIwBYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:35:02.635Z"
+              "WhenOpened": "2025-03-11T09:35:02.635Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -639,7 +667,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_NewOrder.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_NewOrder.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T07:50:05.586Z"
+              "WhenOpened": "2025-03-09T07:50:05.586Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -650,7 +679,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_ManageCustomer.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_ManageCustomer.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T01:26:43.971Z"
+              "WhenOpened": "2025-03-08T01:26:43.971Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -661,7 +691,8 @@
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_ManageEmployee.cs [Design]",
               "RelativeToolTip": "UserControls\\UC_ManageEmployee.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:10:28.774Z"
+              "WhenOpened": "2025-03-07T14:10:28.774Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -673,7 +704,8 @@
               "RelativeToolTip": "UserControls\\UC_NewOrder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T02:51:06.846Z"
+              "WhenOpened": "2025-03-13T02:51:06.846Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -685,7 +717,8 @@
               "RelativeToolTip": "AddCustomerForm.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwBUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:09:08.409Z"
+              "WhenOpened": "2025-03-11T09:09:08.409Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -697,7 +730,8 @@
               "RelativeToolTip": "AddEmployeeForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:57:20.347Z"
+              "WhenOpened": "2025-03-11T09:57:20.347Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -709,7 +743,8 @@
               "RelativeToolTip": "UserControls\\UC_ManageCustomer.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAgwBUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:37:33.853Z"
+              "WhenOpened": "2025-03-11T09:37:33.853Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -721,7 +756,8 @@
               "RelativeToolTip": "AddBalanceForm.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T02:57:05.217Z"
+              "WhenOpened": "2025-03-13T02:57:05.217Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -733,7 +769,8 @@
               "RelativeToolTip": "UserControls\\UC_ManageEmployee.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAwwBQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:58:38.121Z"
+              "WhenOpened": "2025-03-07T14:58:38.121Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -745,7 +782,8 @@
               "RelativeToolTip": "UserControls\\UC_MyAccount.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T14:46:43.282Z"
+              "WhenOpened": "2025-03-09T14:46:43.282Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -755,7 +793,7 @@
               "RelativeDocumentMoniker": "UserControls\\UC_ComputerStatus.Designer.cs",
               "ToolTip": "C:\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_ComputerStatus.Designer.cs",
               "RelativeToolTip": "UserControls\\UC_ComputerStatus.Designer.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAIwFEAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAIwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T02:43:40.477Z",
               "EditorCaption": ""
@@ -770,7 +808,8 @@
               "RelativeToolTip": "WorkLogViewDetailsForm.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwBUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:35:59.929Z"
+              "WhenOpened": "2025-03-11T09:35:59.929Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -782,7 +821,8 @@
               "RelativeToolTip": "ModifyComputerForm.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwBUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T09:17:36.721Z"
+              "WhenOpened": "2025-03-11T09:17:36.721Z",
+              "EditorCaption": ""
             }
           ]
         }

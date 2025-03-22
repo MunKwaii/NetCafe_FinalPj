@@ -34,7 +34,7 @@ namespace NetCafeManager
                 return;
             }
 
-            using (SqlConnection conn = Connection.GetConnection())
+            using (SqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 string query = "SELECT Role FROM Users WHERE Username = @user AND Password = @pass";

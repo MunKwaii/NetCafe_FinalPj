@@ -1,6 +1,5 @@
-# NetCafe_FinalPj
-NetCafe_FinalPj
-**📌Final Project – A net café management application developed by our team:  **
+# NetCafe_FinalPj  
+**📌Final Project – A net café management application developed by our team:**  
 * Nguyễn Quốc Khánh  
 * Nguyễn Nhật Minh  
 * Mai Hồng Tín  

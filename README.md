@@ -10,6 +10,7 @@
 * pic/ → UI assets and graphics  
 * packages.txt → List of required dependencies  
 **🛠️ Technologies Used**  
-* Language: C#
+* Language: C#  
+* Database: SQL server
 * Framework: .NET WinForms / WPF (depending on the project)
 * Version Control: Git & GitHub

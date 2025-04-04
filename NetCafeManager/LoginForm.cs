@@ -27,7 +27,15 @@ namespace NetCafeManager
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
+            string queryID = @"SELECT ID FROM Users WHERE Username = @user AND Password = @pass";
+            SqlParameter[] SQLPara = new SqlParameter[]
+            {
+              new SqlParameter("@user", username),
+              new SqlParameter("@pass", password)
 
+            };
+            object ob = DatabaseHelper.ExecuteScalar(queryID, SQLPara);
+            string ID = ob.ToString();
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter complete information!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -54,13 +62,14 @@ namespace NetCafeManager
                         switch (role)
                         {
                             case "Manager":
-                                newForm = new ManagerForm();
+                                newForm = new ManagerForm(ID);
                                 break;
                             case "Employee":
-                                newForm = new EmployeeForm();
+                                newForm = new EmployeeForm(ID);
                                 break;
                             case "Customer":
-                                newForm = new CustomerForm();
+                                newForm = new CustomerForm(ID);
+
                                 break;
                         }
 

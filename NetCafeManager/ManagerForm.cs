@@ -17,11 +17,12 @@ namespace NetCafeManager
 {
     public partial class ManagerForm : Form
     {
-
-        public ManagerForm()
+        string ID;
+        public ManagerForm(string ID)
         {
             InitializeComponent();
             pnlProfileContent.Visible = false;
+            this.ID = ID;
         }
 
 
@@ -74,6 +75,7 @@ namespace NetCafeManager
         private void btnUser_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Visible = !pnlProfileContent.Visible;
+            pnlProfileContent.Controls.Add(new UC_UserProfile(ID));
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

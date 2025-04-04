@@ -71,13 +71,11 @@
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             pnlProfileContent = new Guna.UI2.WinForms.Guna2Panel();
-            uC_UserProfile1 = new UserControls.UC_UserProfile();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
-            pnlProfileContent.SuspendLayout();
             SuspendLayout();
             // 
             // btnComputerStatus
@@ -311,22 +309,12 @@
             // 
             // pnlProfileContent
             // 
-            pnlProfileContent.Controls.Add(uC_UserProfile1);
             pnlProfileContent.CustomizableEdges = customizableEdges27;
             pnlProfileContent.Location = new Point(1154, 59);
             pnlProfileContent.Name = "pnlProfileContent";
             pnlProfileContent.ShadowDecoration.CustomizableEdges = customizableEdges28;
             pnlProfileContent.Size = new Size(300, 250);
             pnlProfileContent.TabIndex = 126;
-            // 
-            // uC_UserProfile1
-            // 
-            uC_UserProfile1.BackColor = Color.FromArgb(40, 40, 40);
-            uC_UserProfile1.ForeColor = Color.Black;
-            uC_UserProfile1.Location = new Point(0, 0);
-            uC_UserProfile1.Name = "uC_UserProfile1";
-            uC_UserProfile1.Size = new Size(300, 250);
-            uC_UserProfile1.TabIndex = 0;
             // 
             // ManagerForm
             // 
@@ -353,7 +341,6 @@
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
-            pnlProfileContent.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -372,6 +359,5 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2Panel pnlProfileContent;
-        private UserControls.UC_UserProfile uC_UserProfile1;
     }
 }

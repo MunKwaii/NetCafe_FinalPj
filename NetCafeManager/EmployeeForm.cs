@@ -13,10 +13,13 @@ namespace NetCafeManager
 {
     public partial class EmployeeForm : Form
     {
-        public EmployeeForm()
+        string ID;
+
+        public EmployeeForm(string ID)
         {
             InitializeComponent();
             pnlProfileContent.Visible = false;
+            this.ID = ID;
         }
         private void ChangeActivateButton(Guna.UI2.WinForms.Guna2Button activeButton)
         {
@@ -65,6 +68,7 @@ namespace NetCafeManager
         private void btnUser_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Visible = !pnlProfileContent.Visible;
+            pnlProfileContent.Controls.Add(new UC_UserProfile(ID));
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -75,6 +79,16 @@ namespace NetCafeManager
             {
                 this.Close();
             }
+        }
+
+        private void uC_UserProfile1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlProfileContent_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

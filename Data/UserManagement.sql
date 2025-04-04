@@ -1,7 +1,7 @@
 ﻿USE UserManagement;  
 
 CREATE TABLE Users (
-    ID INT IDENTITY(1,1) PRIMARY KEY,  
+    ID INT PRIMARY KEY,  
     Username NVARCHAR(50) UNIQUE NOT NULL, 
     Password NVARCHAR(255) NOT NULL,  
     Role NVARCHAR(20) NOT NULL CHECK (Role IN ('Manager', 'Employee', 'Customer')) 

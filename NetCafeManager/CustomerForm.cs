@@ -13,10 +13,12 @@ namespace NetCafeManager
 {
     public partial class CustomerForm : Form
     {
-        public CustomerForm()
+        string ID;
+        public CustomerForm(string ID)
         {
             InitializeComponent();
             pnlProfileContent.Visible = false;
+            this.ID = ID;
         }
         private void ChangeActivateButton(Guna.UI2.WinForms.Guna2Button activeButton)
         {
@@ -52,6 +54,7 @@ namespace NetCafeManager
         private void btnUser_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Visible = !pnlProfileContent.Visible;
+            pnlProfileContent.Controls.Add(new UC_UserProfile(ID));
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

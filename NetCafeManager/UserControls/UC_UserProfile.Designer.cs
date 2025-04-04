@@ -36,9 +36,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
+            BalanceLb = new Label();
+            ComputerIDLb = new Label();
+            Usernamelb = new Label();
             label1 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -63,38 +63,38 @@
             guna2PictureBox1.TabIndex = 92;
             guna2PictureBox1.TabStop = false;
             // 
-            // label7
+            // BalanceLb
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label7.ForeColor = Color.FromArgb(19, 250, 168);
-            label7.Location = new Point(160, 177);
-            label7.Name = "label7";
-            label7.Size = new Size(48, 21);
-            label7.TabIndex = 98;
-            label7.Text = "label";
+            BalanceLb.AutoSize = true;
+            BalanceLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            BalanceLb.ForeColor = Color.FromArgb(19, 250, 168);
+            BalanceLb.Location = new Point(160, 177);
+            BalanceLb.Name = "BalanceLb";
+            BalanceLb.Size = new Size(48, 21);
+            BalanceLb.TabIndex = 98;
+            BalanceLb.Text = "label";
             // 
-            // label6
+            // ComputerIDLb
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label6.ForeColor = Color.FromArgb(19, 250, 168);
-            label6.Location = new Point(160, 124);
-            label6.Name = "label6";
-            label6.Size = new Size(57, 21);
-            label6.TabIndex = 97;
-            label6.Text = "label6";
+            ComputerIDLb.AutoSize = true;
+            ComputerIDLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            ComputerIDLb.ForeColor = Color.FromArgb(19, 250, 168);
+            ComputerIDLb.Location = new Point(160, 124);
+            ComputerIDLb.Name = "ComputerIDLb";
+            ComputerIDLb.Size = new Size(57, 21);
+            ComputerIDLb.TabIndex = 97;
+            ComputerIDLb.Text = "label6";
             // 
-            // label5
+            // Usernamelb
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(19, 250, 168);
-            label5.Location = new Point(160, 71);
-            label5.Name = "label5";
-            label5.Size = new Size(57, 21);
-            label5.TabIndex = 96;
-            label5.Text = "label5";
+            Usernamelb.AutoSize = true;
+            Usernamelb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Usernamelb.ForeColor = Color.FromArgb(19, 250, 168);
+            Usernamelb.Location = new Point(160, 71);
+            Usernamelb.Name = "Usernamelb";
+            Usernamelb.Size = new Size(57, 21);
+            Usernamelb.TabIndex = 96;
+            Usernamelb.Text = "label5";
             // 
             // label1
             // 
@@ -162,9 +162,9 @@
             BackColor = Color.FromArgb(40, 40, 40);
             Controls.Add(guna2PictureBox2);
             Controls.Add(guna2PictureBox3);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
+            Controls.Add(BalanceLb);
+            Controls.Add(ComputerIDLb);
+            Controls.Add(Usernamelb);
             Controls.Add(label1);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -182,9 +182,9 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Label label7;
-        private Label label6;
-        private Label label5;
+        private Label BalanceLb;
+        private Label ComputerIDLb;
+        private Label Usernamelb;
         private Label label1;
         private Label label3;
         private Label label2;

@@ -97,9 +97,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges60 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label9 = new Label();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            label7 = new Label();
+            BalanceLb = new Label();
             label6 = new Label();
-            label5 = new Label();
+            memberLb = new Label();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             label4 = new Label();
             label1 = new Label();
@@ -167,11 +167,11 @@
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.FromArgb(19, 250, 168);
-            label9.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold);
+            label9.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
             label9.ForeColor = Color.Black;
             label9.Location = new Point(223, 87);
             label9.Name = "label9";
-            label9.Size = new Size(148, 26);
+            label9.Size = new Size(122, 31);
             label9.TabIndex = 40;
             label9.Text = " Deposit";
             // 
@@ -188,16 +188,16 @@
             guna2PictureBox2.TabIndex = 39;
             guna2PictureBox2.TabStop = false;
             // 
-            // label7
+            // BalanceLb
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label7.ForeColor = Color.FromArgb(19, 250, 168);
-            label7.Location = new Point(268, 309);
-            label7.Name = "label7";
-            label7.Size = new Size(57, 21);
-            label7.TabIndex = 35;
-            label7.Text = "label7";
+            BalanceLb.AutoSize = true;
+            BalanceLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            BalanceLb.ForeColor = Color.FromArgb(19, 250, 168);
+            BalanceLb.Location = new Point(268, 309);
+            BalanceLb.Name = "BalanceLb";
+            BalanceLb.Size = new Size(57, 21);
+            BalanceLb.TabIndex = 35;
+            BalanceLb.Text = "label7";
             // 
             // label6
             // 
@@ -210,16 +210,16 @@
             label6.TabIndex = 34;
             label6.Text = "label6";
             // 
-            // label5
+            // memberLb
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(19, 250, 168);
-            label5.Location = new Point(268, 203);
-            label5.Name = "label5";
-            label5.Size = new Size(57, 21);
-            label5.TabIndex = 33;
-            label5.Text = "label5";
+            memberLb.AutoSize = true;
+            memberLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            memberLb.ForeColor = Color.FromArgb(19, 250, 168);
+            memberLb.Location = new Point(268, 203);
+            memberLb.Name = "memberLb";
+            memberLb.Size = new Size(57, 21);
+            memberLb.TabIndex = 33;
+            memberLb.Text = "label5";
             // 
             // guna2Button2
             // 
@@ -229,7 +229,7 @@
             guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button2.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button2.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button2.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button2.ForeColor = Color.Black;
             guna2Button2.Location = new Point(161, 483);
             guna2Button2.Name = "guna2Button2";
@@ -423,7 +423,7 @@
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button1.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button1.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button1.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.Black;
             guna2Button1.Location = new Point(1151, 309);
             guna2Button1.Name = "guna2Button1";
@@ -550,11 +550,11 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.FromArgb(19, 250, 168);
-            label8.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold);
+            label8.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
             label8.ForeColor = Color.Black;
             label8.Location = new Point(1201, 87);
             label8.Name = "label8";
-            label8.Size = new Size(171, 26);
+            label8.Size = new Size(142, 31);
             label8.TabIndex = 110;
             label8.Text = "Feedback";
             // 
@@ -562,11 +562,11 @@
             // 
             label11.AutoSize = true;
             label11.BackColor = Color.FromArgb(20, 20, 20);
-            label11.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold);
+            label11.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
             label11.ForeColor = Color.White;
             label11.Location = new Point(1114, 404);
             label11.Name = "label11";
-            label11.Size = new Size(218, 26);
+            label11.Size = new Size(222, 31);
             label11.TabIndex = 122;
             label11.Text = "TRANSACTION";
             // 
@@ -632,7 +632,7 @@
             guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button3.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button3.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button3.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button3.ForeColor = Color.Black;
             guna2Button3.Location = new Point(23, 523);
             guna2Button3.Name = "guna2Button3";
@@ -669,7 +669,7 @@
             guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button4.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button4.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button4.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button4.ForeColor = Color.Black;
             guna2Button4.Location = new Point(244, 523);
             guna2Button4.Name = "guna2Button4";
@@ -718,9 +718,9 @@
             label14.ForeColor = Color.FromArgb(19, 250, 168);
             label14.Location = new Point(137, 106);
             label14.Name = "label14";
-            label14.Size = new Size(66, 21);
+            label14.Size = new Size(19, 21);
             label14.TabIndex = 46;
-            label14.Text = "label14";
+            label14.Text = "0";
             // 
             // label15
             // 
@@ -729,9 +729,9 @@
             label15.ForeColor = Color.FromArgb(19, 250, 168);
             label15.Location = new Point(137, 64);
             label15.Name = "label15";
-            label15.Size = new Size(66, 21);
+            label15.Size = new Size(53, 21);
             label15.TabIndex = 45;
-            label15.Text = "label15";
+            label15.Text = "0h0m";
             // 
             // label16
             // 
@@ -835,11 +835,11 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold);
+            label12.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
             label12.ForeColor = Color.White;
             label12.Location = new Point(44, 6);
             label12.Name = "label12";
-            label12.Size = new Size(355, 26);
+            label12.Size = new Size(283, 31);
             label12.TabIndex = 35;
             label12.Text = "Payment Information";
             // 
@@ -939,8 +939,9 @@
             guna2ComboBox2.FocusedColor = Color.FromArgb(94, 148, 255);
             guna2ComboBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2ComboBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            guna2ComboBox2.ForeColor = Color.FromArgb(68, 88, 112);
+            guna2ComboBox2.ForeColor = Color.White;
             guna2ComboBox2.ItemHeight = 30;
+            guna2ComboBox2.Items.AddRange(new object[] { "Cash", "Internet Banking" });
             guna2ComboBox2.Location = new Point(126, 417);
             guna2ComboBox2.Name = "guna2ComboBox2";
             guna2ComboBox2.ShadowDecoration.CustomizableEdges = customizableEdges60;
@@ -966,9 +967,9 @@
             Controls.Add(label8);
             Controls.Add(label9);
             Controls.Add(guna2PictureBox2);
-            Controls.Add(label7);
+            Controls.Add(BalanceLb);
             Controls.Add(label6);
-            Controls.Add(label5);
+            Controls.Add(memberLb);
             Controls.Add(guna2Button2);
             Controls.Add(label4);
             Controls.Add(label1);
@@ -1005,9 +1006,9 @@
         #endregion
         private Label label9;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private Label label7;
+        private Label BalanceLb;
         private Label label6;
-        private Label label5;
+        private Label memberLb;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Label label4;
         private Label label1;

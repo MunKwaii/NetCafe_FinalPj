@@ -47,7 +47,7 @@ namespace NetCafeManager
         private void btnMyAccount_Click(object sender, EventArgs e)
         {
             ChangeActivateButton(btnMyAccount);
-            ShowUserControl(new UC_MyAccount());
+            ShowUserControl(new UC_MyAccount(ID));
 
         }
 

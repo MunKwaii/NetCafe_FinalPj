@@ -18,7 +18,7 @@ namespace NetCafeManager.UserControls
     {
         string ID;
         private decimal balance;
-        private int costPerHour = 11000;
+        private int costPerHour = 1100000;
         private Timer timer;
         private decimal initialBalance;
 
@@ -102,6 +102,39 @@ namespace NetCafeManager.UserControls
 
             label14.Text = $"{usedBalance:N0}đ";
             label15.Text = $"{usedHours}h {remainingMinutes}m";
+        }
+
+        private void depositBtn_Click(object sender, EventArgs e)
+        {
+            if (guna2ComboBox2.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn phương thức thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (decimal.TryParse(depositTxt.Text, out decimal depositAmount) && depositAmount > 0)
+            {
+                balance += depositAmount;
+                initialBalance = balance; 
+
+                string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
+                SqlParameter[] updateParams = new SqlParameter[]
+                {
+                    new SqlParameter("@Balance", balance),
+                    new SqlParameter("@ID", ID)
+                };
+                DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
+
+                BalanceLb.Text = balance.ToString("N0");
+                UpdateTimeDisplay();
+                UpdateUsageDisplay();
+                timer.Start();
+                MessageBox.Show($"Nạp tiền thành công: {depositAmount:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập số tiền hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            depositTxt.Clear();
         }
     }
 }

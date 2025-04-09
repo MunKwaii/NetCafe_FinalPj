@@ -100,7 +100,7 @@
             BalanceLb = new Label();
             label6 = new Label();
             memberLb = new Label();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            depositBtn = new Guna.UI2.WinForms.Guna2Button();
             label4 = new Label();
             label1 = new Label();
             label3 = new Label();
@@ -118,7 +118,7 @@
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            depositTxt = new Guna.UI2.WinForms.Guna2TextBox();
             guna2PictureBox9 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox8 = new Guna.UI2.WinForms.Guna2PictureBox();
             label8 = new Label();
@@ -221,22 +221,23 @@
             memberLb.TabIndex = 33;
             memberLb.Text = "label5";
             // 
-            // guna2Button2
+            // depositBtn
             // 
-            guna2Button2.CustomizableEdges = customizableEdges3;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button2.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button2.ForeColor = Color.Black;
-            guna2Button2.Location = new Point(161, 483);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Button2.Size = new Size(171, 44);
-            guna2Button2.TabIndex = 32;
-            guna2Button2.Text = "Deposit";
+            depositBtn.CustomizableEdges = customizableEdges3;
+            depositBtn.DisabledState.BorderColor = Color.DarkGray;
+            depositBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            depositBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            depositBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            depositBtn.FillColor = Color.FromArgb(19, 250, 168);
+            depositBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            depositBtn.ForeColor = Color.Black;
+            depositBtn.Location = new Point(161, 483);
+            depositBtn.Name = "depositBtn";
+            depositBtn.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            depositBtn.Size = new Size(171, 44);
+            depositBtn.TabIndex = 32;
+            depositBtn.Text = "Deposit";
+            depositBtn.Click += depositBtn_Click;
             // 
             // label4
             // 
@@ -493,30 +494,31 @@
             guna2Panel3.Size = new Size(126, 5);
             guna2Panel3.TabIndex = 125;
             // 
-            // guna2TextBox2
+            // depositTxt
             // 
-            guna2TextBox2.Anchor = AnchorStyles.None;
-            guna2TextBox2.BorderColor = Color.FromArgb(20, 20, 20);
-            guna2TextBox2.BorderThickness = 0;
-            guna2TextBox2.CustomizableEdges = customizableEdges27;
-            guna2TextBox2.DefaultText = "$";
-            guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.FillColor = Color.FromArgb(20, 20, 20);
-            guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            guna2TextBox2.ForeColor = Color.White;
-            guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Location = new Point(267, 356);
-            guna2TextBox2.Margin = new Padding(4);
-            guna2TextBox2.Name = "guna2TextBox2";
-            guna2TextBox2.PlaceholderText = "";
-            guna2TextBox2.SelectedText = "";
-            guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            guna2TextBox2.Size = new Size(127, 38);
-            guna2TextBox2.TabIndex = 124;
+            depositTxt.AcceptsTab = true;
+            depositTxt.Anchor = AnchorStyles.None;
+            depositTxt.BorderColor = Color.FromArgb(20, 20, 20);
+            depositTxt.BorderThickness = 0;
+            depositTxt.CustomizableEdges = customizableEdges27;
+            depositTxt.DefaultText = "$";
+            depositTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            depositTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            depositTxt.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            depositTxt.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            depositTxt.FillColor = Color.FromArgb(20, 20, 20);
+            depositTxt.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            depositTxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            depositTxt.ForeColor = Color.White;
+            depositTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            depositTxt.Location = new Point(267, 356);
+            depositTxt.Margin = new Padding(4);
+            depositTxt.Name = "depositTxt";
+            depositTxt.PlaceholderText = "";
+            depositTxt.SelectedText = "";
+            depositTxt.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            depositTxt.Size = new Size(127, 38);
+            depositTxt.TabIndex = 124;
             // 
             // guna2PictureBox9
             // 
@@ -957,7 +959,7 @@
             Controls.Add(guna2ComboBox2);
             Controls.Add(pnRight);
             Controls.Add(guna2Panel3);
-            Controls.Add(guna2TextBox2);
+            Controls.Add(depositTxt);
             Controls.Add(guna2DataGridView1);
             Controls.Add(label11);
             Controls.Add(guna2Button1);
@@ -970,7 +972,7 @@
             Controls.Add(BalanceLb);
             Controls.Add(label6);
             Controls.Add(memberLb);
-            Controls.Add(guna2Button2);
+            Controls.Add(depositBtn);
             Controls.Add(label4);
             Controls.Add(label1);
             Controls.Add(label3);
@@ -1009,7 +1011,7 @@
         private Label BalanceLb;
         private Label label6;
         private Label memberLb;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button depositBtn;
         private Label label4;
         private Label label1;
         private Label label3;
@@ -1027,7 +1029,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2TextBox depositTxt;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox9;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox8;
         private Label label8;

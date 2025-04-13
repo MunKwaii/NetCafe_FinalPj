@@ -20,6 +20,7 @@ namespace NetCafeManager.UserControls
         private decimal balance;
         private int costPerHour = 1100000;
         private Timer timer;
+        private decimal usedBalance;
         private decimal initialBalance;
 
         public UC_MyAccount(string ID)
@@ -41,6 +42,7 @@ namespace NetCafeManager.UserControls
             label13.Text = dt.Rows[0]["FullName"].ToString();
             balance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
             initialBalance = balance;
+            usedBalance = 0;
             BalanceLb.Text = balance.ToString();
             UpdateTimeDisplay();
             UpdateUsageDisplay();
@@ -72,6 +74,7 @@ namespace NetCafeManager.UserControls
             if (balance >= costPerMinute)
             {
                 balance -= costPerMinute;
+                usedBalance += costPerMinute;
                 BalanceLb.Text = balance.ToString("N0");
                 UpdateTimeDisplay();
                 UpdateUsageDisplay();
@@ -94,14 +97,14 @@ namespace NetCafeManager.UserControls
         }
         private void UpdateUsageDisplay()
         {
-            decimal usedBalance = initialBalance - balance;
+            //usedBalance = initialBalance - balance;
             decimal costPerMinute = costPerHour / 60m;
             int usedMinutes = (int)Math.Round(usedBalance / costPerMinute);
             int usedHours = usedMinutes / 60;
             int remainingMinutes = usedMinutes % 60;
 
-            label14.Text = $"{usedBalance:N0}đ";
-            label15.Text = $"{usedHours}h {remainingMinutes}m";
+            TotalFeeLbl.Text = $"{usedBalance:N0}đ";
+            TotalTimeLbl.Text = $"{usedHours}h {remainingMinutes}m";
         }
 
         private void depositBtn_Click(object sender, EventArgs e)
@@ -114,7 +117,7 @@ namespace NetCafeManager.UserControls
             if (decimal.TryParse(depositTxt.Text, out decimal depositAmount) && depositAmount > 0)
             {
                 balance += depositAmount;
-                initialBalance = balance; 
+                //initialBalance = balance; 
 
                 string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
                 SqlParameter[] updateParams = new SqlParameter[]
@@ -126,8 +129,12 @@ namespace NetCafeManager.UserControls
 
                 BalanceLb.Text = balance.ToString("N0");
                 UpdateTimeDisplay();
-                UpdateUsageDisplay();
-                timer.Start();
+                //UpdateUsageDisplay();
+                if (!timer.Enabled)
+                {
+                    timer.Start();
+                }
+                //timer.Start();
                 MessageBox.Show($"Nạp tiền thành công: {depositAmount:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else

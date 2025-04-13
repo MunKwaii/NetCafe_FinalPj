@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using NetCafeManager.UserControls;
 
 namespace NetCafeManager
@@ -14,11 +15,20 @@ namespace NetCafeManager
     public partial class CustomerForm : Form
     {
         string ID;
+        private UC_Service ucService;
+        private UC_MyAccount ucMyAccount;
         public CustomerForm(string ID)
         {
             InitializeComponent();
             pnlProfileContent.Visible = false;
             this.ID = ID;
+            ucService = new UC_Service(true);
+            ucMyAccount = new UC_MyAccount(ID);
+            ucService.Visible = false;
+            ucMyAccount.Visible = true;
+            pnlMainContent.Controls.Add(ucService);
+            pnlMainContent.Controls.Add(ucMyAccount);
+            ChangeActivateButton(btnMyAccount);
         }
         private void ChangeActivateButton(Guna.UI2.WinForms.Guna2Button activeButton)
         {
@@ -32,29 +42,33 @@ namespace NetCafeManager
             activeButton.ForeColor = Color.Black;
 
         }
-        private void ShowUserControl(UserControl uc)
-        {
-            pnlMainContent.Controls.Clear();
-            pnlMainContent.Controls.Add(uc);
-        }
+        //private void ShowUserControl(UserControl uc)
+        //{
+        //    pnlMainContent.Controls.Clear();
+        //    pnlMainContent.Controls.Add(uc);
+        //}
 
         private void btnService_Click(object sender, EventArgs e)
         {
+            pnlProfileContent.Controls.Clear();
             ChangeActivateButton(btnService);
-            ShowUserControl(new UC_Service(true));
+            ucService.Visible = true;
+            ucMyAccount.Visible = false;
         }
 
         private void btnMyAccount_Click(object sender, EventArgs e)
         {
+            pnlProfileContent.Controls.Clear();
             ChangeActivateButton(btnMyAccount);
-            ShowUserControl(new UC_MyAccount(ID));
-
+            ucService.Visible = false;
+            ucMyAccount.Visible = true;
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Visible = !pnlProfileContent.Visible;
             pnlProfileContent.Controls.Add(new UC_UserProfile(ID));
+            
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

@@ -25,14 +25,15 @@ namespace NetCafeManager.UserControls
 
         private void LoadData()
         {
-            string query = @"SELECT FullName, Balance FROM Customer WHERE UserID = @ID";
+            string query = @"SELECT FullName, ComputerID FROM Customer JOIN Computer ON Customer.UserID = Computer.UserID WHERE Customer.UserID = @ID";
             SqlParameter[] Para = new SqlParameter[]
             {
                 new SqlParameter("@ID", ID)
             };
             DataTable dt = DatabaseHelper.ExecuteQuery(query, Para);
             Usernamelb.Text = dt.Rows[0]["FullName"].ToString();
-            BalanceLb.Text = dt.Rows[0]["Balance"].ToString();
+            UserIDLB.Text = ID;
+            ComputerIDLb.Text = dt.Rows[0]["ComputerID"].ToString();
         }
     }
 }

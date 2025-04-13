@@ -31,7 +31,7 @@ namespace NetCafeManager.UserControls
         }
         private void LoadData()
         {
-            string userQuery = @"SELECT FullName, Balance FROM Customer WHERE UserID = @ID";
+            string userQuery = @"SELECT FullName, Balance, ComputerID FROM Customer JOIN Computer ON Customer.UserID = Computer.UserID WHERE Customer.UserID = @ID";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@ID", ID)
@@ -39,7 +39,8 @@ namespace NetCafeManager.UserControls
             DataTable dt = DatabaseHelper.ExecuteQuery(userQuery, parameters);
             memberLb.Text = dt.Rows[0]["FullName"].ToString();
             BalanceLb.Text = dt.Rows[0]["Balance"].ToString();
-            label13.Text = dt.Rows[0]["FullName"].ToString();
+            CusNameLB.Text = dt.Rows[0]["FullName"].ToString();
+            ComLB.Text = dt.Rows[0]["ComputerID"].ToString();
             balance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
             initialBalance = balance;
             usedBalance = 0;

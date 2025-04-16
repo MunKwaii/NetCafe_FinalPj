@@ -17,7 +17,7 @@ namespace NetCafeManager.UserControls
         {
             InitializeComponent();
         }
-        public UC_MenuItem(string imagePath, string itemName, string price)
+        public UC_MenuItem(Image image, string itemName, string price)
         {
 
             InitializeComponent();
@@ -25,13 +25,8 @@ namespace NetCafeManager.UserControls
             lblPrice.Text = price;
             lblProductName.TextAlign = ContentAlignment.MiddleCenter;
             lblPrice.TextAlign = ContentAlignment.MiddleCenter;
-            string projectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
-            string fullPath = Path.Combine(projectPath, "MenuItemPic", imagePath);
 
-            if (File.Exists(fullPath))
-                ptbProductImage.Image = Image.FromFile(fullPath);
-            else
-                MessageBox.Show($"Không tìm thấy ảnh: {fullPath}");
+            ptbProductImage.Image = image;
         }
     }
 }

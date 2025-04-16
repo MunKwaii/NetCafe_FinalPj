@@ -179,7 +179,7 @@ namespace NetCafeManager.UserControls
             btnTakeOrder.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnTakeOrder.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnTakeOrder.FillColor = Color.FromArgb(19, 250, 168);
-            btnTakeOrder.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTakeOrder.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTakeOrder.ForeColor = Color.Black;
             btnTakeOrder.Location = new Point(961, 45);
             btnTakeOrder.Name = "btnTakeOrder";
@@ -767,7 +767,7 @@ namespace NetCafeManager.UserControls
             btnNewOrder.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnNewOrder.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnNewOrder.FillColor = Color.FromArgb(19, 250, 168);
-            btnNewOrder.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNewOrder.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNewOrder.ForeColor = Color.Black;
             btnNewOrder.Location = new Point(19, 21);
             btnNewOrder.Name = "btnNewOrder";

@@ -31,9 +31,6 @@
     <Compile Update="UserControls\UC_ComputerStatus.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\UC_Service.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\UC_ManageComputers.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -50,6 +47,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\UC_NewOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\UC_Service.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\UC_Setting.cs">

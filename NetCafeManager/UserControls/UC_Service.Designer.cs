@@ -1,13 +1,4 @@
 ﻿
-
-
-
-
-
-
-
-
-
 namespace NetCafeManager.UserControls
 {
     partial class UC_Service
@@ -372,6 +363,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem1.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem1.Location = new Point(0, 0);
             uC_MenuItem1.Name = "uC_MenuItem1";
+            uC_MenuItem1.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem1.RightToLeft = RightToLeft.No;
             uC_MenuItem1.Size = new Size(200, 300);
             uC_MenuItem1.TabIndex = 0;
@@ -394,6 +386,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem2.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem2.Location = new Point(0, 0);
             uC_MenuItem2.Name = "uC_MenuItem2";
+            uC_MenuItem2.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem2.RightToLeft = RightToLeft.No;
             uC_MenuItem2.Size = new Size(200, 300);
             uC_MenuItem2.TabIndex = 0;
@@ -416,6 +409,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem3.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem3.Location = new Point(0, 0);
             uC_MenuItem3.Name = "uC_MenuItem3";
+            uC_MenuItem3.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem3.RightToLeft = RightToLeft.No;
             uC_MenuItem3.Size = new Size(200, 300);
             uC_MenuItem3.TabIndex = 0;
@@ -438,6 +432,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem4.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem4.Location = new Point(0, 0);
             uC_MenuItem4.Name = "uC_MenuItem4";
+            uC_MenuItem4.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem4.RightToLeft = RightToLeft.No;
             uC_MenuItem4.Size = new Size(200, 300);
             uC_MenuItem4.TabIndex = 0;
@@ -460,6 +455,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem5.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem5.Location = new Point(0, 0);
             uC_MenuItem5.Name = "uC_MenuItem5";
+            uC_MenuItem5.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem5.RightToLeft = RightToLeft.No;
             uC_MenuItem5.Size = new Size(200, 300);
             uC_MenuItem5.TabIndex = 0;
@@ -482,6 +478,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem6.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem6.Location = new Point(0, 0);
             uC_MenuItem6.Name = "uC_MenuItem6";
+            uC_MenuItem6.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem6.RightToLeft = RightToLeft.No;
             uC_MenuItem6.Size = new Size(200, 300);
             uC_MenuItem6.TabIndex = 0;
@@ -504,6 +501,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem7.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem7.Location = new Point(0, 0);
             uC_MenuItem7.Name = "uC_MenuItem7";
+            uC_MenuItem7.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem7.RightToLeft = RightToLeft.No;
             uC_MenuItem7.Size = new Size(200, 300);
             uC_MenuItem7.TabIndex = 0;
@@ -526,6 +524,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem8.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem8.Location = new Point(0, 0);
             uC_MenuItem8.Name = "uC_MenuItem8";
+            uC_MenuItem8.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem8.RightToLeft = RightToLeft.No;
             uC_MenuItem8.Size = new Size(200, 300);
             uC_MenuItem8.TabIndex = 0;
@@ -548,6 +547,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem9.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem9.Location = new Point(0, 0);
             uC_MenuItem9.Name = "uC_MenuItem9";
+            uC_MenuItem9.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem9.RightToLeft = RightToLeft.No;
             uC_MenuItem9.Size = new Size(200, 300);
             uC_MenuItem9.TabIndex = 0;
@@ -570,6 +570,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem10.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem10.Location = new Point(0, 0);
             uC_MenuItem10.Name = "uC_MenuItem10";
+            uC_MenuItem10.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem10.RightToLeft = RightToLeft.No;
             uC_MenuItem10.Size = new Size(200, 300);
             uC_MenuItem10.TabIndex = 0;
@@ -592,6 +593,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem11.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem11.Location = new Point(0, 0);
             uC_MenuItem11.Name = "uC_MenuItem11";
+            uC_MenuItem11.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem11.RightToLeft = RightToLeft.No;
             uC_MenuItem11.Size = new Size(200, 300);
             uC_MenuItem11.TabIndex = 0;
@@ -614,6 +616,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem12.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem12.Location = new Point(0, 0);
             uC_MenuItem12.Name = "uC_MenuItem12";
+            uC_MenuItem12.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem12.RightToLeft = RightToLeft.No;
             uC_MenuItem12.Size = new Size(200, 300);
             uC_MenuItem12.TabIndex = 0;

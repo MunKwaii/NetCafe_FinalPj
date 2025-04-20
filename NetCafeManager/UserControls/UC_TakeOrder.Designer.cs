@@ -12,12 +12,15 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
+
         {
+           
             if (disposing && (components != null))
             {
                 components.Dispose();
             }
             base.Dispose(disposing);
+        
         }
 
         #region Component Designer generated code
@@ -59,6 +62,10 @@
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            ProductName = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
@@ -143,6 +150,7 @@
             guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             guna2DataGridView1.ColumnHeadersHeight = 4;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { ProductName, Price, Quantity, Total });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -178,6 +186,9 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            guna2DataGridView1.ColumnHeadersHeight = 40;
+
             // 
             // label3
             // 
@@ -220,7 +231,7 @@
             guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button3.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button3.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button3.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button3.ForeColor = Color.Black;
             guna2Button3.Location = new Point(152, 494);
             guna2Button3.Name = "guna2Button3";
@@ -269,6 +280,26 @@
             guna2PictureBox3.TabIndex = 91;
             guna2PictureBox3.TabStop = false;
             // 
+            // ProductName
+            // 
+            ProductName.HeaderText = "Tên SP";
+            ProductName.Name = "ProductName";
+            // 
+            // Price
+            // 
+            Price.HeaderText = "Đơn giá";
+            Price.Name = "Price";
+            // 
+            // Quantity
+            // 
+            Quantity.HeaderText = "Số lượng";
+            Quantity.Name = "Quantity";
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Thành tiền";
+            Total.Name = "Total";
+            // 
             // UC_TakeOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -304,6 +335,7 @@
         private Label label13;
         private Guna.Charts.WinForms.GunaAreaDataset gunaAreaDataset1;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        
         private Label label3;
         private Label label4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
@@ -311,5 +343,10 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
+        private DataGridViewTextBoxColumn ProductName;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn Total;
+
     }
 }

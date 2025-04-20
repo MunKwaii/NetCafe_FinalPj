@@ -13,7 +13,7 @@ using Guna.UI2.WinForms;
 
 namespace NetCafeManager.UserControls
 {
-   
+
     public partial class UC_Service : UserControl
     {
         //do dai cua tab page
@@ -176,8 +176,6 @@ namespace NetCafeManager.UserControls
                         update_page(indexPage);
                     }
                 }
-                //chạy database
-
             }
         }
 
@@ -243,24 +241,52 @@ namespace NetCafeManager.UserControls
         }
         private void LoadMenu()
         {
+            //flpnMenuContent.Controls.Clear();
+            //List<Product> products = GetProducts(indexPage, 10);
+
+            //foreach (var item in products)
+            //{
+            //    Image image = null;
+            //    if (item.Image != null)
+            //    {
+            //        using (MemoryStream ms = new MemoryStream(item.Image))
+            //        {
+            //            image = Image.FromStream(ms);
+            //        }
+            //    }
+
+            //    UC_MenuItem menuItem = new UC_MenuItem(image, item.Name, item.Price.ToString("N0") + "000đ");
+            //    flpnMenuContent.Controls.Add(menuItem);
             flpnMenuContent.Controls.Clear();
             List<Product> products = GetProducts(indexPage, 10);
 
-            foreach (var item in products)
+            foreach (var product in products)
             {
-                Image image = null;
-                if (item.Image != null)
-                {
-                    using (MemoryStream ms = new MemoryStream(item.Image))
-                    {
-                        image = Image.FromStream(ms);
-                    }
-                }
+                Image image = product.Image != null ?
+                    Image.FromStream(new MemoryStream(product.Image)) : null;
 
-                UC_MenuItem menuItem = new UC_MenuItem(image, item.Name, item.Price.ToString("N0") + "000đ");
+                var menuItem = new UC_MenuItem(
+                    image,
+                    product.Name,
+                    product.Price
+                );
+
+                menuItem.OrderClicked += (sender, productInfo) =>
+                {
+                    foreach (Control control in pnlOrder.Controls)
+                    {
+                        if (control is UC_TakeOrder takeOrder)
+                        {
+                            takeOrder.AddProductToOrder(productInfo.Name, productInfo.Price);
+                            break;
+                        }
+                    }
+                };
                 flpnMenuContent.Controls.Add(menuItem);
             }
         }
+
+        
     }
     public class Product
     {

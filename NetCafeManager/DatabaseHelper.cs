@@ -11,7 +11,7 @@ namespace NetCafeManager
     internal class DatabaseHelper
     {
         private static readonly string connectionString = "Data Source=.; Database=UserManagement;" +
-                                                            "user id=sa;" + "password=123456;" +
+                                                            "user id=sa;" + "password=1234;" +
                                                             "MultipleActiveResultSets=True;" + "TrustServerCertificate=True;";
         public static SqlConnection GetConnection()
         {
@@ -37,15 +37,34 @@ namespace NetCafeManager
         // 🔹 Hàm thực hiện INSERT, UPDATE, DELETE (trả về số dòng bị ảnh hưởng)
         public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
-            using (SqlConnection conn = GetConnection())
+            //using (SqlConnection conn = GetConnection())
+            //{
+            //    conn.Open();
+            //    using (SqlCommand cmd = new SqlCommand(query, conn))
+            //    {
+            //        if (parameters != null)
+            //            cmd.Parameters.AddRange(parameters);
+            //        return cmd.ExecuteNonQuery();
+            //    }
+            //}
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = GetConnection())
                 {
-                    if (parameters != null)
-                        cmd.Parameters.AddRange(parameters);
-                    return cmd.ExecuteNonQuery();
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        if (parameters != null)
+                            cmd.Parameters.AddRange(parameters);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi thực thi câu lệnh SQL: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 

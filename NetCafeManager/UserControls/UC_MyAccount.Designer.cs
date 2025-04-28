@@ -127,7 +127,7 @@
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             label21 = new Label();
-            label22 = new Label();
+            lbl123 = new Label();
             CusNameLB = new Label();
             TotalFeeLbl = new Label();
             TotalTimeLbl = new Label();
@@ -146,6 +146,7 @@
             guna2DataGridView2 = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
             guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
+            lblTotalFoodFee = new Label();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
@@ -571,12 +572,13 @@
             // 
             // pnRight
             // 
+            pnRight.Controls.Add(lblTotalFoodFee);
             pnRight.Controls.Add(guna2Panel10);
             pnRight.Controls.Add(guna2Panel2);
             pnRight.Controls.Add(guna2Button3);
             pnRight.Controls.Add(guna2ComboBox1);
             pnRight.Controls.Add(label21);
-            pnRight.Controls.Add(label22);
+            pnRight.Controls.Add(lbl123);
             pnRight.Controls.Add(CusNameLB);
             pnRight.Controls.Add(TotalFeeLbl);
             pnRight.Controls.Add(TotalTimeLbl);
@@ -670,16 +672,16 @@
             label21.TabIndex = 51;
             label21.Text = "Total Amount Due:";
             // 
-            // label22
+            // lbl123
             // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label22.ForeColor = Color.WhiteSmoke;
-            label22.Location = new Point(31, 376);
-            label22.Name = "label22";
-            label22.Size = new Size(124, 21);
-            label22.TabIndex = 49;
-            label22.Text = "Total Food Fee:";
+            lbl123.AutoSize = true;
+            lbl123.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lbl123.ForeColor = Color.WhiteSmoke;
+            lbl123.Location = new Point(31, 376);
+            lbl123.Name = "lbl123";
+            lbl123.Size = new Size(124, 21);
+            lbl123.TabIndex = 49;
+            lbl123.Text = "Total Food Fee:";
             // 
             // CusNameLB
             // 
@@ -929,6 +931,17 @@
             guna2ComboBox2.Size = new Size(230, 36);
             guna2ComboBox2.TabIndex = 130;
             // 
+            // lblTotalFoodFee
+            // 
+            lblTotalFoodFee.AutoSize = true;
+            lblTotalFoodFee.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTotalFoodFee.ForeColor = Color.FromArgb(19, 250, 168);
+            lblTotalFoodFee.Location = new Point(186, 376);
+            lblTotalFoodFee.Name = "lblTotalFoodFee";
+            lblTotalFoodFee.Size = new Size(19, 21);
+            lblTotalFoodFee.TabIndex = 131;
+            lblTotalFoodFee.Text = "0";
+            // 
             // UC_MyAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1034,9 +1047,10 @@
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView2;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Label label21;
-        private Label label22;
+        private Label lbl123;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel10;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel12;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
+        private Label lblTotalFoodFee;
     }
 }

@@ -47,7 +47,15 @@ namespace NetCafeManager
         //    pnlMainContent.Controls.Clear();
         //    pnlMainContent.Controls.Add(uc);
         //}
-
+        // Thêm phương thức để truyền TotalFoodFee
+        public void UpdateTotalFoodFee(decimal foodFee)
+        {
+            ucMyAccount.TotalFoodFee = foodFee; // Cập nhật TotalFoodFee trong UC_MyAccount
+        }
+        public void RefreshMyAccountBalance()
+        {
+            ucMyAccount.RefreshBalance();
+        }
         private void btnService_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Controls.Clear();
@@ -62,6 +70,7 @@ namespace NetCafeManager
             ChangeActivateButton(btnMyAccount);
             ucService.Visible = false;
             ucMyAccount.Visible = true;
+            ucMyAccount.RefreshBalance(); // Làm mới số dư khi chuyển sang tab My Account
         }
 
         private void btnUser_Click(object sender, EventArgs e)

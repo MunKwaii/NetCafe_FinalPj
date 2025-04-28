@@ -4,19 +4,31 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using Microsoft.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace NetCafeManager.UserControls
 {
     public partial class UC_TakeOrder : UserControl
     {
-        public UC_TakeOrder()
+        public string UserID { get; set; }
+
+        public UC_TakeOrder(string userID)
         {
+            if (string.IsNullOrEmpty(userID))
+            {
+                MessageBox.Show("UserID không hợp lệ trong UC_TakeOrder!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new ArgumentException("UserID không được null hoặc rỗng.", nameof(userID));
+            }
+
             InitializeComponent();
+            this.UserID = userID;
             this.Load += UC_TakeOrder_Load;
             guna2DataGridView1.CellContentClick += Guna2DataGridView1_CellContentClick;
+
         }
         private void Guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -109,6 +121,60 @@ namespace NetCafeManager.UserControls
             guna2DataGridView1.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
-        
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            decimal totalAmount = 0;
+
+            foreach (DataGridViewRow row in guna2DataGridView1.Rows)
+            {
+                if (row.Cells["Total"].Value != null)
+                {
+                    totalAmount += Convert.ToDecimal(row.Cells["Total"].Value);
+                }
+            }
+            totalAmount = Math.Floor(totalAmount);
+
+            if (totalAmount == 0)
+            {
+                MessageBox.Show("Không có món nào để đặt hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            string query = "SELECT Balance FROM Customer WHERE UserID = @ID";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ID", UserID)
+            };
+            DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            decimal currentBalance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
+
+            if (currentBalance < totalAmount * 1000)
+            {
+                MessageBox.Show("Số dư không đủ để đặt hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal newBalance = currentBalance - (totalAmount * 1000);
+            string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
+            SqlParameter[] updateParams = new SqlParameter[]
+            {
+                    new SqlParameter("@Balance", newBalance),
+                    new SqlParameter("@ID", UserID)
+            };
+            DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
+            MessageBox.Show($"{UserID}");
+            MessageBox.Show($"Đặt hàng thành công!\nĐã trừ {totalAmount * 1000:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            guna2DataGridView1.Rows.Clear();
+            label4.Text = "0đ";
+        }
     }
 }

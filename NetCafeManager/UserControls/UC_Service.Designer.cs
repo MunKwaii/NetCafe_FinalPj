@@ -104,7 +104,6 @@ namespace NetCafeManager.UserControls
             guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             btnSearch = new Guna.UI2.WinForms.Guna2Button();
             pnlOrder = new Guna.UI2.WinForms.Guna2Panel();
-            uC_TakeOrder1 = new UC_TakeOrder();
             flpnMenuContent = new FlowLayoutPanel();
             guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             uC_MenuItem1 = new UC_MenuItem();
@@ -142,7 +141,6 @@ namespace NetCafeManager.UserControls
             pnlNewOrders = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox5).BeginInit();
-            pnlOrder.SuspendLayout();
             flpnMenuContent.SuspendLayout();
             guna2Panel4.SuspendLayout();
             guna2Panel5.SuspendLayout();
@@ -308,21 +306,12 @@ namespace NetCafeManager.UserControls
             // 
             // pnlOrder
             // 
-            pnlOrder.Controls.Add(uC_TakeOrder1);
             pnlOrder.CustomizableEdges = customizableEdges19;
             pnlOrder.Location = new Point(944, 128);
             pnlOrder.Name = "pnlOrder";
             pnlOrder.ShadowDecoration.CustomizableEdges = customizableEdges20;
             pnlOrder.Size = new Size(487, 561);
             pnlOrder.TabIndex = 116;
-            // 
-            // uC_TakeOrder1
-            // 
-            uC_TakeOrder1.BackColor = Color.FromArgb(40, 40, 40);
-            uC_TakeOrder1.Location = new Point(0, 0);
-            uC_TakeOrder1.Name = "uC_TakeOrder1";
-            uC_TakeOrder1.Size = new Size(487, 561);
-            uC_TakeOrder1.TabIndex = 0;
             // 
             // flpnMenuContent
             // 
@@ -829,7 +818,6 @@ namespace NetCafeManager.UserControls
             Load += UC_CustomerService_Load;
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox5).EndInit();
-            pnlOrder.ResumeLayout(false);
             flpnMenuContent.ResumeLayout(false);
             guna2Panel4.ResumeLayout(false);
             guna2Panel5.ResumeLayout(false);

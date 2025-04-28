@@ -55,6 +55,10 @@
             label13 = new Label();
             gunaAreaDataset1 = new Guna.Charts.WinForms.GunaAreaDataset();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            ProductName = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             label3 = new Label();
             label4 = new Label();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -62,10 +66,6 @@
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            ProductName = new DataGridViewTextBoxColumn();
-            Price = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
@@ -148,7 +148,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            guna2DataGridView1.ColumnHeadersHeight = 4;
+            guna2DataGridView1.ColumnHeadersHeight = 40;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { ProductName, Price, Quantity, Total });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -177,7 +177,7 @@
             guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 4;
+            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 40;
             guna2DataGridView1.ThemeStyle.ReadOnly = false;
             guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
             guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -186,9 +186,26 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ColumnHeadersHeight = 40;
-
+            // 
+            // ProductName
+            // 
+            ProductName.HeaderText = "Tên SP";
+            ProductName.Name = "ProductName";
+            // 
+            // Price
+            // 
+            Price.HeaderText = "Đơn giá";
+            Price.Name = "Price";
+            // 
+            // Quantity
+            // 
+            Quantity.HeaderText = "Số lượng";
+            Quantity.Name = "Quantity";
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Thành tiền";
+            Total.Name = "Total";
             // 
             // label3
             // 
@@ -239,6 +256,7 @@
             guna2Button3.Size = new Size(171, 44);
             guna2Button3.TabIndex = 79;
             guna2Button3.Text = "Order";
+            guna2Button3.Click += guna2Button3_Click;
             // 
             // guna2PictureBox1
             // 
@@ -279,26 +297,6 @@
             guna2PictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox3.TabIndex = 91;
             guna2PictureBox3.TabStop = false;
-            // 
-            // ProductName
-            // 
-            ProductName.HeaderText = "Tên SP";
-            ProductName.Name = "ProductName";
-            // 
-            // Price
-            // 
-            Price.HeaderText = "Đơn giá";
-            Price.Name = "Price";
-            // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "Số lượng";
-            Quantity.Name = "Quantity";
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Thành tiền";
-            Total.Name = "Total";
             // 
             // UC_TakeOrder
             // 

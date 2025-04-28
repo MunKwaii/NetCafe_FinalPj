@@ -22,7 +22,7 @@ namespace NetCafeManager
             InitializeComponent();
             pnlProfileContent.Visible = false;
             this.ID = ID;
-            ucService = new UC_Service(true);
+            ucService = new UC_Service(ID);
             ucMyAccount = new UC_MyAccount(ID);
             ucService.Visible = false;
             ucMyAccount.Visible = true;

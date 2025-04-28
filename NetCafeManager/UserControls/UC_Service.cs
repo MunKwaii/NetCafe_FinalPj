@@ -16,12 +16,17 @@ namespace NetCafeManager.UserControls
 
     public partial class UC_Service : UserControl
     {
+        string CurrentUserID;
         //do dai cua tab page
         private int indexPage = 1, lengthPage = 10, currentPage = 1;
         private List<Guna2Button> List_buttonPage;
-        public UC_Service(bool flag = false)
+        public UC_Service(string userID, bool flag = false)
         {
             InitializeComponent();
+            this.CurrentUserID = userID;
+            //MessageBox.Show(CurrentUserID);
+            UC_TakeOrder takeOrder = new UC_TakeOrder(CurrentUserID);
+            ShowUserControl(takeOrder);
             LoadMenu();
             List_buttonPage = new List<Guna2Button> { btnFirst_page, btnSecond_page, btnThird_page };
             if (flag)
@@ -197,9 +202,19 @@ namespace NetCafeManager.UserControls
             pnlOrder.Controls.Clear();
             pnlOrder.Controls.Add(uc);
         }
+
         private void btnTakeOrder_Click(object sender, EventArgs e)
         {
-            ShowUserControl(new UC_TakeOrder());
+            //foreach (Control control in pnlOrder.Controls)
+            //{
+            //    if (control is UC_TakeOrder takeOrder)
+            //    {
+            //        // Làm mới nội dung nếu cần (ví dụ, xóa danh sách sản phẩm)
+            //        takeOrder.guna2DataGridView1.Rows.Clear();
+            //        takeOrder.CalculateTotal();
+            //        break;
+            //    }
+            //}
         }
 
         private void btnNewOrder_Click(object sender, EventArgs e)
@@ -239,6 +254,7 @@ namespace NetCafeManager.UserControls
 
             return products;
         }
+
         private void LoadMenu()
         {
             //flpnMenuContent.Controls.Clear();
@@ -286,7 +302,7 @@ namespace NetCafeManager.UserControls
             }
         }
 
-        
+      
     }
     public class Product
     {

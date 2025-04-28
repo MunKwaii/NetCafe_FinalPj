@@ -61,7 +61,7 @@ namespace NetCafeManager
         private void btnService_Click(object sender, EventArgs e)
         {
             ChangeActivateButton(btnService);
-            ShowUserControl(new UC_Service());
+            ShowUserControl(new UC_Service(ID));
 
         }
 

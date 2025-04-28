@@ -36,7 +36,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            BalanceLb = new Label();
+            UserIDLB = new Label();
             ComputerIDLb = new Label();
             Usernamelb = new Label();
             label1 = new Label();
@@ -63,23 +63,23 @@
             guna2PictureBox1.TabIndex = 92;
             guna2PictureBox1.TabStop = false;
             // 
-            // BalanceLb
+            // UserIDLB
             // 
-            BalanceLb.AutoSize = true;
-            BalanceLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            BalanceLb.ForeColor = Color.FromArgb(19, 250, 168);
-            BalanceLb.Location = new Point(160, 177);
-            BalanceLb.Name = "BalanceLb";
-            BalanceLb.Size = new Size(48, 21);
-            BalanceLb.TabIndex = 98;
-            BalanceLb.Text = "label";
+            UserIDLB.AutoSize = true;
+            UserIDLB.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            UserIDLB.ForeColor = Color.FromArgb(19, 250, 168);
+            UserIDLB.Location = new Point(98, 71);
+            UserIDLB.Name = "UserIDLB";
+            UserIDLB.Size = new Size(48, 21);
+            UserIDLB.TabIndex = 98;
+            UserIDLB.Text = "label";
             // 
             // ComputerIDLb
             // 
             ComputerIDLb.AutoSize = true;
             ComputerIDLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             ComputerIDLb.ForeColor = Color.FromArgb(19, 250, 168);
-            ComputerIDLb.Location = new Point(160, 124);
+            ComputerIDLb.Location = new Point(144, 177);
             ComputerIDLb.Name = "ComputerIDLb";
             ComputerIDLb.Size = new Size(57, 21);
             ComputerIDLb.TabIndex = 97;
@@ -90,7 +90,7 @@
             Usernamelb.AutoSize = true;
             Usernamelb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Usernamelb.ForeColor = Color.FromArgb(19, 250, 168);
-            Usernamelb.Location = new Point(160, 71);
+            Usernamelb.Location = new Point(98, 124);
             Usernamelb.Name = "Usernamelb";
             Usernamelb.Size = new Size(57, 21);
             Usernamelb.TabIndex = 96;
@@ -101,18 +101,18 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(27, 177);
+            label1.Location = new Point(27, 71);
             label1.Name = "label1";
-            label1.Size = new Size(74, 21);
+            label1.Size = new Size(65, 21);
             label1.TabIndex = 95;
-            label1.Text = "Balance:";
+            label1.Text = "UserID:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(27, 124);
+            label3.Location = new Point(27, 177);
             label3.Name = "label3";
             label3.Size = new Size(111, 21);
             label3.TabIndex = 94;
@@ -123,7 +123,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(27, 71);
+            label2.Location = new Point(27, 124);
             label2.Name = "label2";
             label2.Size = new Size(60, 21);
             label2.TabIndex = 93;
@@ -162,7 +162,7 @@
             BackColor = Color.FromArgb(40, 40, 40);
             Controls.Add(guna2PictureBox2);
             Controls.Add(guna2PictureBox3);
-            Controls.Add(BalanceLb);
+            Controls.Add(UserIDLB);
             Controls.Add(ComputerIDLb);
             Controls.Add(Usernamelb);
             Controls.Add(label1);
@@ -182,7 +182,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Label BalanceLb;
+        private Label UserIDLB;
         private Label ComputerIDLb;
         private Label Usernamelb;
         private Label label1;

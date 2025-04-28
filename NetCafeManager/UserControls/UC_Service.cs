@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using Microsoft.Data.SqlClient;
+
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,14 +13,20 @@ using Guna.UI2.WinForms;
 
 namespace NetCafeManager.UserControls
 {
+
     public partial class UC_Service : UserControl
     {
+        string CurrentUserID;
         //do dai cua tab page
         private int indexPage = 1, lengthPage = 10, currentPage = 1;
         private List<Guna2Button> List_buttonPage;
-        public UC_Service(bool flag = false)
+        public UC_Service(string userID, bool flag = false)
         {
             InitializeComponent();
+            this.CurrentUserID = userID;
+            //MessageBox.Show(CurrentUserID);
+            UC_TakeOrder takeOrder = new UC_TakeOrder(CurrentUserID);
+            ShowUserControl(takeOrder);
             LoadMenu();
             List_buttonPage = new List<Guna2Button> { btnFirst_page, btnSecond_page, btnThird_page };
             if (flag)
@@ -173,8 +181,6 @@ namespace NetCafeManager.UserControls
                         update_page(indexPage);
                     }
                 }
-                //chạy database
-
             }
         }
 
@@ -196,35 +202,114 @@ namespace NetCafeManager.UserControls
             pnlOrder.Controls.Clear();
             pnlOrder.Controls.Add(uc);
         }
+
         private void btnTakeOrder_Click(object sender, EventArgs e)
         {
-            ShowUserControl(new UC_TakeOrder());
+            //foreach (Control control in pnlOrder.Controls)
+            //{
+            //    if (control is UC_TakeOrder takeOrder)
+            //    {
+            //        // Làm mới nội dung nếu cần (ví dụ, xóa danh sách sản phẩm)
+            //        takeOrder.guna2DataGridView1.Rows.Clear();
+            //        takeOrder.CalculateTotal();
+            //        break;
+            //    }
+            //}
         }
 
         private void btnNewOrder_Click(object sender, EventArgs e)
         {
             ShowUserControl(new UC_NewOrder());
         }
+        private List<Product> GetProducts(int pageIndex, int pageSize)
+        {
+            List<Product> products = new List<Product>();
+
+            string query = @"
+                SELECT * FROM (
+                    SELECT ROW_NUMBER() OVER (ORDER BY ID) AS RowNum, *
+                    FROM Service WHERE Status = 1
+                ) AS Temp
+                WHERE RowNum BETWEEN @StartRow AND @EndRow
+            ";
+
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@StartRow", (pageIndex - 1) * pageSize + 1),
+                new SqlParameter("@EndRow", pageIndex * pageSize)
+            };
+
+            DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+            foreach (DataRow row in dt.Rows)
+            {
+                products.Add(new Product
+                {
+                    ID = Convert.ToInt32(row["ID"]),
+                    Name = row["Name"].ToString(),
+                    Price = Convert.ToDecimal(row["Price"]),
+                    Image = row["Image"] != DBNull.Value ? (byte[])row["Image"] : null,
+                    Status = Convert.ToBoolean(row["Status"])
+                });
+            }
+
+            return products;
+        }
 
         private void LoadMenu()
         {
-            flpnMenuContent.Controls.Clear(); // Xóa danh sách cũ
+            //flpnMenuContent.Controls.Clear();
+            //List<Product> products = GetProducts(indexPage, 10);
 
-            List<(string image, string name, string price)> menuItems = new List<(string, string, string)>
-    {
-        ("cocacola.png", "Coca Cola", "10.000đ"),
-        ("pepsi.png", "Pepsi", "10.000đ"),
-        ("sting.png", "Sting", "10.000đ"),
-        ("mitomtrung.png", "Mì tôm trứng", "20.000đ"),
-    };
+            //foreach (var item in products)
+            //{
+            //    Image image = null;
+            //    if (item.Image != null)
+            //    {
+            //        using (MemoryStream ms = new MemoryStream(item.Image))
+            //        {
+            //            image = Image.FromStream(ms);
+            //        }
+            //    }
 
-            foreach (var item in menuItems)
+            //    UC_MenuItem menuItem = new UC_MenuItem(image, item.Name, item.Price.ToString("N0") + "000đ");
+            //    flpnMenuContent.Controls.Add(menuItem);
+            flpnMenuContent.Controls.Clear();
+            List<Product> products = GetProducts(indexPage, 10);
+
+            foreach (var product in products)
             {
-                UC_MenuItem menuItem = new UC_MenuItem(item.image, item.name, item.price);
+                Image image = product.Image != null ?
+                    Image.FromStream(new MemoryStream(product.Image)) : null;
+
+                var menuItem = new UC_MenuItem(
+                    image,
+                    product.Name,
+                    product.Price
+                );
+
+                menuItem.OrderClicked += (sender, productInfo) =>
+                {
+                    foreach (Control control in pnlOrder.Controls)
+                    {
+                        if (control is UC_TakeOrder takeOrder)
+                        {
+                            takeOrder.AddProductToOrder(productInfo.Name, productInfo.Price);
+                            break;
+                        }
+                    }
+                };
                 flpnMenuContent.Controls.Add(menuItem);
             }
         }
 
-       
+      
+    }
+    public class Product
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public byte[] Image { get; set; }
+        public bool Status { get; set; }
     }
 }

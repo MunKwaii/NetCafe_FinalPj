@@ -1,13 +1,4 @@
 ﻿
-
-
-
-
-
-
-
-
-
 namespace NetCafeManager.UserControls
 {
     partial class UC_Service
@@ -113,7 +104,6 @@ namespace NetCafeManager.UserControls
             guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             btnSearch = new Guna.UI2.WinForms.Guna2Button();
             pnlOrder = new Guna.UI2.WinForms.Guna2Panel();
-            uC_TakeOrder1 = new UC_TakeOrder();
             flpnMenuContent = new FlowLayoutPanel();
             guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             uC_MenuItem1 = new UC_MenuItem();
@@ -151,7 +141,6 @@ namespace NetCafeManager.UserControls
             pnlNewOrders = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox5).BeginInit();
-            pnlOrder.SuspendLayout();
             flpnMenuContent.SuspendLayout();
             guna2Panel4.SuspendLayout();
             guna2Panel5.SuspendLayout();
@@ -179,7 +168,7 @@ namespace NetCafeManager.UserControls
             btnTakeOrder.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnTakeOrder.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnTakeOrder.FillColor = Color.FromArgb(19, 250, 168);
-            btnTakeOrder.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTakeOrder.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTakeOrder.ForeColor = Color.Black;
             btnTakeOrder.Location = new Point(961, 45);
             btnTakeOrder.Name = "btnTakeOrder";
@@ -317,21 +306,12 @@ namespace NetCafeManager.UserControls
             // 
             // pnlOrder
             // 
-            pnlOrder.Controls.Add(uC_TakeOrder1);
             pnlOrder.CustomizableEdges = customizableEdges19;
             pnlOrder.Location = new Point(944, 128);
             pnlOrder.Name = "pnlOrder";
             pnlOrder.ShadowDecoration.CustomizableEdges = customizableEdges20;
             pnlOrder.Size = new Size(487, 561);
             pnlOrder.TabIndex = 116;
-            // 
-            // uC_TakeOrder1
-            // 
-            uC_TakeOrder1.BackColor = Color.FromArgb(40, 40, 40);
-            uC_TakeOrder1.Location = new Point(0, 0);
-            uC_TakeOrder1.Name = "uC_TakeOrder1";
-            uC_TakeOrder1.Size = new Size(487, 561);
-            uC_TakeOrder1.TabIndex = 0;
             // 
             // flpnMenuContent
             // 
@@ -372,6 +352,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem1.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem1.Location = new Point(0, 0);
             uC_MenuItem1.Name = "uC_MenuItem1";
+            uC_MenuItem1.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem1.RightToLeft = RightToLeft.No;
             uC_MenuItem1.Size = new Size(200, 300);
             uC_MenuItem1.TabIndex = 0;
@@ -394,6 +375,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem2.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem2.Location = new Point(0, 0);
             uC_MenuItem2.Name = "uC_MenuItem2";
+            uC_MenuItem2.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem2.RightToLeft = RightToLeft.No;
             uC_MenuItem2.Size = new Size(200, 300);
             uC_MenuItem2.TabIndex = 0;
@@ -416,6 +398,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem3.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem3.Location = new Point(0, 0);
             uC_MenuItem3.Name = "uC_MenuItem3";
+            uC_MenuItem3.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem3.RightToLeft = RightToLeft.No;
             uC_MenuItem3.Size = new Size(200, 300);
             uC_MenuItem3.TabIndex = 0;
@@ -438,6 +421,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem4.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem4.Location = new Point(0, 0);
             uC_MenuItem4.Name = "uC_MenuItem4";
+            uC_MenuItem4.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem4.RightToLeft = RightToLeft.No;
             uC_MenuItem4.Size = new Size(200, 300);
             uC_MenuItem4.TabIndex = 0;
@@ -460,6 +444,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem5.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem5.Location = new Point(0, 0);
             uC_MenuItem5.Name = "uC_MenuItem5";
+            uC_MenuItem5.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem5.RightToLeft = RightToLeft.No;
             uC_MenuItem5.Size = new Size(200, 300);
             uC_MenuItem5.TabIndex = 0;
@@ -482,6 +467,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem6.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem6.Location = new Point(0, 0);
             uC_MenuItem6.Name = "uC_MenuItem6";
+            uC_MenuItem6.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem6.RightToLeft = RightToLeft.No;
             uC_MenuItem6.Size = new Size(200, 300);
             uC_MenuItem6.TabIndex = 0;
@@ -504,6 +490,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem7.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem7.Location = new Point(0, 0);
             uC_MenuItem7.Name = "uC_MenuItem7";
+            uC_MenuItem7.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem7.RightToLeft = RightToLeft.No;
             uC_MenuItem7.Size = new Size(200, 300);
             uC_MenuItem7.TabIndex = 0;
@@ -526,6 +513,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem8.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem8.Location = new Point(0, 0);
             uC_MenuItem8.Name = "uC_MenuItem8";
+            uC_MenuItem8.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem8.RightToLeft = RightToLeft.No;
             uC_MenuItem8.Size = new Size(200, 300);
             uC_MenuItem8.TabIndex = 0;
@@ -548,6 +536,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem9.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem9.Location = new Point(0, 0);
             uC_MenuItem9.Name = "uC_MenuItem9";
+            uC_MenuItem9.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem9.RightToLeft = RightToLeft.No;
             uC_MenuItem9.Size = new Size(200, 300);
             uC_MenuItem9.TabIndex = 0;
@@ -570,6 +559,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem10.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem10.Location = new Point(0, 0);
             uC_MenuItem10.Name = "uC_MenuItem10";
+            uC_MenuItem10.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem10.RightToLeft = RightToLeft.No;
             uC_MenuItem10.Size = new Size(200, 300);
             uC_MenuItem10.TabIndex = 0;
@@ -592,6 +582,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem11.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem11.Location = new Point(0, 0);
             uC_MenuItem11.Name = "uC_MenuItem11";
+            uC_MenuItem11.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem11.RightToLeft = RightToLeft.No;
             uC_MenuItem11.Size = new Size(200, 300);
             uC_MenuItem11.TabIndex = 0;
@@ -614,6 +605,7 @@ namespace NetCafeManager.UserControls
             uC_MenuItem12.BackColor = Color.FromArgb(40, 40, 40);
             uC_MenuItem12.Location = new Point(0, 0);
             uC_MenuItem12.Name = "uC_MenuItem12";
+            uC_MenuItem12.ProductPrice = new decimal(new int[] { 0, 0, 0, 0 });
             uC_MenuItem12.RightToLeft = RightToLeft.No;
             uC_MenuItem12.Size = new Size(200, 300);
             uC_MenuItem12.TabIndex = 0;
@@ -767,7 +759,7 @@ namespace NetCafeManager.UserControls
             btnNewOrder.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnNewOrder.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnNewOrder.FillColor = Color.FromArgb(19, 250, 168);
-            btnNewOrder.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNewOrder.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNewOrder.ForeColor = Color.Black;
             btnNewOrder.Location = new Point(19, 21);
             btnNewOrder.Name = "btnNewOrder";
@@ -826,7 +818,6 @@ namespace NetCafeManager.UserControls
             Load += UC_CustomerService_Load;
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox5).EndInit();
-            pnlOrder.ResumeLayout(false);
             flpnMenuContent.ResumeLayout(false);
             guna2Panel4.ResumeLayout(false);
             guna2Panel5.ResumeLayout(false);

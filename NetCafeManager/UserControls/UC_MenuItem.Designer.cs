@@ -67,7 +67,7 @@
             btnOrder.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnOrder.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnOrder.FillColor = Color.FromArgb(19, 250, 168);
-            btnOrder.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOrder.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnOrder.ForeColor = Color.Black;
             btnOrder.Location = new Point(32, 236);
             btnOrder.Name = "btnOrder";
@@ -75,6 +75,7 @@
             btnOrder.Size = new Size(130, 34);
             btnOrder.TabIndex = 114;
             btnOrder.Text = "Order";
+            btnOrder.Click += btnOrder_Click;
             // 
             // ptbProductImage
             // 

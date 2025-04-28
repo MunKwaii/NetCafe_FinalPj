@@ -11,7 +11,7 @@ namespace NetCafeManager
     internal class DatabaseHelper
     {
         private static readonly string connectionString = "Data Source=.; Database=UserManagement;" +
-                                                            "user id=sa;" + "password=1234;" +
+                                                            "user id=sa;" + "password=123456;" +
                                                             "MultipleActiveResultSets=True;" + "TrustServerCertificate=True;";
         public static SqlConnection GetConnection()
         {

@@ -58,8 +58,6 @@ namespace NetCafeManager.UserControls
         }
         public void AddProductToOrder(string productName, decimal price, int quantity = 1)
         {
-            // Debug: Kiểm tra giá trị đầu vào
-            MessageBox.Show($"Product: {productName}\nPrice: {price}\nQuantity: {quantity}", "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
             bool productExists = false;
             foreach (DataGridViewRow row in guna2DataGridView1.Rows)
             {

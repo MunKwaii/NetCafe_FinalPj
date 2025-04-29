@@ -45,14 +45,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             gunaAreaDataset1 = new Guna.Charts.WinForms.GunaAreaDataset();
-            guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            btnCancel = new Guna.UI2.WinForms.Guna2Button();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            dgvNewOrder = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
+            btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            ((System.ComponentModel.ISupportInitialize)dgvNewOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -64,22 +64,23 @@
             gunaAreaDataset1.FillColor = Color.Empty;
             gunaAreaDataset1.Label = "Area1";
             // 
-            // guna2Button3
+            // btnCancel
             // 
-            guna2Button3.CustomizableEdges = customizableEdges1;
-            guna2Button3.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button3.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button3.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button3.ForeColor = Color.Black;
-            guna2Button3.Location = new Point(33, 462);
-            guna2Button3.Name = "guna2Button3";
-            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Button3.Size = new Size(171, 44);
-            guna2Button3.TabIndex = 88;
-            guna2Button3.Text = "Cancel";
+            btnCancel.CustomizableEdges = customizableEdges1;
+            btnCancel.DisabledState.BorderColor = Color.DarkGray;
+            btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCancel.FillColor = Color.FromArgb(19, 250, 168);
+            btnCancel.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancel.ForeColor = Color.Black;
+            btnCancel.Location = new Point(33, 462);
+            btnCancel.Name = "btnCancel";
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnCancel.Size = new Size(171, 44);
+            btnCancel.TabIndex = 88;
+            btnCancel.Text = "Cancel";
+            btnCancel.Click += btnCancel_Click;
             // 
             // guna2Panel1
             // 
@@ -92,10 +93,10 @@
             guna2Panel1.Size = new Size(350, 5);
             guna2Panel1.TabIndex = 87;
             // 
-            // guna2DataGridView1
+            // dgvNewOrder
             // 
             dataGridViewCellStyle1.BackColor = Color.White;
-            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvNewOrder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -103,9 +104,9 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            guna2DataGridView1.ColumnHeadersHeight = 4;
-            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvNewOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvNewOrder.ColumnHeadersHeight = 4;
+            dgvNewOrder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -113,34 +114,34 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.Location = new Point(1, 105);
-            guna2DataGridView1.Name = "guna2DataGridView1";
-            guna2DataGridView1.RowHeadersVisible = false;
-            guna2DataGridView1.Size = new Size(484, 291);
-            guna2DataGridView1.TabIndex = 84;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 4;
-            guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvNewOrder.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvNewOrder.GridColor = Color.FromArgb(231, 229, 255);
+            dgvNewOrder.Location = new Point(1, 105);
+            dgvNewOrder.Name = "dgvNewOrder";
+            dgvNewOrder.RowHeadersVisible = false;
+            dgvNewOrder.Size = new Size(484, 291);
+            dgvNewOrder.TabIndex = 84;
+            dgvNewOrder.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvNewOrder.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgvNewOrder.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgvNewOrder.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgvNewOrder.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgvNewOrder.ThemeStyle.BackColor = Color.White;
+            dgvNewOrder.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgvNewOrder.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvNewOrder.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvNewOrder.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            dgvNewOrder.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvNewOrder.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvNewOrder.ThemeStyle.HeaderStyle.Height = 4;
+            dgvNewOrder.ThemeStyle.ReadOnly = false;
+            dgvNewOrder.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgvNewOrder.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvNewOrder.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            dgvNewOrder.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgvNewOrder.ThemeStyle.RowsStyle.Height = 25;
+            dgvNewOrder.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvNewOrder.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // guna2PictureBox2
             // 
@@ -182,38 +183,39 @@
             guna2PictureBox1.TabIndex = 91;
             guna2PictureBox1.TabStop = false;
             // 
-            // guna2Button1
+            // btnConfirm
             // 
-            guna2Button1.CustomizableEdges = customizableEdges11;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button1.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Location = new Point(276, 462);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Button1.Size = new Size(171, 44);
-            guna2Button1.TabIndex = 92;
-            guna2Button1.Text = "Confirm";
+            btnConfirm.CustomizableEdges = customizableEdges11;
+            btnConfirm.DisabledState.BorderColor = Color.DarkGray;
+            btnConfirm.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnConfirm.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnConfirm.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnConfirm.FillColor = Color.FromArgb(19, 250, 168);
+            btnConfirm.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirm.ForeColor = Color.Black;
+            btnConfirm.Location = new Point(276, 462);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnConfirm.Size = new Size(171, 44);
+            btnConfirm.TabIndex = 92;
+            btnConfirm.Text = "Confirm";
+            btnConfirm.Click += btnConfirm_Click;
             // 
             // UC_NewOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 40, 40);
-            Controls.Add(guna2Button1);
+            Controls.Add(btnConfirm);
             Controls.Add(guna2PictureBox1);
             Controls.Add(guna2PictureBox2);
             Controls.Add(guna2PictureBox3);
-            Controls.Add(guna2Button3);
+            Controls.Add(btnCancel);
             Controls.Add(guna2Panel1);
-            Controls.Add(guna2DataGridView1);
+            Controls.Add(dgvNewOrder);
             Name = "UC_NewOrder";
             Size = new Size(487, 561);
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNewOrder).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
@@ -222,12 +224,12 @@
 
         #endregion
         private Guna.Charts.WinForms.GunaAreaDataset gunaAreaDataset1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvNewOrder;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnConfirm;
     }
 }

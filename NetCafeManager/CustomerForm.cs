@@ -22,7 +22,7 @@ namespace NetCafeManager
             InitializeComponent();
             pnlProfileContent.Visible = false;
             this.ID = ID;
-            ucService = new UC_Service(ID);
+            ucService = new UC_Service(ID, true);
             ucMyAccount = new UC_MyAccount(ID);
             ucService.Visible = false;
             ucMyAccount.Visible = true;
@@ -42,11 +42,11 @@ namespace NetCafeManager
             activeButton.ForeColor = Color.Black;
 
         }
-        //private void ShowUserControl(UserControl uc)
-        //{
-        //    pnlMainContent.Controls.Clear();
-        //    pnlMainContent.Controls.Add(uc);
-        //}
+        private void ShowUserControl(UserControl uc)
+        {
+            pnlMainContent.Controls.Clear();
+            pnlMainContent.Controls.Add(uc);
+        }
         // Thêm phương thức để truyền TotalFoodFee
         public void UpdateTotalFoodFee(decimal foodFee)
         {
@@ -62,12 +62,14 @@ namespace NetCafeManager
             ChangeActivateButton(btnService);
             ucService.Visible = true;
             ucMyAccount.Visible = false;
+            //ShowUserControl(new UC_Service(null, true, false));
         }
 
         private void btnMyAccount_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Controls.Clear();
             ChangeActivateButton(btnMyAccount);
+            //ShowUserControl(new UC_MyAccount(ID));
             ucService.Visible = false;
             ucMyAccount.Visible = true;
             ucMyAccount.RefreshBalance(); // Làm mới số dư khi chuyển sang tab My Account

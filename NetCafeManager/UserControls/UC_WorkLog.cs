@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Formats.Asn1;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CsvHelper;
+using Microsoft.Data.SqlClient;
 
 namespace NetCafeManager.UserControls
 {
@@ -15,12 +19,239 @@ namespace NetCafeManager.UserControls
         public UC_WorkLog()
         {
             InitializeComponent();
+            // Gán sự kiện CellFormatting để xử lý hiển thị cột EndTime
+            dgvWorkLog.CellFormatting += DgvWorkLog_CellFormatting;
+            LoadShiftInfo();
+            LoadWorkLog();
+        }
+
+        private void DgvWorkLog_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Kiểm tra nếu cột đang được định dạng là EndTime và giá trị là NULL
+            if (e.ColumnIndex == dgvWorkLog.Columns["EndTime"].Index && e.Value == DBNull.Value)
+            {
+                e.Value = "Chưa kết thúc";
+                e.FormattingApplied = true;
+            }
+            else if (e.ColumnIndex == dgvWorkLog.Columns["EndTime"].Index && e.Value != null)
+            {
+                // Định dạng giá trị DateTime nếu không phải NULL
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime endTime))
+                {
+                    e.Value = endTime.ToString("dd/MM/yyyy HH:mm");
+                    e.FormattingApplied = true;
+                }
+            }
         }
 
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            WorkLogViewDetailsForm workLogViewDetailsForm = new WorkLogViewDetailsForm();
-            workLogViewDetailsForm.ShowDialog();
+            if (dgvWorkLog.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một ca làm việc để xem chi tiết!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int shiftID = Convert.ToInt32(dgvWorkLog.SelectedRows[0].Cells["ShiftID"].Value);
+            WorkLogViewDetailsForm detailsForm = new WorkLogViewDetailsForm(shiftID);
+            detailsForm.ShowDialog();
+        }
+
+        private void LoadShiftInfo()
+        {
+            try
+            {
+                string query = @"
+                    SELECT TOP 1 s.StartTime, e.Name AS EmployeeName
+                    FROM EmployeeShift s
+                    LEFT JOIN Employee e ON s.EmployeeID = e.ID
+                    ORDER BY s.StartTime DESC";
+                DataTable dt = DatabaseHelper.ExecuteQuery(query);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DateTime startTime = (DateTime)dt.Rows[0]["StartTime"];
+                    string employeeName = dt.Rows[0]["EmployeeName"].ToString();
+                    lblStartDate.Text = startTime.ToString("dd/MM/yyyy");
+                    lblStartTime.Text = startTime.ToString("HH:mm") + $" (Nhân viên: {employeeName})";
+                }
+                else
+                {
+                    lblStartDate.Text = "Chưa có ca làm việc";
+                    lblStartTime.Text = "Chưa có ca làm việc";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin ca: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblStartDate.Text = "Lỗi tải dữ liệu";
+                lblStartTime.Text = "Lỗi tải dữ liệu";
+            }
+        }
+
+        private void LoadWorkLog()
+        {
+            try
+            {
+                // Lấy danh sách ca làm việc từ bảng EmployeeShift
+                string query = @"
+                    SELECT s.ShiftID, e.Name AS EmployeeName, s.StartTime, 
+                           s.EndTime, s.TotalAmount
+                    FROM EmployeeShift s
+                    LEFT JOIN Employee e ON s.EmployeeID = e.ID
+                    ORDER BY s.StartTime DESC";
+
+                DataTable dt = DatabaseHelper.ExecuteQuery(query);
+                if (dt == null) throw new Exception("Không thể tải dữ liệu từ cơ sở dữ liệu");
+
+                // Tính và cập nhật TotalAmount cho từng ca làm việc
+                foreach (DataRow row in dt.Rows)
+                {
+                    int shiftID = Convert.ToInt32(row["ShiftID"]);
+                    DateTime startTime = Convert.ToDateTime(row["StartTime"]);
+                    DateTime? endTime = row["EndTime"] != DBNull.Value ? Convert.ToDateTime(row["EndTime"]) : (DateTime?)null;
+
+                    // Tính tổng tiền từ các hóa đơn liên quan đến ca làm việc (dựa trên thời gian)
+                    string billQuery;
+                    SqlParameter[] billParams;
+                    decimal totalAmount = 0;
+
+                    if (endTime.HasValue)
+                    {
+                        billQuery = @"
+                            SELECT SUM(o.Total) AS Total
+                            FROM Orders o
+                            WHERE o.OrderDate BETWEEN @StartTime AND @EndTime
+                            AND o.Status = 'Confirmed'";
+                        billParams = new SqlParameter[]
+                        {
+                            new SqlParameter("@StartTime", startTime),
+                            new SqlParameter("@EndTime", endTime.Value)
+                        };
+                    }
+                    else
+                    {
+                        billQuery = @"
+                            SELECT SUM(o.Total) AS Total
+                            FROM Orders o
+                            WHERE o.OrderDate >= @StartTime
+                            AND o.Status = 'Confirmed'";
+                        billParams = new SqlParameter[]
+                        {
+                            new SqlParameter("@StartTime", startTime)
+                        };
+                    }
+
+                    DataTable billDt = DatabaseHelper.ExecuteQuery(billQuery, billParams);
+                    if (billDt.Rows.Count > 0 && billDt.Rows[0]["Total"] != DBNull.Value)
+                    {
+                        totalAmount = Convert.ToDecimal(billDt.Rows[0]["Total"]);
+                    }
+
+                    // Cập nhật TotalAmount vào bảng EmployeeShift
+                    string updateQuery = @"
+                        UPDATE EmployeeShift
+                        SET TotalAmount = @TotalAmount
+                        WHERE ShiftID = @ShiftID";
+                    SqlParameter[] updateParams = new SqlParameter[]
+                    {
+                        new SqlParameter("@TotalAmount", totalAmount),
+                        new SqlParameter("@ShiftID", shiftID)
+                    };
+                    DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
+
+                    // Cập nhật giá trị TotalAmount trong DataTable
+                    row["TotalAmount"] = totalAmount;
+                }
+
+                dgvWorkLog.DataSource = dt;
+                dgvWorkLog.ColumnHeadersHeight = 40;
+
+                dgvWorkLog.Columns["ShiftID"].HeaderText = "Mã ca làm việc";
+                dgvWorkLog.Columns["EmployeeName"].HeaderText = "Tên nhân viên";
+                dgvWorkLog.Columns["StartTime"].HeaderText = "Thời gian bắt đầu";
+                dgvWorkLog.Columns["EndTime"].HeaderText = "Thời gian kết thúc";
+                dgvWorkLog.Columns["TotalAmount"].HeaderText = "Tổng tiền";
+
+                dgvWorkLog.Columns["TotalAmount"].DefaultCellStyle.Format = "N0";
+                dgvWorkLog.Columns["TotalAmount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvWorkLog.Columns["StartTime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+
+                dgvWorkLog.ClearSelection();
+
+                // Tính tổng tiền của tất cả các ca làm việc
+                decimal grandTotal = 0;
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row["TotalAmount"] != DBNull.Value)
+                    {
+                        grandTotal += Convert.ToDecimal(row["TotalAmount"]);
+                    }
+                }
+                lblTotalAmount.Text = grandTotal.ToString("N0") + "đ";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải danh sách ca: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnShiftSummary_Click(object sender, EventArgs e)
+        {
+            if (dgvWorkLog.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show("Bạn có chắc chắn muốn xuất Shift Summary không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "CSV Files (*.csv)|*.csv";
+                sfd.FileName = "ShiftSummary_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (var writer = new StreamWriter(sfd.FileName))
+                        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                        {
+                            csv.WriteField("Mã ca làm việc");
+                            csv.WriteField("Tên nhân viên");
+                            csv.WriteField("Thời gian bắt đầu");
+                            csv.WriteField("Thời gian kết thúc");
+                            csv.WriteField("Tổng tiền");
+                            csv.NextRecord();
+
+                            foreach (DataGridViewRow row in dgvWorkLog.Rows)
+                            {
+                                csv.WriteField(row.Cells["ShiftID"].Value?.ToString());
+                                csv.WriteField(row.Cells["EmployeeName"].Value?.ToString());
+                                csv.WriteField(row.Cells["StartTime"].Value != null ? Convert.ToDateTime(row.Cells["StartTime"].Value).ToString("dd/MM/yyyy HH:mm") : "");
+                                if (row.Cells["EndTime"].Value == null || row.Cells["EndTime"].Value == DBNull.Value)
+                                {
+                                    csv.WriteField("Chưa kết thúc");
+                                }
+                                else
+                                {
+                                    csv.WriteField(Convert.ToDateTime(row.Cells["EndTime"].Value).ToString("dd/MM/yyyy HH:mm"));
+                                }
+                                csv.WriteField(row.Cells["TotalAmount"].Value?.ToString());
+                                csv.NextRecord();
+                            }
+
+                            writer.Flush();
+                            MessageBox.Show("Xuất Shift Summary thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi xuất file: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

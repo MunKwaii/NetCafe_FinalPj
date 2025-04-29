@@ -17,7 +17,6 @@ namespace NetCafeManager.UserControls
         string ID;
         public UC_UserProfile(string ID)
         {
-
             InitializeComponent();
             this.ID = ID;
             LoadData();

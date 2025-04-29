@@ -41,16 +41,16 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
-            label6 = new Label();
+            lblStartDate = new Label();
             label1 = new Label();
-            label2 = new Label();
+            lblStartTime = new Label();
             btnViewDetails = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            btnShiftSummary = new Guna.UI2.WinForms.Guna2Button();
+            dgvWorkLog = new Guna.UI2.WinForms.Guna2DataGridView();
             label3 = new Label();
-            label4 = new Label();
+            lblTotalAmount = new Label();
             label5 = new Label();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvWorkLog).BeginInit();
             SuspendLayout();
             // 
             // guna2Panel2
@@ -84,16 +84,16 @@
             guna2ComboBox1.Size = new Size(249, 36);
             guna2ComboBox1.TabIndex = 33;
             // 
-            // label6
+            // lblStartDate
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label6.ForeColor = Color.FromArgb(19, 250, 168);
-            label6.Location = new Point(406, 35);
-            label6.Name = "label6";
-            label6.Size = new Size(67, 21);
-            label6.TabIndex = 35;
-            label6.Text = "hh/mm";
+            lblStartDate.AutoSize = true;
+            lblStartDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblStartDate.ForeColor = Color.FromArgb(19, 250, 168);
+            lblStartDate.Location = new Point(406, 35);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(67, 21);
+            lblStartDate.TabIndex = 35;
+            lblStartDate.Text = "hh/mm";
             // 
             // label1
             // 
@@ -106,16 +106,16 @@
             label1.TabIndex = 36;
             label1.Text = "Shift Start Time:";
             // 
-            // label2
+            // lblStartTime
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(19, 250, 168);
-            label2.Location = new Point(237, 35);
-            label2.Name = "label2";
-            label2.Size = new Size(110, 21);
-            label2.TabIndex = 37;
-            label2.Text = "dd/mm/yyyy";
+            lblStartTime.AutoSize = true;
+            lblStartTime.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblStartTime.ForeColor = Color.FromArgb(19, 250, 168);
+            lblStartTime.Location = new Point(237, 35);
+            lblStartTime.Name = "lblStartTime";
+            lblStartTime.Size = new Size(110, 21);
+            lblStartTime.TabIndex = 37;
+            lblStartTime.Text = "dd/mm/yyyy";
             // 
             // btnViewDetails
             // 
@@ -135,27 +135,28 @@
             btnViewDetails.Text = "View Details";
             btnViewDetails.Click += btnViewDetails_Click;
             // 
-            // guna2Button1
+            // btnShiftSummary
             // 
-            guna2Button1.CustomizableEdges = customizableEdges7;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button1.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Location = new Point(1257, 20);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button1.Size = new Size(171, 36);
-            guna2Button1.TabIndex = 39;
-            guna2Button1.Text = "Shift Summary";
+            btnShiftSummary.CustomizableEdges = customizableEdges7;
+            btnShiftSummary.DisabledState.BorderColor = Color.DarkGray;
+            btnShiftSummary.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnShiftSummary.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnShiftSummary.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnShiftSummary.FillColor = Color.FromArgb(19, 250, 168);
+            btnShiftSummary.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnShiftSummary.ForeColor = Color.Black;
+            btnShiftSummary.Location = new Point(1257, 20);
+            btnShiftSummary.Name = "btnShiftSummary";
+            btnShiftSummary.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnShiftSummary.Size = new Size(171, 36);
+            btnShiftSummary.TabIndex = 39;
+            btnShiftSummary.Text = "Shift Summary";
+            btnShiftSummary.Click += btnShiftSummary_Click;
             // 
-            // guna2DataGridView1
+            // dgvWorkLog
             // 
             dataGridViewCellStyle1.BackColor = Color.White;
-            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvWorkLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -163,9 +164,9 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            guna2DataGridView1.ColumnHeadersHeight = 4;
-            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvWorkLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvWorkLog.ColumnHeadersHeight = 4;
+            dgvWorkLog.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -173,34 +174,34 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.Location = new Point(32, 105);
-            guna2DataGridView1.Name = "guna2DataGridView1";
-            guna2DataGridView1.RowHeadersVisible = false;
-            guna2DataGridView1.Size = new Size(1396, 525);
-            guna2DataGridView1.TabIndex = 40;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 4;
-            guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvWorkLog.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvWorkLog.GridColor = Color.FromArgb(231, 229, 255);
+            dgvWorkLog.Location = new Point(32, 105);
+            dgvWorkLog.Name = "dgvWorkLog";
+            dgvWorkLog.RowHeadersVisible = false;
+            dgvWorkLog.Size = new Size(1396, 525);
+            dgvWorkLog.TabIndex = 40;
+            dgvWorkLog.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvWorkLog.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgvWorkLog.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgvWorkLog.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgvWorkLog.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgvWorkLog.ThemeStyle.BackColor = Color.White;
+            dgvWorkLog.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgvWorkLog.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvWorkLog.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvWorkLog.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            dgvWorkLog.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvWorkLog.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvWorkLog.ThemeStyle.HeaderStyle.Height = 4;
+            dgvWorkLog.ThemeStyle.ReadOnly = false;
+            dgvWorkLog.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgvWorkLog.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvWorkLog.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            dgvWorkLog.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgvWorkLog.ThemeStyle.RowsStyle.Height = 25;
+            dgvWorkLog.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvWorkLog.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // label3
             // 
@@ -213,16 +214,16 @@
             label3.TabIndex = 36;
             label3.Text = "Total Amount:";
             // 
-            // label4
+            // lblTotalAmount
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(19, 250, 168);
-            label4.Location = new Point(1270, 665);
-            label4.Name = "label4";
-            label4.Size = new Size(19, 21);
-            label4.TabIndex = 35;
-            label4.Text = "$";
+            lblTotalAmount.AutoSize = true;
+            lblTotalAmount.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTotalAmount.ForeColor = Color.FromArgb(19, 250, 168);
+            lblTotalAmount.Location = new Point(1270, 665);
+            lblTotalAmount.Name = "lblTotalAmount";
+            lblTotalAmount.Size = new Size(19, 21);
+            lblTotalAmount.TabIndex = 35;
+            lblTotalAmount.Text = "$";
             // 
             // label5
             // 
@@ -240,20 +241,20 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
-            Controls.Add(guna2DataGridView1);
-            Controls.Add(guna2Button1);
+            Controls.Add(dgvWorkLog);
+            Controls.Add(btnShiftSummary);
             Controls.Add(btnViewDetails);
-            Controls.Add(label2);
+            Controls.Add(lblStartTime);
             Controls.Add(label5);
             Controls.Add(label3);
-            Controls.Add(label4);
+            Controls.Add(lblTotalAmount);
             Controls.Add(label1);
-            Controls.Add(label6);
+            Controls.Add(lblStartDate);
             Controls.Add(guna2Panel2);
             Controls.Add(guna2ComboBox1);
             Name = "UC_WorkLog";
             Size = new Size(1466, 735);
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvWorkLog).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -262,14 +263,14 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
-        private Label label6;
+        private Label lblStartDate;
         private Label label1;
-        private Label label2;
+        private Label lblStartTime;
         private Guna.UI2.WinForms.Guna2Button btnViewDetails;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Guna.UI2.WinForms.Guna2Button btnShiftSummary;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvWorkLog;
         private Label label3;
-        private Label label4;
+        private Label lblTotalAmount;
         private Label label5;
     }
 }

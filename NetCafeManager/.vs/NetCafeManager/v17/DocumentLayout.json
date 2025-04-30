@@ -3,12 +3,33 @@
   "WorkspaceRootPath": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|d:\\hope1\\netcafe_finalpj\\netcafemanager\\usercontrols\\uc_managecomputers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:usercontrols\\uc_managecomputers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|d:\\hope1\\netcafe_finalpj\\netcafemanager\\usercontrols\\uc_computerstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:usercontrols\\uc_computerstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|e:\\winform\\finalproject\\netcafe_finalpj\\netcafemanager\\usercontrols\\uc_setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:usercontrols\\uc_setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|e:\\winform\\finalproject\\netcafe_finalpj\\netcafemanager\\usercontrols\\uc_setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:usercontrols\\uc_setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|e:\\winform\\finalproject\\netcafe_finalpj\\netcafemanager\\addfoodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:addfoodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\addfoodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:addfoodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|e:\\winform\\finalproject\\netcafe_finalpj\\netcafemanager\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
     },
     {
       "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|d:\\hope1\\netcafe_finalpj\\netcafemanager\\usercontrols\\uc_myaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -182,7 +203,11 @@
           "Children": [
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 29,
+=======
+              "DocumentIndex": 7,
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -195,33 +220,49 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 36,
+=======
+              "DocumentIndex": 6,
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "DatabaseHelper.cs",
               "ToolTip": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\DatabaseHelper.cs",
               "RelativeToolTip": "DatabaseHelper.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAAD8AAAAAAAAAAAAAwE4AAAArAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAADgAAAAAAAAAAAAwwA0AAABcAAAAAAAAAA==",
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T07:26:47.882Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 10,
+=======
+              "DocumentIndex": 5,
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
               "Title": "UC_Service.cs",
               "DocumentMoniker": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
               "RelativeDocumentMoniker": "UserControls\\UC_Service.cs",
               "ToolTip": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
               "RelativeToolTip": "UserControls\\UC_Service.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAABQAAAAAAAAAAAAQwC0BAAABAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwAIAAAAaAAAAAAAAAA==",
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-13T09:17:13.781Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 12,
               "Title": "LoginForm.cs [Design]",
               "DocumentMoniker": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\LoginForm.cs",
@@ -231,12 +272,55 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-28T04:06:30.418Z",
               "IsPinned": true
+=======
+              "DocumentIndex": 4,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\LoginForm.cs",
+              "RelativeDocumentMoniker": "LoginForm.cs",
+              "ToolTip": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\LoginForm.cs",
+              "RelativeToolTip": "LoginForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T12:31:59.93Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UC_Setting.cs",
+              "DocumentMoniker": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Setting.cs",
+              "RelativeDocumentMoniker": "UserControls\\UC_Setting.cs",
+              "ToolTip": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Setting.cs",
+              "RelativeToolTip": "UserControls\\UC_Setting.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAxwC0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T11:52:00.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
+<<<<<<< HEAD
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "UC_ManageComputers.cs [Design]",
@@ -272,10 +356,15 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T03:24:41.708Z",
               "EditorCaption": ""
+=======
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+<<<<<<< HEAD
               "Title": "UC_MyAccount.cs",
               "DocumentMoniker": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_MyAccount.cs",
               "RelativeDocumentMoniker": "UserControls\\UC_MyAccount.cs",
@@ -284,10 +373,21 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-29T03:21:58.995Z",
+=======
+              "Title": "AddFoodForm.cs",
+              "DocumentMoniker": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\AddFoodForm.cs",
+              "RelativeDocumentMoniker": "AddFoodForm.cs",
+              "ToolTip": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\AddFoodForm.cs",
+              "RelativeToolTip": "AddFoodForm.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAcwEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T11:39:11.912Z",
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 1,
               "Title": "UC_ComputerStatus.cs",
               "DocumentMoniker": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_ComputerStatus.cs",
@@ -690,6 +790,28 @@
               "RelativeToolTip": "UserControls\\UC_ManageEmployee.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-29T03:03:54.556Z",
+=======
+              "DocumentIndex": 3,
+              "Title": "AddFoodForm.cs [Design]",
+              "DocumentMoniker": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\AddFoodForm.cs",
+              "RelativeDocumentMoniker": "AddFoodForm.cs",
+              "ToolTip": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\AddFoodForm.cs [Design]",
+              "RelativeToolTip": "AddFoodForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T11:34:57.255Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UC_Setting.cs [Design]",
+              "DocumentMoniker": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Setting.cs",
+              "RelativeDocumentMoniker": "UserControls\\UC_Setting.cs",
+              "ToolTip": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Setting.cs [Design]",
+              "RelativeToolTip": "UserControls\\UC_Setting.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T11:33:41.679Z",
+>>>>>>> f5ff581b173493bb26cfe545f7456fa84e85588d
               "EditorCaption": " [Design]"
             }
           ]

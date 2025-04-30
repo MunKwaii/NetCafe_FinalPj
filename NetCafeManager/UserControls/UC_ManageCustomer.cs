@@ -20,60 +20,14 @@ namespace NetCafeManager.UserControls
         }
         private void LoadCustomerData(string searchKeyword = "")
         {
-            //try
-            //{
-            //    // Truy vấn SQL để lấy danh sách customer, join giữa bảng Users và UserInfo
-            //    string query = @"
-            //        SELECT Users.ID, Users.Username, Users.Password, Customer.FullName, Customer.Email, Customer.Balance 
-            //        FROM Users
-            //        JOIN Customer ON Users.ID = Customer.UserID
-            //        WHERE Users.Role = @role";
-
-            //    SqlParameter[] parameters = new SqlParameter[]
-            //    {
-            //        new SqlParameter("@role", "Customer")
-            //    };
-
-            //    // Thực thi truy vấn và lấy dữ liệu
-            //    DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
-
-            //    // Gán dữ liệu vào DataGridView
-            //    dgvCustomer.DataSource = dt;
-
-            //    // Tùy chỉnh tên cột
-            //    dgvCustomer.Columns["ID"].HeaderText = "Customer ID";
-            //    dgvCustomer.Columns["Username"].HeaderText = "Account Name";
-            //    dgvCustomer.Columns["Password"].HeaderText = "Password";
-            //    dgvCustomer.Columns["FullName"].HeaderText = "Full Name";
-            //    dgvCustomer.Columns["Email"].HeaderText = "Email";
-            //    dgvCustomer.Columns["Balance"].HeaderText = "Balance";
-
-            //    // Định dạng cột Balance (hiển thị dưới dạng tiền tệ, không số thập phân)
-            //    dgvCustomer.Columns["Balance"].DefaultCellStyle.Format = "N0";
-
-            //    // Tùy chỉnh giao diện DataGridView
-            //    dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //    dgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //    dgvCustomer.ReadOnly = true;
-            //    dgvCustomer.AllowUserToAddRows = false;
-            //    dgvCustomer.ColumnHeadersHeight = 40;
-            //    dgvCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            //    dgvCustomer.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Error loading customer data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             try
             {
-                // Truy vấn SQL để lấy danh sách customer, join giữa bảng Users và Customer
                 string query = @"
                     SELECT Users.ID, Users.Username, Users.Password, Customer.FullName, Customer.Email, Customer.Balance 
                     FROM Users
                     JOIN Customer ON Users.ID = Customer.UserID
                     WHERE Users.Role = @role";
 
-                // Thêm điều kiện tìm kiếm nếu từ khóa không rỗng
                 List<SqlParameter> parameters = new List<SqlParameter>
                 {
                     new SqlParameter("@role", "Customer")
@@ -85,13 +39,10 @@ namespace NetCafeManager.UserControls
                     parameters.Add(new SqlParameter("@keyword", $"%{searchKeyword}%"));
                 }
 
-                // Thực thi truy vấn và lấy dữ liệu
                 DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters.ToArray());
 
-                // Gán dữ liệu vào DataGridView
                 dgvCustomer.DataSource = dt;
 
-                // Tùy chỉnh tên cột
                 dgvCustomer.Columns["ID"].HeaderText = "Customer ID";
                 dgvCustomer.Columns["Username"].HeaderText = "Account Name";
                 dgvCustomer.Columns["Password"].HeaderText = "Password";
@@ -99,10 +50,8 @@ namespace NetCafeManager.UserControls
                 dgvCustomer.Columns["Email"].HeaderText = "Email";
                 dgvCustomer.Columns["Balance"].HeaderText = "Balance";
 
-                // Định dạng cột Balance (hiển thị dưới dạng tiền tệ, không số thập phân)
                 dgvCustomer.Columns["Balance"].DefaultCellStyle.Format = "N0";
 
-                // Tùy chỉnh giao diện DataGridView
                 dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgvCustomer.ReadOnly = true;
@@ -127,17 +76,14 @@ namespace NetCafeManager.UserControls
         {
             if (dgvCustomer.SelectedRows.Count > 0)
             {
-                // Lấy hàng được chọn
                 DataGridViewRow selectedRow = dgvCustomer.SelectedRows[0];
 
-                // Gán dữ liệu từ hàng được chọn vào các TextBox
                 IDTextBox.Text = selectedRow.Cells["ID"].Value.ToString();
                 AccountTextBox.Text = selectedRow.Cells["Username"].Value.ToString();
                 EmailTextBox.Text = selectedRow.Cells["Email"].Value.ToString();
                 BalanceTextBox.Text = Convert.ToDecimal(selectedRow.Cells["Balance"].Value).ToString("N0");
                 guna2TextBox10.Text = selectedRow.Cells["FullName"].Value.ToString();
 
-                // Lấy mật khẩu từ cơ sở dữ liệu dựa trên ID
                 string customerId = selectedRow.Cells["ID"].Value.ToString();
                 string query = "SELECT Password FROM Users WHERE ID = @id";
                 SqlParameter[] parameters = new SqlParameter[]
@@ -158,7 +104,6 @@ namespace NetCafeManager.UserControls
             }
             else
             {
-                // Nếu không có hàng nào được chọn, xóa nội dung các TextBox
                 IDTextBox.Text = string.Empty;
                 AccountTextBox.Text = string.Empty;
                 EmailTextBox.Text = string.Empty;
@@ -170,24 +115,20 @@ namespace NetCafeManager.UserControls
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem có hàng nào được chọn trong DataGridView không
             if (dgvCustomer.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a customer to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Lấy ID của customer được chọn
             string customerId = dgvCustomer.SelectedRows[0].Cells["ID"].Value.ToString();
 
-            // Hiển thị thông báo xác nhận xóa
             DialogResult result = MessageBox.Show($"Are you sure you want to delete customer with ID {customerId}?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 try
                 {
-                    // Xóa bản ghi từ bảng Customer trước (vì ID là khóa ngoại)
                     string deleteCustomerQuery = "DELETE FROM Customer WHERE UserID = @id";
                     SqlParameter[] customerParams = new SqlParameter[]
                     {
@@ -195,7 +136,6 @@ namespace NetCafeManager.UserControls
                     };
                     int customerRowsAffected = DatabaseHelper.ExecuteNonQuery(deleteCustomerQuery, customerParams);
 
-                    // Sau đó xóa bản ghi từ bảng Users
                     string deleteUserQuery = "DELETE FROM Users WHERE ID = @id";
                     SqlParameter[] userParams = new SqlParameter[]
                     {
@@ -203,11 +143,10 @@ namespace NetCafeManager.UserControls
                     };
                     int userRowsAffected = DatabaseHelper.ExecuteNonQuery(deleteUserQuery, userParams);
 
-                    // Kiểm tra xem xóa có thành công không
                     if (customerRowsAffected > 0 && userRowsAffected > 0)
                     {
                         MessageBox.Show("Customer deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadCustomerData(); // Tải lại dữ liệu để cập nhật DataGridView
+                        LoadCustomerData();
                     }
                     else
                     {
@@ -229,7 +168,6 @@ namespace NetCafeManager.UserControls
                 return;
             }
 
-            // Lấy dữ liệu từ các TextBox
             string id = IDTextBox.Text.Trim();
             string username = AccountTextBox.Text.Trim();
             string password = PasswordTextBox.Text.Trim();
@@ -237,7 +175,6 @@ namespace NetCafeManager.UserControls
             string email = EmailTextBox.Text.Trim();
             string balanceText = BalanceTextBox.Text.Trim();
 
-            // Kiểm tra dữ liệu đầu vào
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(fullName) ||
                 string.IsNullOrEmpty(email) || string.IsNullOrEmpty(balanceText))
@@ -246,21 +183,18 @@ namespace NetCafeManager.UserControls
                 return;
             }
 
-            // Kiểm tra định dạng số cho Balance
             if (!decimal.TryParse(balanceText, out decimal balance))
             {
                 MessageBox.Show("Balance must be a valid number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Hiển thị thông báo xác nhận cập nhật
             DialogResult result = MessageBox.Show($"Are you sure you want to update customer with ID {id}?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 try
                 {
-                    // 1. Cập nhật bảng Users
                     string updateUserQuery = "UPDATE Users SET Username = @Username, Password = @Password WHERE ID = @ID";
                     SqlParameter[] userParams = new SqlParameter[]
                     {
@@ -270,7 +204,6 @@ namespace NetCafeManager.UserControls
                     };
                     int userRowsAffected = DatabaseHelper.ExecuteNonQuery(updateUserQuery, userParams);
 
-                    // 2. Cập nhật bảng Customer
                     string updateCustomerQuery = "UPDATE Customer SET FullName = @FullName, Email = @Email, Balance = @Balance WHERE UserID = @UserID";
                     SqlParameter[] customerParams = new SqlParameter[]
                     {
@@ -281,11 +214,10 @@ namespace NetCafeManager.UserControls
                     };
                     int customerRowsAffected = DatabaseHelper.ExecuteNonQuery(updateCustomerQuery, customerParams);
 
-                    // Kiểm tra xem cập nhật có thành công không
                     if (userRowsAffected > 0 && customerRowsAffected > 0)
                     {
                         MessageBox.Show("Customer updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadCustomerData(); // Tải lại dữ liệu để cập nhật DataGridView
+                        LoadCustomerData(); 
                     }
                     else
                     {

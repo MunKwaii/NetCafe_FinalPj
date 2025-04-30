@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
 using NetCafeManager.UserControls;
+using Microsoft.Data.SqlClient;
 
 namespace NetCafeManager
 {
@@ -17,11 +17,25 @@ namespace NetCafeManager
         string ID;
         private UC_Service ucService;
         private UC_MyAccount ucMyAccount;
-        public CustomerForm(string ID)
+        private string computerID; // Lưu ComputerID của máy khách đang sử dụng
+
+        public CustomerForm(string ID, string computerID = null)
         {
             InitializeComponent();
             pnlProfileContent.Visible = false;
             this.ID = ID;
+            this.computerID = computerID; // Lưu ComputerID (nếu có)
+
+            // Kiểm tra computerID trước khi bắt đầu phiên làm việc
+            if (string.IsNullOrEmpty(computerID))
+            {
+                MessageBox.Show("Không xác định được máy tính để đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                StartSession();
+            }
+
             ucService = new UC_Service(ID, true);
             ucMyAccount = new UC_MyAccount(ID);
             ucService.Visible = false;
@@ -30,6 +44,50 @@ namespace NetCafeManager
             pnlMainContent.Controls.Add(ucMyAccount);
             ChangeActivateButton(btnMyAccount);
         }
+
+        private void StartSession()
+        {
+            try
+            {
+                string query = @"
+                    UPDATE Computer
+                    SET UserID = @UserID, StartTime = @StartTime, EndTime = NULL, Status = 'Active'
+                    WHERE ComputerID = @ComputerID";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@UserID", ID),
+                    new SqlParameter("@StartTime", DateTime.Now),
+                    new SqlParameter("@ComputerID", computerID)
+                };
+                DatabaseHelper.ExecuteNonQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi bắt đầu phiên làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EndSession()
+        {
+            try
+            {
+                string query = @"
+                    UPDATE Computer
+                    SET UserID = NULL, EndTime = @EndTime, Status = 'Idle'
+                    WHERE ComputerID = @ComputerID";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@EndTime", DateTime.Now),
+                    new SqlParameter("@ComputerID", computerID)
+                };
+                DatabaseHelper.ExecuteNonQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi kết thúc phiên làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ChangeActivateButton(Guna.UI2.WinForms.Guna2Button activeButton)
         {
             Guna.UI2.WinForms.Guna2Button[] buttons = { btnService, btnMyAccount };
@@ -40,46 +98,45 @@ namespace NetCafeManager
             }
             activeButton.FillColor = Color.FromArgb(19, 250, 168);
             activeButton.ForeColor = Color.Black;
-
         }
+
         private void ShowUserControl(UserControl uc)
         {
             pnlMainContent.Controls.Clear();
             pnlMainContent.Controls.Add(uc);
         }
-        // Thêm phương thức để truyền TotalFoodFee
+
         public void UpdateTotalFoodFee(decimal foodFee)
         {
-            ucMyAccount.TotalFoodFee = foodFee; // Cập nhật TotalFoodFee trong UC_MyAccount
+            ucMyAccount.TotalFoodFee = foodFee;
         }
+
         public void RefreshMyAccountBalance()
         {
             ucMyAccount.RefreshBalance();
         }
+
         private void btnService_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Controls.Clear();
             ChangeActivateButton(btnService);
             ucService.Visible = true;
             ucMyAccount.Visible = false;
-            //ShowUserControl(new UC_Service(null, true, false));
         }
 
         private void btnMyAccount_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Controls.Clear();
             ChangeActivateButton(btnMyAccount);
-            //ShowUserControl(new UC_MyAccount(ID));
             ucService.Visible = false;
             ucMyAccount.Visible = true;
-            ucMyAccount.RefreshBalance(); // Làm mới số dư khi chuyển sang tab My Account
+            ucMyAccount.RefreshBalance();
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
             pnlProfileContent.Visible = !pnlProfileContent.Visible;
             pnlProfileContent.Controls.Add(new UC_UserProfile(ID));
-            
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -88,7 +145,21 @@ namespace NetCafeManager
 
             if (result == DialogResult.Yes)
             {
+                // Kết thúc phiên làm việc khi khách hàng đăng xuất
+                if (!string.IsNullOrEmpty(computerID))
+                {
+                    EndSession();
+                }
                 this.Close();
+            }
+        }
+
+        private void CustomerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Kết thúc phiên làm việc khi form đóng (bao gồm cả khi nhấn nút X)
+            if (!string.IsNullOrEmpty(computerID))
+            {
+                EndSession();
             }
         }
     }

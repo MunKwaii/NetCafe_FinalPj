@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetCafeManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc3ae7cfdfd8dd11b80d204da643c939c4c91adc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f22b26c2f53d656bc478e0ff574f58ed9e94bbe2")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetCafeManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetCafeManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

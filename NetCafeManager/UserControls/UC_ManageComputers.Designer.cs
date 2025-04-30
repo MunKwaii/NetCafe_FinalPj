@@ -140,7 +140,7 @@
             btnFirst_page = new Guna.UI2.WinForms.Guna2Button();
             btnSearch = new Guna.UI2.WinForms.Guna2Button();
             guna2Panel10 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2TextBox6 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtSearchByID = new Guna.UI2.WinForms.Guna2TextBox();
             btnModify = new Guna.UI2.WinForms.Guna2Button();
             label14 = new Label();
             label10 = new Label();
@@ -195,7 +195,7 @@
             pnLeft.Controls.Add(flpnComputerList);
             pnLeft.Controls.Add(btnSearch);
             pnLeft.Controls.Add(guna2Panel10);
-            pnLeft.Controls.Add(guna2TextBox6);
+            pnLeft.Controls.Add(txtSearchByID);
             pnLeft.Controls.Add(btnModify);
             pnLeft.Controls.Add(label14);
             pnLeft.Controls.Add(label10);
@@ -632,6 +632,7 @@
             btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges38;
             btnSearch.Size = new Size(48, 48);
             btnSearch.TabIndex = 116;
+            btnSearch.Click += btnSearch_Click;
             // 
             // guna2Panel10
             // 
@@ -644,30 +645,30 @@
             guna2Panel10.Size = new Size(365, 5);
             guna2Panel10.TabIndex = 38;
             // 
-            // guna2TextBox6
+            // txtSearchByID
             // 
-            guna2TextBox6.Anchor = AnchorStyles.None;
-            guna2TextBox6.BorderColor = Color.FromArgb(20, 20, 20);
-            guna2TextBox6.BorderThickness = 0;
-            guna2TextBox6.CustomizableEdges = customizableEdges41;
-            guna2TextBox6.DefaultText = "";
-            guna2TextBox6.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox6.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox6.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox6.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox6.FillColor = Color.FromArgb(20, 20, 20);
-            guna2TextBox6.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            guna2TextBox6.ForeColor = Color.White;
-            guna2TextBox6.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox6.Location = new Point(26, 71);
-            guna2TextBox6.Margin = new Padding(4);
-            guna2TextBox6.Name = "guna2TextBox6";
-            guna2TextBox6.PlaceholderText = "Search ID";
-            guna2TextBox6.SelectedText = "";
-            guna2TextBox6.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            guna2TextBox6.Size = new Size(366, 50);
-            guna2TextBox6.TabIndex = 37;
+            txtSearchByID.Anchor = AnchorStyles.None;
+            txtSearchByID.BorderColor = Color.FromArgb(20, 20, 20);
+            txtSearchByID.BorderThickness = 0;
+            txtSearchByID.CustomizableEdges = customizableEdges41;
+            txtSearchByID.DefaultText = "";
+            txtSearchByID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtSearchByID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtSearchByID.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSearchByID.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSearchByID.FillColor = Color.FromArgb(20, 20, 20);
+            txtSearchByID.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearchByID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            txtSearchByID.ForeColor = Color.White;
+            txtSearchByID.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearchByID.Location = new Point(26, 71);
+            txtSearchByID.Margin = new Padding(4);
+            txtSearchByID.Name = "txtSearchByID";
+            txtSearchByID.PlaceholderText = "Search ID";
+            txtSearchByID.SelectedText = "";
+            txtSearchByID.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            txtSearchByID.Size = new Size(366, 50);
+            txtSearchByID.TabIndex = 37;
             // 
             // btnModify
             // 
@@ -1126,7 +1127,7 @@
         private Label label9;
         private Guna.UI2.WinForms.Guna2Button btnModify;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel10;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox6;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearchByID;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Label label2;
         private Label label3;

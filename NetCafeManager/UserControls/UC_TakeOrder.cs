@@ -15,10 +15,11 @@ namespace NetCafeManager.UserControls
     public partial class UC_TakeOrder : UserControl
     {
         public string UserID { get; set; }
+        private bool requireUserID;
 
-        public UC_TakeOrder(string userID)
+        public UC_TakeOrder(string userID, bool requireUserID = true)
         {
-            if (string.IsNullOrEmpty(userID))
+            if (requireUserID && string.IsNullOrEmpty(userID))
             {
                 MessageBox.Show("UserID không hợp lệ trong UC_TakeOrder!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ArgumentException("UserID không được null hoặc rỗng.", nameof(userID));
@@ -26,15 +27,15 @@ namespace NetCafeManager.UserControls
 
             InitializeComponent();
             this.UserID = userID;
+            this.requireUserID = requireUserID;
             this.Load += UC_TakeOrder_Load;
             guna2DataGridView1.CellContentClick += Guna2DataGridView1_CellContentClick;
-
         }
+
         private void Guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && guna2DataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {
-                // Kiểm tra nếu là hàng mới (new row)
                 if (guna2DataGridView1.Rows[e.RowIndex].IsNewRow)
                 {
                     MessageBox.Show("Không thể xóa hàng trống!", "Thông báo",
@@ -42,9 +43,7 @@ namespace NetCafeManager.UserControls
                     return;
                 }
 
-                // Tiếp tục xử lý xóa hàng
                 string productName = guna2DataGridView1.Rows[e.RowIndex].Cells["ProductName"].Value?.ToString();
-
                 DialogResult result = MessageBox.Show($"Xóa món {productName}?", "Xác nhận",
                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -54,8 +53,8 @@ namespace NetCafeManager.UserControls
                     CalculateTotal();
                 }
             }
-
         }
+
         public void AddProductToOrder(string productName, decimal price, int quantity = 1)
         {
             bool productExists = false;
@@ -91,7 +90,6 @@ namespace NetCafeManager.UserControls
             label4.Text = total.ToString("N0") + "000đ";
         }
 
-
         private void UC_TakeOrder_Load(object sender, EventArgs e)
         {
             InitializeDataGridView();
@@ -123,58 +121,6 @@ namespace NetCafeManager.UserControls
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            //decimal totalAmount = 0;
-
-            //foreach (DataGridViewRow row in guna2DataGridView1.Rows)
-            //{
-            //    if (row.Cells["Total"].Value != null)
-            //    {
-            //        totalAmount += Convert.ToDecimal(row.Cells["Total"].Value);
-            //    }
-            //}
-            //totalAmount = Math.Floor(totalAmount);
-
-            //if (totalAmount == 0)
-            //{
-            //    MessageBox.Show("Không có món nào để đặt hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-
-            //string query = "SELECT Balance FROM Customer WHERE UserID = @ID";
-            //SqlParameter[] parameters = new SqlParameter[]
-            //{
-            //    new SqlParameter("@ID", UserID)
-            //};
-            //DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
-
-            //if (dt.Rows.Count == 0)
-            //{
-            //    MessageBox.Show("Không tìm thấy người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //decimal currentBalance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
-
-            //if (currentBalance < totalAmount * 1000)
-            //{
-            //    MessageBox.Show("Số dư không đủ để đặt hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //decimal newBalance = currentBalance - (totalAmount * 1000);
-            //string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
-            //SqlParameter[] updateParams = new SqlParameter[]
-            //{
-            //        new SqlParameter("@Balance", newBalance),
-            //        new SqlParameter("@ID", UserID)
-            //};
-            //DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
-            //MessageBox.Show($"{UserID}");
-            //MessageBox.Show($"Đặt hàng thành công!\nĐã trừ {totalAmount * 1000:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //guna2DataGridView1.Rows.Clear();
-            //label4.Text = "0đ";
             decimal totalAmount = 0;
             foreach (DataGridViewRow row in guna2DataGridView1.Rows)
             {
@@ -191,54 +137,58 @@ namespace NetCafeManager.UserControls
                 return;
             }
 
-            string query = "SELECT Balance FROM Customer WHERE UserID = @ID";
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-        new SqlParameter("@ID", UserID)
-            };
-            DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+            // Lưu đơn hàng vào bảng Orders
+            // Nếu requireUserID = true (khách đặt), lưu với Status = 'Pending'
+            // Nếu requireUserID = false (nhân viên đặt), lưu với Status = 'Confirmed'
+            string orderStatus = requireUserID ? "Pending" : "Confirmed";
 
-            if (dt.Rows.Count == 0)
+            foreach (DataGridViewRow row in guna2DataGridView1.Rows)
             {
-                MessageBox.Show("Không tìm thấy người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (row.Cells["ProductName"].Value != null)
+                {
+                    string productName = row.Cells["ProductName"].Value.ToString();
+                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                    decimal total = Convert.ToDecimal(row.Cells["Total"].Value);
+
+                    string insertQuery = @"
+                        INSERT INTO Orders (CustomerID, ServiceName, Quantity, Total, OrderDate, Status)
+                        VALUES (@CustomerID, @ServiceName, @Quantity, @Total, @OrderDate, @Status)";
+                    SqlParameter[] insertParams = new SqlParameter[]
+                    {
+                        new SqlParameter("@CustomerID", requireUserID ? (object)UserID : DBNull.Value),
+                        new SqlParameter("@ServiceName", productName),
+                        new SqlParameter("@Quantity", quantity),
+                        new SqlParameter("@Total", total * 1000),
+                        new SqlParameter("@OrderDate", DateTime.Now),
+                        new SqlParameter("@Status", orderStatus)
+                    };
+                    DatabaseHelper.ExecuteNonQuery(insertQuery, insertParams);
+                }
             }
 
-            decimal currentBalance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
-
-            if (currentBalance < totalAmount * 1000)
+            if (requireUserID)
             {
-                MessageBox.Show("Số dư không đủ để đặt hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Không trừ số dư ngay lập tức, để UC_NewOrder xử lý khi xác nhận
+                if (this.ParentForm is CustomerForm customerForm)
+                {
+                    customerForm.UpdateTotalFoodFee(totalAmount * 1000);
+                }
+
+                MessageBox.Show($"Đặt hàng thành công! Đơn hàng đang chờ xác nhận.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            decimal newBalance = currentBalance - (totalAmount * 1000);
-
-            string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
-            SqlParameter[] updateParams = new SqlParameter[]
+            else
             {
-        new SqlParameter("@Balance", newBalance),
-        new SqlParameter("@ID", UserID)
-            };
-
-            int rowsAffected = DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
-            if (rowsAffected == 0)
-            {
-                MessageBox.Show("Không thể cập nhật số dư. Vui lòng kiểm tra lại UserID hoặc cơ sở dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            MessageBox.Show($"Đặt hàng thành công!\nĐã trừ {totalAmount * 1000:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Làm mới số dư trong UC_MyAccount
-            if (this.ParentForm is CustomerForm customerForm)
-            {
-                customerForm.RefreshMyAccountBalance();
-            }
-            // Truyền tổng số tiền đặt đồ ăn vào UC_MyAccount
-            if (this.ParentForm is CustomerForm customerForm1)
-            {
-                customerForm1.UpdateTotalFoodFee(totalAmount * 1000); // Truyền totalAmount * 1000
+                // Hiển thị hộp thoại xác nhận thanh toán bằng tiền mặt
+                DialogResult result = MessageBox.Show($"Tổng tiền: {totalAmount * 1000:N0}đ\nKhách đã thanh toán bằng tiền mặt chưa?", "Xác nhận thanh toán", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show($"Đặt hàng thành công!\nTổng tiền: {totalAmount * 1000:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng đảm bảo khách thanh toán trước khi tiếp tục!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
             guna2DataGridView1.Rows.Clear();

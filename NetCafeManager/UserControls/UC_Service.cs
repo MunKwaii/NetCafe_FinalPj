@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using Microsoft.Data.SqlClient;
-
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,24 +12,38 @@ using Guna.UI2.WinForms;
 
 namespace NetCafeManager.UserControls
 {
-
     public partial class UC_Service : UserControl
     {
         string CurrentUserID;
-        //do dai cua tab page
         private int indexPage = 1, lengthPage = 10, currentPage = 1;
         private List<Guna2Button> List_buttonPage;
-        public UC_Service(string userID, bool flag = false)
+        private UC_TakeOrder ucTakeOrder; // Lưu trữ instance của UC_TakeOrder
+        
+        public UC_Service(string userID, bool flag = false, bool requireUserID = true)
         {
             InitializeComponent();
             this.CurrentUserID = userID;
-            //MessageBox.Show(CurrentUserID);
-            UC_TakeOrder takeOrder = new UC_TakeOrder(CurrentUserID);
-            ShowUserControl(takeOrder);
+            ucTakeOrder = new UC_TakeOrder(CurrentUserID, requireUserID); // Khởi tạo và lưu instance
+            ShowUserControl(ucTakeOrder);
             LoadMenu();
             List_buttonPage = new List<Guna2Button> { btnFirst_page, btnSecond_page, btnThird_page };
             if (flag)
                 pnlNewOrders.Hide();
+
+            UpdateNotifyStatus();
+        }
+        private int GetPendingOrderCount()
+        {
+            string query = "SELECT COUNT(*) FROM Orders WHERE CustomerID IS NOT NULL AND Status = 'Pending'";
+            object result = DatabaseHelper.ExecuteScalar(query);
+            return result != null ? Convert.ToInt32(result) : 0;
+        }
+
+        // Phương thức cập nhật trạng thái hiển thị của ptbNotify
+        private void UpdateNotifyStatus()
+        {
+            int orderCount = GetPendingOrderCount();
+            ptbNotify.Visible = orderCount > 0; // Hiển thị nếu có đơn hàng, ẩn nếu không có
         }
         private void change_Color_page(int turn)
         {
@@ -52,13 +65,14 @@ namespace NetCafeManager.UserControls
             List_buttonPage[currentPage - 1].FillColor = Color.Transparent;
             List_buttonPage[currentPage - 1].ForeColor = Color.FromArgb(19, 250, 168);
         }
+
         private void update_page(int indexPage)
         {
             btnFirst_page.Text = (indexPage - 1).ToString();
             btnSecond_page.Text = (indexPage).ToString();
             btnThird_page.Text = (indexPage + 1).ToString();
         }
-        // nút mũi tên bên phải của xử lý trang
+
         private void btnPage_Next_Click(object sender, EventArgs e)
         {
             if (indexPage < lengthPage)
@@ -82,7 +96,7 @@ namespace NetCafeManager.UserControls
                 }
             }
         }
-        // nút mũi tên bên trái của xử lý trang
+
         private void btnPage_Back_Click(object sender, EventArgs e)
         {
             if (indexPage > 1)
@@ -107,14 +121,12 @@ namespace NetCafeManager.UserControls
                         update_page(indexPage);
                     }
                 }
-                //chạy database
-
             }
         }
-        // nút được biểu thị là số 1 trong xử lý trang
+
         private void btnFirst_Page_Click_1(object sender, EventArgs e)
         {
-            if (currentPage != 1)// tránh nhấn lại nút 
+            if (currentPage != 1)
             {
                 if (indexPage == 2)
                 {
@@ -137,28 +149,23 @@ namespace NetCafeManager.UserControls
                         update_page(indexPage);
                     }
                 }
-                //chạy database
-
             }
         }
-        // nút được biểu thị là số 2 trong xử lý trang
+
         private void btnSecond_page_Click(object sender, EventArgs e)
         {
-            if (currentPage != 2)// tránh nhấn lại nút 
+            if (currentPage != 2)
             {
                 if (currentPage == 1) indexPage++;
                 else if (currentPage == 3) indexPage--;
                 change_Color_page(2);
                 currentPage = 2;
-                //chạy database
-
             }
         }
-        // nút được biểu thị là số 3 trong xử lý trang
+
         private void btnThird_page_Click(object sender, EventArgs e)
         {
-
-            if (currentPage != 3)// tránh nhấn lại nút 
+            if (currentPage != 3)
             {
                 if (indexPage == lengthPage - 1)
                 {
@@ -186,7 +193,6 @@ namespace NetCafeManager.UserControls
 
         private void UC_CustomerService_Load(object sender, EventArgs e)
         {
-
             Panel panel = new Panel
             {
                 Size = new Size(1, 1),
@@ -196,7 +202,10 @@ namespace NetCafeManager.UserControls
             flpnMenuContent.Controls.Add(panel);
             btnFirst_page.FillColor = Color.FromArgb(19, 250, 168);
             btnFirst_page.ForeColor = Color.FromArgb(40, 40, 40);
+            UpdateNotifyStatus();
+
         }
+
         private void ShowUserControl(UserControl uc)
         {
             pnlOrder.Controls.Clear();
@@ -205,22 +214,16 @@ namespace NetCafeManager.UserControls
 
         private void btnTakeOrder_Click(object sender, EventArgs e)
         {
-            //foreach (Control control in pnlOrder.Controls)
-            //{
-            //    if (control is UC_TakeOrder takeOrder)
-            //    {
-            //        // Làm mới nội dung nếu cần (ví dụ, xóa danh sách sản phẩm)
-            //        takeOrder.guna2DataGridView1.Rows.Clear();
-            //        takeOrder.CalculateTotal();
-            //        break;
-            //    }
-            //}
+            ShowUserControl(ucTakeOrder); // Hiển thị lại UC_TakeOrder
+            UpdateNotifyStatus();
         }
 
         private void btnNewOrder_Click(object sender, EventArgs e)
         {
             ShowUserControl(new UC_NewOrder());
+            UpdateNotifyStatus();
         }
+
         private List<Product> GetProducts(int pageIndex, int pageSize)
         {
             List<Product> products = new List<Product>();
@@ -257,22 +260,6 @@ namespace NetCafeManager.UserControls
 
         private void LoadMenu()
         {
-            //flpnMenuContent.Controls.Clear();
-            //List<Product> products = GetProducts(indexPage, 10);
-
-            //foreach (var item in products)
-            //{
-            //    Image image = null;
-            //    if (item.Image != null)
-            //    {
-            //        using (MemoryStream ms = new MemoryStream(item.Image))
-            //        {
-            //            image = Image.FromStream(ms);
-            //        }
-            //    }
-
-            //    UC_MenuItem menuItem = new UC_MenuItem(image, item.Name, item.Price.ToString("N0") + "000đ");
-            //    flpnMenuContent.Controls.Add(menuItem);
             flpnMenuContent.Controls.Clear();
             List<Product> products = GetProducts(indexPage, 10);
 
@@ -294,6 +281,7 @@ namespace NetCafeManager.UserControls
                         if (control is UC_TakeOrder takeOrder)
                         {
                             takeOrder.AddProductToOrder(productInfo.Name, productInfo.Price);
+                            UpdateNotifyStatus();
                             break;
                         }
                     }
@@ -301,9 +289,8 @@ namespace NetCafeManager.UserControls
                 flpnMenuContent.Controls.Add(menuItem);
             }
         }
-
-      
     }
+
     public class Product
     {
         public int ID { get; set; }

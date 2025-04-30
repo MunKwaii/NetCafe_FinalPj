@@ -60,13 +60,13 @@
             label9 = new Label();
             label8 = new Label();
             guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            PriceTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
+            FoodNameTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             label5 = new Label();
             label3 = new Label();
             ptbProductImage = new Guna.UI2.WinForms.Guna2PictureBox();
-            btnBrowse = new Guna.UI2.WinForms.Guna2Button();
+            AddImageBtn = new Guna.UI2.WinForms.Guna2Button();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnPower = new Guna.UI2.WinForms.Guna2Button();
             guna2PictureBox6 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -83,22 +83,22 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("SAIBA-45", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.White;
             label9.Location = new Point(343, 62);
             label9.Name = "label9";
-            label9.Size = new Size(113, 26);
+            label9.Size = new Size(84, 31);
             label9.TabIndex = 105;
             label9.Text = "Detail";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("SAIBA-45 Outline", 35.9999962F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Microsoft Sans Serif", 35.9999962F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(19, 250, 168);
             label8.Location = new Point(157, 9);
             label8.Name = "label8";
-            label8.Size = new Size(268, 53);
+            label8.Size = new Size(190, 55);
             label8.TabIndex = 106;
             label8.Text = "Product";
             // 
@@ -113,30 +113,30 @@
             guna2Panel3.Size = new Size(257, 5);
             guna2Panel3.TabIndex = 120;
             // 
-            // guna2TextBox3
+            // PriceTextBox
             // 
-            guna2TextBox3.Anchor = AnchorStyles.None;
-            guna2TextBox3.BorderColor = Color.FromArgb(40, 40, 40);
-            guna2TextBox3.BorderThickness = 0;
-            guna2TextBox3.CustomizableEdges = customizableEdges3;
-            guna2TextBox3.DefaultText = "";
-            guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.FillColor = Color.FromArgb(40, 40, 40);
-            guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            guna2TextBox3.ForeColor = Color.White;
-            guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Location = new Point(119, 203);
-            guna2TextBox3.Margin = new Padding(4);
-            guna2TextBox3.Name = "guna2TextBox3";
-            guna2TextBox3.PlaceholderText = "";
-            guna2TextBox3.SelectedText = "";
-            guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2TextBox3.Size = new Size(258, 38);
-            guna2TextBox3.TabIndex = 116;
+            PriceTextBox.Anchor = AnchorStyles.None;
+            PriceTextBox.BorderColor = Color.FromArgb(40, 40, 40);
+            PriceTextBox.BorderThickness = 0;
+            PriceTextBox.CustomizableEdges = customizableEdges3;
+            PriceTextBox.DefaultText = "";
+            PriceTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            PriceTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            PriceTextBox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            PriceTextBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            PriceTextBox.FillColor = Color.FromArgb(40, 40, 40);
+            PriceTextBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            PriceTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            PriceTextBox.ForeColor = Color.White;
+            PriceTextBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            PriceTextBox.Location = new Point(119, 203);
+            PriceTextBox.Margin = new Padding(4);
+            PriceTextBox.Name = "PriceTextBox";
+            PriceTextBox.PlaceholderText = "";
+            PriceTextBox.SelectedText = "";
+            PriceTextBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            PriceTextBox.Size = new Size(258, 38);
+            PriceTextBox.TabIndex = 116;
             // 
             // guna2Panel1
             // 
@@ -149,30 +149,30 @@
             guna2Panel1.Size = new Size(257, 5);
             guna2Panel1.TabIndex = 119;
             // 
-            // txtUsername
+            // FoodNameTextBox
             // 
-            txtUsername.Anchor = AnchorStyles.None;
-            txtUsername.BorderColor = Color.FromArgb(40, 40, 40);
-            txtUsername.BorderThickness = 0;
-            txtUsername.CustomizableEdges = customizableEdges7;
-            txtUsername.DefaultText = "";
-            txtUsername.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtUsername.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtUsername.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtUsername.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtUsername.FillColor = Color.FromArgb(40, 40, 40);
-            txtUsername.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            txtUsername.ForeColor = Color.White;
-            txtUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsername.Location = new Point(119, 139);
-            txtUsername.Margin = new Padding(4);
-            txtUsername.Name = "txtUsername";
-            txtUsername.PlaceholderText = "";
-            txtUsername.SelectedText = "";
-            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtUsername.Size = new Size(258, 38);
-            txtUsername.TabIndex = 115;
+            FoodNameTextBox.Anchor = AnchorStyles.None;
+            FoodNameTextBox.BorderColor = Color.FromArgb(40, 40, 40);
+            FoodNameTextBox.BorderThickness = 0;
+            FoodNameTextBox.CustomizableEdges = customizableEdges7;
+            FoodNameTextBox.DefaultText = "";
+            FoodNameTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            FoodNameTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            FoodNameTextBox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            FoodNameTextBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            FoodNameTextBox.FillColor = Color.FromArgb(40, 40, 40);
+            FoodNameTextBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            FoodNameTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            FoodNameTextBox.ForeColor = Color.White;
+            FoodNameTextBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            FoodNameTextBox.Location = new Point(119, 139);
+            FoodNameTextBox.Margin = new Padding(4);
+            FoodNameTextBox.Name = "FoodNameTextBox";
+            FoodNameTextBox.PlaceholderText = "";
+            FoodNameTextBox.SelectedText = "";
+            FoodNameTextBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            FoodNameTextBox.Size = new Size(258, 38);
+            FoodNameTextBox.TabIndex = 115;
             // 
             // label5
             // 
@@ -209,22 +209,23 @@
             ptbProductImage.TabIndex = 121;
             ptbProductImage.TabStop = false;
             // 
-            // btnBrowse
+            // AddImageBtn
             // 
-            btnBrowse.CustomizableEdges = customizableEdges11;
-            btnBrowse.DisabledState.BorderColor = Color.DarkGray;
-            btnBrowse.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnBrowse.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnBrowse.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnBrowse.FillColor = Color.FromArgb(128, 255, 255);
-            btnBrowse.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBrowse.ForeColor = Color.Black;
-            btnBrowse.Location = new Point(431, 271);
-            btnBrowse.Name = "btnBrowse";
-            btnBrowse.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnBrowse.Size = new Size(144, 43);
-            btnBrowse.TabIndex = 122;
-            btnBrowse.Text = "Browse";
+            AddImageBtn.CustomizableEdges = customizableEdges11;
+            AddImageBtn.DisabledState.BorderColor = Color.DarkGray;
+            AddImageBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            AddImageBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            AddImageBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            AddImageBtn.FillColor = Color.FromArgb(128, 255, 255);
+            AddImageBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddImageBtn.ForeColor = Color.Black;
+            AddImageBtn.Location = new Point(431, 271);
+            AddImageBtn.Name = "AddImageBtn";
+            AddImageBtn.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            AddImageBtn.Size = new Size(144, 43);
+            AddImageBtn.TabIndex = 122;
+            AddImageBtn.Text = "Browse";
+            AddImageBtn.Click += AddImageBtn_Click;
             // 
             // btnSave
             // 
@@ -234,7 +235,7 @@
             btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSave.FillColor = Color.FromArgb(19, 250, 168);
-            btnSave.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.Black;
             btnSave.Location = new Point(65, 349);
             btnSave.Name = "btnSave";
@@ -242,6 +243,7 @@
             btnSave.Size = new Size(144, 43);
             btnSave.TabIndex = 122;
             btnSave.Text = "Save";
+            btnSave.Click += btnSave_Click;
             // 
             // btnPower
             // 
@@ -349,12 +351,12 @@
             Controls.Add(guna2Panel5);
             Controls.Add(btnPower);
             Controls.Add(btnSave);
-            Controls.Add(btnBrowse);
+            Controls.Add(AddImageBtn);
             Controls.Add(ptbProductImage);
             Controls.Add(guna2Panel3);
-            Controls.Add(guna2TextBox3);
+            Controls.Add(PriceTextBox);
             Controls.Add(guna2Panel1);
-            Controls.Add(txtUsername);
+            Controls.Add(FoodNameTextBox);
             Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(label9);
@@ -377,13 +379,13 @@
         private Label label9;
         private Label label8;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2TextBox PriceTextBox;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TextBox txtUsername;
+        private Guna.UI2.WinForms.Guna2TextBox FoodNameTextBox;
         private Label label5;
         private Label label3;
         private Guna.UI2.WinForms.Guna2PictureBox ptbProductImage;
-        private Guna.UI2.WinForms.Guna2Button btnBrowse;
+        private Guna.UI2.WinForms.Guna2Button AddImageBtn;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnPower;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox6;

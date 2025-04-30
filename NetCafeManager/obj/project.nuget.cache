@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "geMUnJIcyB8=",
+  "dgSpecHash": "iqUOvxfbYFA=",
   "success": true,
-  "projectFilePath": "D:\\hope\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
+  "projectFilePath": "D:\\hope1\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Khanh\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Khanh\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

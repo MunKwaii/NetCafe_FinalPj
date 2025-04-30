@@ -19,6 +19,7 @@ namespace NetCafeManager.UserControls
         private List<Guna2Button> List_buttonPage;
         private Timer refreshTimer; // Timer để làm mới trạng thái máy
         private bool isSearching; // Biến để kiểm tra trạng thái tìm kiếm
+        private const int costPerHour = 1100000; // Chi phí mỗi giờ (giữ giống UC_MyAccount)
 
         public UC_ManageComputers()
         {
@@ -29,7 +30,7 @@ namespace NetCafeManager.UserControls
 
             // Khởi tạo Timer để làm mới trạng thái máy mỗi 5 giây
             refreshTimer = new Timer();
-            refreshTimer.Interval = 10000; // 5 giây
+            refreshTimer.Interval = 5000; // 5 giây
             refreshTimer.Tick += (s, e) => LoadComputer();
             refreshTimer.Start();
         }
@@ -67,33 +68,95 @@ namespace NetCafeManager.UserControls
                     DateTime? startTime = row["StartTime"] != DBNull.Value ? (DateTime?)row["StartTime"] : null;
                     DateTime? endTime = row["EndTime"] != DBNull.Value ? (DateTime?)row["EndTime"] : null;
 
-                    // Xác định trạng thái máy tính và hình ảnh tương ứng
                     string imagePath;
                     string displayStatus;
 
                     if (status == "Maintain")
                     {
-                        imagePath = "maintain.png"; // Máy đang bảo trì
+                        imagePath = "maintain.png";
                         displayStatus = "Maintain";
                     }
                     else if (startTime != null && endTime == null)
                     {
-                        imagePath = "active.png"; // Máy đang có phiên làm việc (Active)
+                        imagePath = "active.png";
                         displayStatus = "Active";
                     }
                     else
                     {
-                        imagePath = "idle.png"; // Máy không có phiên làm việc (Idle)
+                        imagePath = "idle.png";
                         displayStatus = "Idle";
                     }
 
                     UC_ComputerStatus computerItem = new UC_ComputerStatus(imagePath, computerID, userID, displayStatus);
+                    computerItem.OnComputerSelected += ComputerItem_OnComputerSelected;
                     flpnComputerList.Controls.Add(computerItem);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi tải danh sách máy tính: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ComputerItem_OnComputerSelected(object sender, string computerID)
+        {
+            try
+            {
+                // Truy vấn thông tin máy tính và khách hàng
+                string query = @"
+                    SELECT c.ComputerID, c.UserID, c.StartTime, c.Status, cu.FullName
+                    FROM Computer c
+                    LEFT JOIN Customer cu ON c.UserID = cu.UserID
+                    WHERE c.ComputerID = @ComputerID";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@ComputerID", computerID)
+                };
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin máy tính!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                DataRow row = dt.Rows[0];
+                string userID = row["UserID"] != DBNull.Value ? row["UserID"].ToString() : null;
+                string status = row["Status"].ToString();
+                DateTime? startTime = row["StartTime"] != DBNull.Value ? (DateTime?)row["StartTime"] : null;
+
+                if (status != "Active" || userID == null || startTime == null)
+                {
+                    // Nếu máy không ở trạng thái Active, đặt các label về giá trị mặc định
+                    ComLB.Text = computerID;
+                    CusNameLB.Text = "Không có khách hàng";
+                    TotalTimeLbl.Text = "0h 0m";
+                    TotalFeeLbl.Text = "0đ";
+                    return;
+                }
+
+                // Cập nhật thông tin máy tính
+                ComLB.Text = computerID;
+                CusNameLB.Text = row["FullName"].ToString();
+
+                // Tính tổng thời gian sử dụng (từ StartTime đến hiện tại)
+                TimeSpan usageTime = DateTime.Now - startTime.Value;
+                int totalSeconds = (int)usageTime.TotalSeconds;
+                int usedMinutes = totalSeconds / 60;
+                int usedHours = usedMinutes / 60;
+                int remainingMinutes = usedMinutes % 60;
+                TotalTimeLbl.Text = $"{usedHours}h {remainingMinutes}m";
+
+                // Tính tổng phí sử dụng (dựa trên costPerHour)
+                decimal costPerSecond = costPerHour / 3600m;
+                decimal totalFee = totalSeconds * costPerSecond;
+                TotalFeeLbl.Text = $"{totalFee:N0}đ";
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi cập nhật thông tin: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -166,6 +229,7 @@ namespace NetCafeManager.UserControls
                     }
 
                     UC_ComputerStatus computerItem = new UC_ComputerStatus(imagePath, computerID, userID, displayStatus);
+                    computerItem.OnComputerSelected += ComputerItem_OnComputerSelected;
                     flpnComputerList.Controls.Add(computerItem);
                 }
             }

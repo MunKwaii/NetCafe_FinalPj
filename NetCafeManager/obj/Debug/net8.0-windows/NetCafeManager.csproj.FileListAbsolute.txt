@@ -608,3 +608,10 @@ C:\Users\Khanh\Downloads\New folder (2)\NetCafe_FinalPj\NetCafeManager\obj\Debug
 C:\Users\Khanh\Downloads\New folder (2)\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.pdb
 C:\Users\Khanh\Downloads\New folder (2)\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.genruntimeconfig.cache
 C:\Users\Khanh\Downloads\New folder (2)\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\ref\NetCafeManager.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\CsvHelper.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\System.Web.DataVisualization.Design.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\System.Web.DataVisualization.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\System.Windows.Forms.DataVisualization.Design.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\System.Windows.Forms.DataVisualization.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\System.Data.OleDb.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.OleDb.dll

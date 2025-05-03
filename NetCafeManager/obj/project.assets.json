@@ -121,7 +121,22 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Data.SqlClient/6.0.1": {
+      "Microsoft.Chart.Controls/4.7.2046": {
+        "type": "package",
+        "compile": {
+          "lib/net35/System.Web.DataVisualization.Design.dll": {},
+          "lib/net35/System.Web.DataVisualization.dll": {},
+          "lib/net35/System.Windows.Forms.DataVisualization.Design.dll": {},
+          "lib/net35/System.Windows.Forms.DataVisualization.dll": {}
+        },
+        "runtime": {
+          "lib/net35/System.Web.DataVisualization.Design.dll": {},
+          "lib/net35/System.Web.DataVisualization.dll": {},
+          "lib/net35/System.Windows.Forms.DataVisualization.Design.dll": {},
+          "lib/net35/System.Windows.Forms.DataVisualization.dll": {}
+        }
+      },
+      "Microsoft.Data.SqlClient/6.0.2": {
         "type": "package",
         "dependencies": {
           "Azure.Identity": "1.11.4",
@@ -542,7 +557,7 @@
           "System.Security.Cryptography.ProtectedData": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
             "related": ".xml"
           }
         },
@@ -553,6 +568,32 @@
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Data.OleDb/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "8.0.0",
+          "System.Diagnostics.PerformanceCounter": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Data.OleDb.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Data.OleDb.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Data.OleDb.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Data.SqlClient/4.9.0": {
@@ -606,7 +647,7 @@
       "System.Diagnostics.EventLog/8.0.1": {
         "type": "package",
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
             "related": ".xml"
           }
         },
@@ -624,6 +665,31 @@
             "rid": "win"
           },
           "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Diagnostics.PerformanceCounter/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Diagnostics.PerformanceCounter.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Diagnostics.PerformanceCounter.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -967,10 +1033,26 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Data.SqlClient/6.0.1": {
-      "sha512": "v7HxnYYXGGCJilxeQ4Pdks+popVuGajBpHmau0RU4ACIcbfs5qCNUnCogGpZ+CJ//8Qafhxq7vc5a8L9d6O8Eg==",
+    "Microsoft.Chart.Controls/4.7.2046": {
+      "sha512": "tSNkrA2zBGiRFC5Xmb2pnowds+2919zGyuiNMZf5cP1OpKi/Q1qPbQ8xWr2jnr8hCfBFiRV9WeIdCANMpo/jRw==",
       "type": "package",
-      "path": "microsoft.data.sqlclient/6.0.1",
+      "path": "microsoft.chart.controls/4.7.2046",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Supplemental Redist License_English.docx",
+        "lib/net35/System.Web.DataVisualization.Design.dll",
+        "lib/net35/System.Web.DataVisualization.dll",
+        "lib/net35/System.Windows.Forms.DataVisualization.Design.dll",
+        "lib/net35/System.Windows.Forms.DataVisualization.dll",
+        "microsoft.chart.controls.4.7.2046.nupkg.sha512",
+        "microsoft.chart.controls.nuspec"
+      ]
+    },
+    "Microsoft.Data.SqlClient/6.0.2": {
+      "sha512": "RDqwzNu5slSqGy0eSgnN4fuLdGI1w9ZHBRNALrbUsykOIbXtGCpyotG0r5zz+HHtzxbe6LtcAyWcOiu0a+Fx/A==",
+      "type": "package",
+      "path": "microsoft.data.sqlclient/6.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1021,7 +1103,7 @@
         "lib/net9.0/tr/Microsoft.Data.SqlClient.resources.dll",
         "lib/net9.0/zh-Hans/Microsoft.Data.SqlClient.resources.dll",
         "lib/net9.0/zh-Hant/Microsoft.Data.SqlClient.resources.dll",
-        "microsoft.data.sqlclient.6.0.1.nupkg.sha512",
+        "microsoft.data.sqlclient.6.0.2.nupkg.sha512",
         "microsoft.data.sqlclient.nuspec",
         "ref/net462/Microsoft.Data.SqlClient.dll",
         "ref/net462/Microsoft.Data.SqlClient.xml",
@@ -1625,6 +1707,42 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Data.OleDb/8.0.0": {
+      "sha512": "FpUTcQ0E8mFvcYp8UZA3NX8wgmhmsCue56g1zfkr1xdOnT5FrYYmC5DWQ9xCw8o8zuxVBKLZvliqEGgmeoalaQ==",
+      "type": "package",
+      "path": "system.data.oledb/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Data.OleDb.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Data.OleDb.targets",
+        "lib/net462/System.Data.OleDb.dll",
+        "lib/net462/System.Data.OleDb.xml",
+        "lib/net6.0/System.Data.OleDb.dll",
+        "lib/net6.0/System.Data.OleDb.xml",
+        "lib/net7.0/System.Data.OleDb.dll",
+        "lib/net7.0/System.Data.OleDb.xml",
+        "lib/net8.0/System.Data.OleDb.dll",
+        "lib/net8.0/System.Data.OleDb.xml",
+        "lib/netstandard2.0/System.Data.OleDb.dll",
+        "lib/netstandard2.0/System.Data.OleDb.xml",
+        "runtimes/win/lib/net6.0/System.Data.OleDb.dll",
+        "runtimes/win/lib/net6.0/System.Data.OleDb.xml",
+        "runtimes/win/lib/net7.0/System.Data.OleDb.dll",
+        "runtimes/win/lib/net7.0/System.Data.OleDb.xml",
+        "runtimes/win/lib/net8.0/System.Data.OleDb.dll",
+        "runtimes/win/lib/net8.0/System.Data.OleDb.xml",
+        "system.data.oledb.8.0.0.nupkg.sha512",
+        "system.data.oledb.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Data.SqlClient/4.9.0": {
       "sha512": "j4KJO+vC62NyUtNHz854njEqXbT8OmAa5jb1nrGfYWBOcggyYUQE0w/snXeaCjdvkSKWuUD+hfvlbN8pTrJTXg==",
       "type": "package",
@@ -1719,6 +1837,42 @@
         "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.xml",
         "system.diagnostics.eventlog.8.0.1.nupkg.sha512",
         "system.diagnostics.eventlog.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Diagnostics.PerformanceCounter/8.0.0": {
+      "sha512": "lX6DXxtJqVGWw7N/QmVoiCyVQ+Q/Xp+jVXPr3gLK1jJExSn1qmAjJQeb8gnOYeeBTG3E3PmG1nu92eYj/TEjpg==",
+      "type": "package",
+      "path": "system.diagnostics.performancecounter/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Diagnostics.PerformanceCounter.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Diagnostics.PerformanceCounter.targets",
+        "lib/net462/System.Diagnostics.PerformanceCounter.dll",
+        "lib/net462/System.Diagnostics.PerformanceCounter.xml",
+        "lib/net6.0/System.Diagnostics.PerformanceCounter.dll",
+        "lib/net6.0/System.Diagnostics.PerformanceCounter.xml",
+        "lib/net7.0/System.Diagnostics.PerformanceCounter.dll",
+        "lib/net7.0/System.Diagnostics.PerformanceCounter.xml",
+        "lib/net8.0/System.Diagnostics.PerformanceCounter.dll",
+        "lib/net8.0/System.Diagnostics.PerformanceCounter.xml",
+        "lib/netstandard2.0/System.Diagnostics.PerformanceCounter.dll",
+        "lib/netstandard2.0/System.Diagnostics.PerformanceCounter.xml",
+        "runtimes/win/lib/net6.0/System.Diagnostics.PerformanceCounter.dll",
+        "runtimes/win/lib/net6.0/System.Diagnostics.PerformanceCounter.xml",
+        "runtimes/win/lib/net7.0/System.Diagnostics.PerformanceCounter.dll",
+        "runtimes/win/lib/net7.0/System.Diagnostics.PerformanceCounter.xml",
+        "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll",
+        "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.xml",
+        "system.diagnostics.performancecounter.8.0.0.nupkg.sha512",
+        "system.diagnostics.performancecounter.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -2048,28 +2202,30 @@
       "CsvHelper >= 33.0.1",
       "Guna.Charts.WinForms >= 1.1.0",
       "Guna.UI2.WinForms >= 2.0.4.7",
-      "Microsoft.Data.SqlClient >= 6.0.1",
+      "Microsoft.Chart.Controls >= 4.7.2046",
+      "Microsoft.Data.SqlClient >= 6.0.2",
+      "System.Data.OleDb >= 8.0.0",
       "System.Data.SqlClient >= 4.9.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Khanh\\.nuget\\packages\\": {},
+    "C:\\Users\\MAI HONG TIN\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Khanh\\Downloads\\New folder (2)\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
+      "projectUniqueName": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
       "projectName": "NetCafeManager",
-      "projectPath": "C:\\Users\\Khanh\\Downloads\\New folder (2)\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
-      "packagesPath": "C:\\Users\\Khanh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Khanh\\Downloads\\New folder (2)\\NetCafe_FinalPj\\NetCafeManager\\obj\\",
+      "projectPath": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
+      "packagesPath": "C:\\Users\\MAI HONG TIN\\.nuget\\packages\\",
+      "outputPath": "E:\\Winform\\FinalProject\\NetCafe_FinalPj\\NetCafeManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Khanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MAI HONG TIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2078,6 +2234,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2114,9 +2271,17 @@
             "target": "Package",
             "version": "[2.0.4.7, )"
           },
+          "Microsoft.Chart.Controls": {
+            "target": "Package",
+            "version": "[4.7.2046, )"
+          },
           "Microsoft.Data.SqlClient": {
             "target": "Package",
-            "version": "[6.0.1, )"
+            "version": "[6.0.2, )"
+          },
+          "System.Data.OleDb": {
+            "target": "Package",
+            "version": "[8.0.0, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
@@ -2142,8 +2307,20 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Chart.Controls 4.7.2046' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Chart.Controls",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

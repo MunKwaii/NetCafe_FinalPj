@@ -61,7 +61,36 @@ namespace NetCafeManager.UserControls
             UpdateUsageDisplay();
             StartTimer();
         }
+        public void StopTimerAndSaveRevenue()
+        {
+            if (timer != null && timer.Enabled)
+            {
+                timer.Stop();
+            }
+            SaveRevenueToDatabase();
+        }
+        private void SaveRevenueToDatabase()
+        {
+            decimal totalTimeRevenue = usedBalance; // Tổng tiền thời gian chơi
+            decimal totalFoodRevenue = totalFoodFeeSum; // Tổng tiền thức ăn
 
+            string insertQuery = "INSERT INTO Revenue (TotalFoodRevenue, TotalTimeRevenue) VALUES (@TotalFoodRevenue, @TotalTimeRevenue)";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TotalFoodRevenue", totalFoodRevenue),
+                new SqlParameter("@TotalTimeRevenue", totalTimeRevenue)
+            };
+
+            int rowsAffected = DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
+            if (rowsAffected > 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Lưu doanh thu thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void UpdateTimeDisplay()
         {
             decimal totalHours = balance / costPerHour;

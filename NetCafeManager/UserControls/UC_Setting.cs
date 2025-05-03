@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Forms.DataVisualization.Charting;
 namespace NetCafeManager.UserControls
 {
     public partial class UC_Setting : UserControl
@@ -18,6 +18,72 @@ namespace NetCafeManager.UserControls
         {
             InitializeComponent();
             LoadServiceNames();
+            LoadRevenueChart();
+        }
+        private void LoadRevenueChart()
+        {
+            // Query to get revenue data
+            string query = "SELECT TotalFoodRevenue, TotalTimeRevenue FROM Revenue";
+            DataTable dt = DatabaseHelper.ExecuteQuery(query);
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No revenue data available.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Get the first row of data
+            DataRow row = dt.Rows[0];
+            decimal totalFoodRevenue = row["TotalFoodRevenue"] != DBNull.Value ? Convert.ToDecimal(row["TotalFoodRevenue"]) : 0;
+            decimal totalTimeRevenue = row["TotalTimeRevenue"] != DBNull.Value ? Convert.ToDecimal(row["TotalTimeRevenue"]) : 0;
+
+            // Create a Chart control
+            Chart revenueChart = new Chart();
+            revenueChart.Size = new Size(ChartPanel.Width - 20, ChartPanel.Height - 20);
+            revenueChart.Location = new Point(10, 10);
+            revenueChart.BackColor = Color.FromArgb(50, 50, 50);
+
+            // Create a ChartArea
+            ChartArea chartArea = new ChartArea();
+            chartArea.BackColor = Color.FromArgb(50, 50, 50);
+            revenueChart.ChartAreas.Add(chartArea);
+
+            // Create a Series for the pie chart
+            Series series = new Series("Revenue");
+            series.ChartType = SeriesChartType.Pie;
+            series["PieLabelStyle"] = "Outside";
+            series["PieLineColor"] = "Black";
+            series.IsValueShownAsLabel = true;
+            series.LabelForeColor = Color.White;
+            series.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+            // Add data points
+            if (totalFoodRevenue > 0)
+                series.Points.AddXY("Food Revenue", totalFoodRevenue);
+            if (totalTimeRevenue > 0)
+                series.Points.AddXY("Time Revenue", totalTimeRevenue);
+
+            // Customize colors
+            if (series.Points.Count > 0)
+            {
+                series.Points[0].Color = Color.FromArgb(19, 250, 168);
+                if (series.Points.Count > 1)
+                    series.Points[1].Color = Color.FromArgb(94, 148, 255);
+            }
+
+            // Add series to chart
+            revenueChart.Series.Add(series);
+
+            // Add legend
+            Legend legend = new Legend();
+            legend.BackColor = Color.FromArgb(50, 50, 50);
+            legend.ForeColor = Color.White;
+            legend.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            revenueChart.Legends.Add(legend);
+
+            // Clear existing controls and add chart to ChartPanel
+            ChartPanel.Controls.Clear();
+            ChartPanel.Controls.Add(revenueChart);
         }
         private void LoadServiceNames()
         {
@@ -195,5 +261,6 @@ namespace NetCafeManager.UserControls
                 MessageBox.Show("Cập nhật món ăn thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

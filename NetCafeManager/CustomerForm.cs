@@ -145,7 +145,7 @@ namespace NetCafeManager
 
             if (result == DialogResult.Yes)
             {
-                // Kết thúc phiên làm việc khi khách hàng đăng xuất
+                ucMyAccount.StopTimerAndSaveRevenue();
                 if (!string.IsNullOrEmpty(computerID))
                 {
                     EndSession();

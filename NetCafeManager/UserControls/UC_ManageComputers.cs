@@ -30,7 +30,7 @@ namespace NetCafeManager.UserControls
 
             // Khởi tạo Timer để làm mới trạng thái máy mỗi 5 giây
             refreshTimer = new Timer();
-            refreshTimer.Interval = 5000; // 5 giây
+            refreshTimer.Interval = 15000; // 15 giây
             refreshTimer.Tick += (s, e) => LoadComputer();
             refreshTimer.Start();
         }

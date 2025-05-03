@@ -59,58 +59,69 @@ namespace NetCafeManager
                 return;
             }
 
-            using (SqlConnection conn = DatabaseHelper.GetConnection())
+            try
             {
-                conn.Open();
-                string query = "SELECT Role, ID FROM Users WHERE Username = @user AND Password = @pass";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@user", username);
-                    cmd.Parameters.AddWithValue("@pass", password);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    conn.Open();
+                    string query = "SELECT Role, ID FROM Users WHERE Username = @user AND Password = @pass";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        if (reader.Read())
+                        cmd.Parameters.AddWithValue("@user", username);
+                        cmd.Parameters.AddWithValue("@pass", password);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            string role = reader["Role"].ToString().Trim();
-                            string ID = reader["ID"].ToString().Trim();
-
-                            MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            Form newForm = null;
-                            switch (role)
+                            if (reader.Read())
                             {
-                                case "Manager":
-                                    newForm = new ManagerForm(ID);
-                                    break;
-                                case "Employee":
-                                    newForm = new EmployeeForm(ID);
-                                    break;
-                                case "Customer":
-                                    // Tự động gán máy tính khả dụng cho khách hàng
-                                    string computerID = GetAvailableComputer();
-                                    if (computerID != null)
-                                    {
-                                        newForm = new CustomerForm(ID, computerID);
-                                    }
-                                    break;
-                            }
+                                string role = reader["Role"].ToString().Trim();
+                                string ID = reader["ID"].ToString().Trim();
 
-                            if (newForm != null)
-                            {
-                                this.Hide(); // Ẩn LoginForm nhưng không đóng
-                                newForm.ShowDialog(); // Chờ đến khi form mới đóng
-                                txtUsername.Clear();
-                                txtPassword.Clear();
-                                this.Show(); // Khi form mới đóng, LoginForm xuất hiện lại
+                                MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                Form newForm = null;
+                                switch (role)
+                                {
+                                    case "Manager":
+                                        newForm = new ManagerForm(ID);
+                                        break;
+                                    case "Employee":
+                                        newForm = new EmployeeForm(ID);
+                                        break;
+                                    case "Customer":
+                                        // Tự động gán máy tính khả dụng cho khách hàng
+                                        string computerID = GetAvailableComputer();
+                                        if (computerID != null)
+                                        {
+                                            newForm = new CustomerForm(ID, computerID);
+                                        }
+                                        break;
+                                }
+
+                                if (newForm != null)
+                                {
+                                    this.Hide(); // Ẩn LoginForm nhưng không đóng
+                                    newForm.ShowDialog(); // Chờ đến khi form mới đóng
+                                    txtUsername.Clear();
+                                    txtPassword.Clear();
+                                    this.Show(); // Khi form mới đóng, LoginForm xuất hiện lại
+                                }
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                            {
+                                MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

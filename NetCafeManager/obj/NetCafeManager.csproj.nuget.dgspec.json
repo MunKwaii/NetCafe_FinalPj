@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\hope2\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj": {}
+    "D:\\hope3\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj": {}
   },
   "projects": {
-    "D:\\hope2\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj": {
+    "D:\\hope3\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\hope2\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
+        "projectUniqueName": "D:\\hope3\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
         "projectName": "NetCafeManager",
-        "projectPath": "D:\\hope2\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
+        "projectPath": "D:\\hope3\\NetCafe_FinalPj\\NetCafeManager\\NetCafeManager.csproj",
         "packagesPath": "C:\\Users\\Khanh\\.nuget\\packages\\",
-        "outputPath": "D:\\hope2\\NetCafe_FinalPj\\NetCafeManager\\obj\\",
+        "outputPath": "D:\\hope3\\NetCafe_FinalPj\\NetCafeManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

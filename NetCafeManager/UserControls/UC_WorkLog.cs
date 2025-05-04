@@ -215,7 +215,7 @@ namespace NetCafeManager.UserControls
                 {
                     try
                     {
-                        using (var writer = new StreamWriter(sfd.FileName))
+                        using (var writer = new StreamWriter(sfd.FileName, false, new UTF8Encoding(true)))
                         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                         {
                             csv.WriteField("Mã ca làm việc");

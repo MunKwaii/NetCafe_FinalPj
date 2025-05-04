@@ -14,11 +14,13 @@ namespace NetCafeManager.UserControls
     public partial class UC_Setting : UserControl
     {
         private byte[] productImageBytes = null;
+        private Dictionary<string, int> feedbackIdMap;
         public UC_Setting()
         {
             InitializeComponent();
             LoadServiceNames();
             LoadRevenueChart();
+            LoadFeedback();
         }
         private void LoadRevenueChart()
         {
@@ -262,5 +264,104 @@ namespace NetCafeManager.UserControls
             }
         }
 
+        private void LoadFeedback()
+        {
+            lstFeedback.Items.Clear();
+
+            if (feedbackIdMap == null)
+            {
+                feedbackIdMap = new Dictionary<string, int>();
+            }
+            feedbackIdMap.Clear();
+
+            string query = @"
+        SELECT f.FeedbackID, f.Content, f.CreatedAt, c.FullName
+        FROM Feedback f
+        LEFT JOIN Customer c ON f.UserID = c.UserID
+        ORDER BY f.CreatedAt DESC";
+            DataTable dt = DatabaseHelper.ExecuteQuery(query);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                int feedbackID = Convert.ToInt32(row["FeedbackID"]); 
+                string fullName = row["FullName"] != DBNull.Value ? row["FullName"].ToString() : "Anonymous";
+                string createdAt = Convert.ToDateTime(row["CreatedAt"]).ToString("yyyy-MM-dd HH:mm");
+                string content = row["Content"].ToString();
+
+                if (fullName.Length > 25)
+                    fullName = fullName.Substring(0, 9) + "...";
+
+                if (content.Length > 40)
+                    content = content.Substring(0, 22) + "...";
+
+                string nameAndContent = $"{fullName}: {content}";
+                // Thời gian trên dòng tiếp theo
+                string timeLine = $"Time: ({createdAt})";
+
+                // Thêm hai dòng vào ListBox
+                lstFeedback.Items.Add(nameAndContent);
+                lstFeedback.Items.Add(timeLine);
+
+                // Lưu ánh xạ: chỉ lưu FeedbackID cho dòng nameAndContent
+                feedbackIdMap[nameAndContent] = feedbackID;
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadFeedback();
+        }
+
+        private void lstFeedback_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = lstFeedback.IndexFromPoint(e.Location);
+            if (index == ListBox.NoMatches)
+            {
+                MessageBox.Show("No item selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+             
+                if (index % 2 != 0)
+                {
+                    index--;
+                }
+
+                string nameAndContent = lstFeedback.Items[index].ToString();
+
+                // Lấy FeedbackID từ ánh xạ
+                if (!feedbackIdMap.ContainsKey(nameAndContent))
+                {
+                    MessageBox.Show("Feedback ID not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int feedbackID = feedbackIdMap[nameAndContent];
+
+                // Truy vấn nội dung đầy đủ dựa trên FeedbackID
+                string query = "SELECT Content FROM Feedback WHERE FeedbackID = @FeedbackID";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@FeedbackID", feedbackID)
+                };
+
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    string fullContent = dt.Rows[0]["Content"].ToString();
+                    MessageBox.Show(fullContent, "Feedback Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Feedback not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving feedback: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

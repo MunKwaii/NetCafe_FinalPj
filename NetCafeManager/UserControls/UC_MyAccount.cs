@@ -236,5 +236,37 @@ namespace NetCafeManager.UserControls
                 BalanceLb.Text = "0";
             }
         }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string feedbackContent = txtFeedback.Text.Trim();
+
+            // Kiểm tra TextBox rỗng
+            if (string.IsNullOrEmpty(feedbackContent))
+            {
+                MessageBox.Show("Please enter feedback!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lưu feedback vào bảng Feedback
+            string insertQuery = "INSERT INTO Feedback (UserID, Content, CreatedAt, Status) VALUES (@UserID, @Content, GETDATE(), 0)";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@UserID", this.ID), // UserID lấy từ this.ID (kiểu VARCHAR(50))
+        new SqlParameter("@Content", feedbackContent)
+            };
+
+            int rowsAffected = DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
+            if (rowsAffected > 0)
+            {
+                // Xóa TextBox và hiển thị thông báo
+                txtFeedback.Text = "";
+                MessageBox.Show("Feedback sent!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Failed to send feedback!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -112,8 +112,8 @@
             guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             label10 = new Label();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            txtFeedback = new Guna.UI2.WinForms.Guna2TextBox();
+            btnSubmit = new Guna.UI2.WinForms.Guna2Button();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             depositTxt = new Guna.UI2.WinForms.Guna2TextBox();
@@ -122,6 +122,7 @@
             label8 = new Label();
             label11 = new Label();
             pnRight = new Guna.UI2.WinForms.Guna2Panel();
+            lblTotalFoodFee = new Label();
             guna2Panel10 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
@@ -146,7 +147,6 @@
             guna2DataGridView2 = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
             guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
-            lblTotalFoodFee = new Label();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
@@ -395,41 +395,43 @@
             label10.TabIndex = 28;
             label10.Text = "Enter your feedback:";
             // 
-            // guna2TextBox1
+            // txtFeedback
             // 
-            guna2TextBox1.CustomizableEdges = customizableEdges79;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(1033, 236);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges80;
-            guna2TextBox1.Size = new Size(392, 41);
-            guna2TextBox1.TabIndex = 119;
+            txtFeedback.CustomizableEdges = customizableEdges79;
+            txtFeedback.DefaultText = "";
+            txtFeedback.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtFeedback.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtFeedback.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtFeedback.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtFeedback.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtFeedback.Font = new Font("Segoe UI", 9F);
+            txtFeedback.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtFeedback.Location = new Point(1033, 236);
+            txtFeedback.MaxLength = 300;
+            txtFeedback.Name = "txtFeedback";
+            txtFeedback.PlaceholderText = "";
+            txtFeedback.SelectedText = "";
+            txtFeedback.ShadowDecoration.CustomizableEdges = customizableEdges80;
+            txtFeedback.Size = new Size(392, 41);
+            txtFeedback.TabIndex = 119;
             // 
-            // guna2Button1
+            // btnSubmit
             // 
-            guna2Button1.CustomizableEdges = customizableEdges81;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button1.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Location = new Point(1151, 309);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges82;
-            guna2Button1.Size = new Size(171, 44);
-            guna2Button1.TabIndex = 120;
-            guna2Button1.Text = "Submit";
+            btnSubmit.CustomizableEdges = customizableEdges81;
+            btnSubmit.DisabledState.BorderColor = Color.DarkGray;
+            btnSubmit.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSubmit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSubmit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSubmit.FillColor = Color.FromArgb(19, 250, 168);
+            btnSubmit.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSubmit.ForeColor = Color.Black;
+            btnSubmit.Location = new Point(1151, 309);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.ShadowDecoration.CustomizableEdges = customizableEdges82;
+            btnSubmit.Size = new Size(171, 44);
+            btnSubmit.TabIndex = 120;
+            btnSubmit.Text = "Submit";
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // guna2DataGridView1
             // 
@@ -601,6 +603,17 @@
             pnRight.ShadowDecoration.CustomizableEdges = customizableEdges112;
             pnRight.Size = new Size(433, 579);
             pnRight.TabIndex = 127;
+            // 
+            // lblTotalFoodFee
+            // 
+            lblTotalFoodFee.AutoSize = true;
+            lblTotalFoodFee.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTotalFoodFee.ForeColor = Color.FromArgb(19, 250, 168);
+            lblTotalFoodFee.Location = new Point(186, 376);
+            lblTotalFoodFee.Name = "lblTotalFoodFee";
+            lblTotalFoodFee.Size = new Size(19, 21);
+            lblTotalFoodFee.TabIndex = 131;
+            lblTotalFoodFee.Text = "0";
             // 
             // guna2Panel10
             // 
@@ -931,17 +944,6 @@
             guna2ComboBox2.Size = new Size(230, 36);
             guna2ComboBox2.TabIndex = 130;
             // 
-            // lblTotalFoodFee
-            // 
-            lblTotalFoodFee.AutoSize = true;
-            lblTotalFoodFee.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTotalFoodFee.ForeColor = Color.FromArgb(19, 250, 168);
-            lblTotalFoodFee.Location = new Point(186, 376);
-            lblTotalFoodFee.Name = "lblTotalFoodFee";
-            lblTotalFoodFee.Size = new Size(19, 21);
-            lblTotalFoodFee.TabIndex = 131;
-            lblTotalFoodFee.Text = "0";
-            // 
             // UC_MyAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -954,8 +956,8 @@
             Controls.Add(depositTxt);
             Controls.Add(guna2DataGridView1);
             Controls.Add(label11);
-            Controls.Add(guna2Button1);
-            Controls.Add(guna2TextBox1);
+            Controls.Add(btnSubmit);
+            Controls.Add(txtFeedback);
             Controls.Add(guna2Panel1);
             Controls.Add(guna2Panel6);
             Controls.Add(label8);
@@ -1017,8 +1019,8 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Label label10;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2TextBox txtFeedback;
+        private Guna.UI2.WinForms.Guna2Button btnSubmit;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI2.WinForms.Guna2TextBox depositTxt;

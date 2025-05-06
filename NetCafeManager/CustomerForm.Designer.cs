@@ -53,6 +53,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlMainContent = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -65,11 +67,13 @@
             btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             btnUser = new Guna.UI2.WinForms.Guna2Button();
             pnlProfileContent = new Guna.UI2.WinForms.Guna2Panel();
+            ptbNotify = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ptbNotify).BeginInit();
             SuspendLayout();
             // 
             // pnlMainContent
@@ -268,12 +272,28 @@
             pnlProfileContent.Size = new Size(300, 250);
             pnlProfileContent.TabIndex = 125;
             // 
+            // ptbNotify
+            // 
+            ptbNotify.BackColor = Color.Transparent;
+            ptbNotify.CustomizableEdges = customizableEdges25;
+            ptbNotify.FillColor = Color.FromArgb(20, 20, 20);
+            ptbNotify.Image = (Image)resources.GetObject("ptbNotify.Image");
+            ptbNotify.ImageRotate = 0F;
+            ptbNotify.Location = new Point(1231, 6);
+            ptbNotify.Name = "ptbNotify";
+            ptbNotify.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            ptbNotify.Size = new Size(13, 14);
+            ptbNotify.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbNotify.TabIndex = 126;
+            ptbNotify.TabStop = false;
+            // 
             // CustomerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
             ClientSize = new Size(1466, 868);
+            Controls.Add(ptbNotify);
             Controls.Add(pnlProfileContent);
             Controls.Add(btnNotification);
             Controls.Add(btnLogOut);
@@ -291,6 +311,7 @@
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ptbNotify).EndInit();
             ResumeLayout(false);
         }
 
@@ -308,5 +329,6 @@
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
         private Guna.UI2.WinForms.Guna2Button btnUser;
         private Guna.UI2.WinForms.Guna2Panel pnlProfileContent;
+        private Guna.UI2.WinForms.Guna2PictureBox ptbNotify;
     }
 }

@@ -37,7 +37,7 @@ namespace NetCafeManager
             }
 
             ucService = new UC_Service(ID, true);
-            ucMyAccount = new UC_MyAccount(ID);
+            ucMyAccount = new UC_MyAccount(ID, ptbNotify);
             ucService.Visible = false;
             ucMyAccount.Visible = true;
             pnlMainContent.Controls.Add(ucService);

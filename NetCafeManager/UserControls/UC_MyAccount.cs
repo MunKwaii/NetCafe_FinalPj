@@ -23,11 +23,13 @@ namespace NetCafeManager.UserControls
         private decimal initialBalance;
         private decimal totalFoodFee;
         decimal totalFoodFeeSum;
+        private Guna.UI2.WinForms.Guna2PictureBox ptbNotify;
 
-        public UC_MyAccount(string ID)
+        public UC_MyAccount(string ID, Guna.UI2.WinForms.Guna2PictureBox ptbNotify)
         {
             InitializeComponent();
             this.ID = ID;
+            this.ptbNotify = ptbNotify;
             LoadData();
         }
 
@@ -134,6 +136,19 @@ namespace NetCafeManager.UserControls
                 BalanceLb.Text = balance.ToString("N0");
                 UpdateTimeDisplay();
                 UpdateUsageDisplay();
+
+                decimal totalHours = balance / costPerHour;
+                int totalMinutes = (int)(totalHours * 60);
+                if (totalMinutes < 5) 
+                {
+                    if (ptbNotify != null)
+                        ptbNotify.Visible = true;
+                }
+                else
+                {
+                    if (ptbNotify != null)
+                        ptbNotify.Visible = false;
+                }
 
                 string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
                 SqlParameter[] updateParams = new SqlParameter[]

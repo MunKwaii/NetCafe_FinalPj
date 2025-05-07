@@ -62,7 +62,54 @@ namespace NetCafeManager.UserControls
             UpdateTimeDisplay();
             UpdateUsageDisplay();
             StartTimer();
+
+            InitializeTransactionDataGridView();
+            LoadOrdersToDataGridView();
         }
+
+        private void InitializeTransactionDataGridView()
+        {
+            dgvTransaction.Columns.Clear();
+            dgvTransaction.Columns.Add("OrderID", "Mã đơn hàng");
+            dgvTransaction.Columns.Add("ServiceName", "Tên món");
+            dgvTransaction.Columns.Add("Quantity", "Số lượng");
+            dgvTransaction.Columns.Add("Total", "Thành tiền");
+            dgvTransaction.Columns.Add("OrderDate", "Ngày đặt");
+            dgvTransaction.Columns.Add("Status", "Trạng thái");
+            dgvTransaction.ColumnHeadersHeight = 40;
+
+            dgvTransaction.Columns["Total"].DefaultCellStyle.Format = "N0";
+            dgvTransaction.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvTransaction.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvTransaction.Columns["OrderDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+        }
+
+        // Lấy dữ liệu từ bảng Orders và hiển thị vào dgvTransaction
+        private void LoadOrdersToDataGridView()
+        {
+            string orderQuery = @"
+                SELECT OrderID, ServiceName, Quantity, Total, OrderDate, Status 
+                FROM Orders 
+                WHERE CustomerID = @ID AND Status IN ('Confirmed', 'Cancelled')";
+            SqlParameter[] orderParams = new SqlParameter[]
+            {
+                new SqlParameter("@ID", ID)
+            };
+            DataTable orderDt = DatabaseHelper.ExecuteQuery(orderQuery, orderParams);
+
+            foreach (DataRow row in orderDt.Rows)
+            {
+                dgvTransaction.Rows.Add(
+                    row["OrderID"].ToString(),
+                    row["ServiceName"].ToString(),
+                    Convert.ToInt32(row["Quantity"]),
+                    Convert.ToDecimal(row["Total"]),
+                    Convert.ToDateTime(row["OrderDate"]),
+                    row["Status"].ToString()
+                );
+            }
+        }
+
         public void StopTimerAndSaveRevenue()
         {
             if (timer != null && timer.Enabled)
@@ -71,6 +118,7 @@ namespace NetCafeManager.UserControls
             }
             SaveRevenueToDatabase();
         }
+
         private void SaveRevenueToDatabase()
         {
             decimal totalTimeRevenue = usedBalance; // Tổng tiền thời gian chơi
@@ -93,6 +141,7 @@ namespace NetCafeManager.UserControls
                 MessageBox.Show("Lưu doanh thu thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void UpdateTimeDisplay()
         {
             decimal totalHours = balance / costPerHour;
@@ -139,7 +188,7 @@ namespace NetCafeManager.UserControls
 
                 decimal totalHours = balance / costPerHour;
                 int totalMinutes = (int)(totalHours * 60);
-                if (totalMinutes < 5) 
+                if (totalMinutes < 5)
                 {
                     if (ptbNotify != null)
                         ptbNotify.Visible = true;
@@ -267,8 +316,8 @@ namespace NetCafeManager.UserControls
             string insertQuery = "INSERT INTO Feedback (UserID, Content, CreatedAt, Status) VALUES (@UserID, @Content, GETDATE(), 0)";
             SqlParameter[] parameters = new SqlParameter[]
             {
-        new SqlParameter("@UserID", this.ID), // UserID lấy từ this.ID (kiểu VARCHAR(50))
-        new SqlParameter("@Content", feedbackContent)
+                new SqlParameter("@UserID", this.ID), // UserID lấy từ this.ID (kiểu VARCHAR(50))
+                new SqlParameter("@Content", feedbackContent)
             };
 
             int rowsAffected = DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
@@ -282,6 +331,11 @@ namespace NetCafeManager.UserControls
             {
                 MessageBox.Show("Failed to send feedback!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadOrdersToDataGridView();
         }
     }
 }

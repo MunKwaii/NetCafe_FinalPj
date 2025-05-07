@@ -19,6 +19,9 @@
     <Compile Update="EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="VerificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +65,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\UC_WorkLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\UC_ForgotPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="WorkLogViewDetailsForm.cs">

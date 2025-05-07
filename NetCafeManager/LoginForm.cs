@@ -139,9 +139,9 @@ namespace NetCafeManager
             Form forgotPasswordForm = new Form
             {
                 Text = "Forgot Password",
-                Size = new Size(400, 350),
+                Size = new Size(375, 312),
                 StartPosition = FormStartPosition.CenterScreen,
-                FormBorderStyle = FormBorderStyle.FixedDialog,
+                FormBorderStyle = FormBorderStyle.None,
                 MaximizeBox = false,
                 MinimizeBox = false
             };

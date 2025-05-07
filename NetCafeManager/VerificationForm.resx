@@ -268,7 +268,7 @@
         ZOTwdnQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAbAAAAGwCAYAAADITjAqAAAABGdBTUEAALGPC/xhBQAAJVxJREFUeF7t
         3Q2QJGd93/GTdLwY0Mvd7e7Mvu9JsiUwWDhGREQmEUEJVor4DQKGsh3JQVWiKqpUHCfYlQoRFTtQ2FWY

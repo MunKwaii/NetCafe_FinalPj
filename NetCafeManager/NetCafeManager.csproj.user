@@ -64,6 +64,9 @@
     <Compile Update="UserControls\UC_WorkLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\UC_ForgotPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="WorkLogViewDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>

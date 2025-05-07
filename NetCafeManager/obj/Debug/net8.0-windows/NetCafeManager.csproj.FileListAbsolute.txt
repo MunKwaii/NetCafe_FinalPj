@@ -823,3 +823,4 @@ D:\hope3\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\refint\NetCafeM
 D:\hope3\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.pdb
 D:\hope3\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.genruntimeconfig.cache
 D:\hope3\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\ref\NetCafeManager.dll
+E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.UserControls.UC_ForgotPassword.resources

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using Guna.UI2.WinForms;
 using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
+using NetCafeManager.UserControls;
 
 namespace NetCafeManager
 {
@@ -135,7 +136,23 @@ namespace NetCafeManager
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Please contact the nearest staff member to retrieve your password!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form forgotPasswordForm = new Form
+            {
+                Text = "Forgot Password",
+                Size = new Size(400, 350),
+                StartPosition = FormStartPosition.CenterScreen,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+            UC_ForgotPassword forgotPasswordControl = new UC_ForgotPassword
+            {
+                Dock = DockStyle.Fill
+            };
+
+            forgotPasswordForm.Controls.Add(forgotPasswordControl);
+            forgotPasswordForm.ShowDialog();
         }
     }
 }

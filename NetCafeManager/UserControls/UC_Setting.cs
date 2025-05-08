@@ -283,7 +283,7 @@ namespace NetCafeManager.UserControls
 
             foreach (DataRow row in dt.Rows)
             {
-                int feedbackID = Convert.ToInt32(row["FeedbackID"]); 
+                int feedbackID = Convert.ToInt32(row["FeedbackID"]);
                 string fullName = row["FullName"] != DBNull.Value ? row["FullName"].ToString() : "Anonymous";
                 string createdAt = Convert.ToDateTime(row["CreatedAt"]).ToString("yyyy-MM-dd HH:mm");
                 string content = row["Content"].ToString();
@@ -310,6 +310,8 @@ namespace NetCafeManager.UserControls
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadFeedback();
+            LoadServiceNames();
+            LoadRevenueChart();
         }
 
         private void lstFeedback_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -323,7 +325,7 @@ namespace NetCafeManager.UserControls
 
             try
             {
-             
+
                 if (index % 2 != 0)
                 {
                     index--;
@@ -362,6 +364,11 @@ namespace NetCafeManager.UserControls
             {
                 MessageBox.Show($"Error retrieving feedback: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

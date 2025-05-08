@@ -78,7 +78,7 @@ namespace NetCafeManager
                                 string role = reader["Role"].ToString().Trim();
                                 string ID = reader["ID"].ToString().Trim();
 
-                                MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 Form newForm = null;
                                 switch (role)

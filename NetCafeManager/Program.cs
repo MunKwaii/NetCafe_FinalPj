@@ -12,9 +12,7 @@ namespace NetCafeManager
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginForm());
-            //Application.Run(new EmployeeForm());
-            //Application.Run(new ManagerForm());
-            //Application.Run(new CustomerForm());
+           
 
         }
     }

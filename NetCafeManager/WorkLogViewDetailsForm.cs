@@ -28,7 +28,6 @@ namespace NetCafeManager
             {
                 lblWorkLogID.Text = _shiftID.ToString();
 
-                // Lấy StartTime và EndTime của ca làm việc từ EmployeeShift
                 string shiftQuery = @"
                     SELECT StartTime, EndTime
                     FROM EmployeeShift
@@ -48,7 +47,6 @@ namespace NetCafeManager
                 DateTime startTime = Convert.ToDateTime(shiftDt.Rows[0]["StartTime"]);
                 DateTime? endTime = shiftDt.Rows[0]["EndTime"] != DBNull.Value ? Convert.ToDateTime(shiftDt.Rows[0]["EndTime"]) : (DateTime?)null;
 
-                // Lấy danh sách hóa đơn dựa trên thời gian, bao gồm cả hóa đơn có CustomerID là NULL
                 string billQuery;
                 SqlParameter[] billParams;
 

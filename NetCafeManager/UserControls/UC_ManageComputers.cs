@@ -17,8 +17,8 @@ namespace NetCafeManager.UserControls
     {
         private int indexPage = 1, lengthPage = 10, currentPage = 1;
         private List<Guna2Button> List_buttonPage;
-        private Timer refreshTimer; // Timer để làm mới trạng thái máy
-        private bool isSearching; // Biến để kiểm tra trạng thái tìm kiếm
+        private Timer refreshTimer;
+        private bool isSearching;
         private const int costPerHour = 1100000; // Chi phí mỗi giờ (giữ giống UC_MyAccount)
 
         public UC_ManageComputers()
@@ -26,28 +26,24 @@ namespace NetCafeManager.UserControls
             InitializeComponent();
             LoadComputer();
             List_buttonPage = new List<Guna2Button> { btnFirst_page, btnSecond_page, btnThird_page };
-            isSearching = false; // Ban đầu không ở trạng thái tìm kiếm
-
-            // Khởi tạo Timer để làm mới trạng thái máy mỗi 5 giây
+            isSearching = false;
             refreshTimer = new Timer();
-            refreshTimer.Interval = 15000; // 15 giây
+            refreshTimer.Interval = 15000;
             refreshTimer.Tick += (s, e) => LoadComputer();
             refreshTimer.Start();
         }
 
         private void LoadComputer()
         {
-            // Chỉ làm mới nếu không đang ở trạng thái tìm kiếm
             if (isSearching)
             {
                 return;
             }
 
-            flpnComputerList.Controls.Clear(); // Xóa danh sách cũ
+            flpnComputerList.Controls.Clear();
 
             try
             {
-                // Truy vấn danh sách máy tính từ bảng Computer
                 string query = @"
                     SELECT ComputerID, UserID, StartTime, EndTime, Status
                     FROM Computer
@@ -102,7 +98,6 @@ namespace NetCafeManager.UserControls
         {
             try
             {
-                // Truy vấn thông tin máy tính và khách hàng
                 string query = @"
                     SELECT c.ComputerID, c.UserID, c.StartTime, c.Status, cu.FullName
                     FROM Computer c
@@ -127,27 +122,20 @@ namespace NetCafeManager.UserControls
 
                 if (status != "Active" || userID == null || startTime == null)
                 {
-                    // Nếu máy không ở trạng thái Active, đặt các label về giá trị mặc định
                     ComLB.Text = computerID;
                     CusNameLB.Text = "Không có khách hàng";
                     TotalTimeLbl.Text = "0h 0m";
                     TotalFeeLbl.Text = "0đ";
                     return;
                 }
-
-                // Cập nhật thông tin máy tính
                 ComLB.Text = computerID;
                 CusNameLB.Text = row["FullName"].ToString();
-
-                // Tính tổng thời gian sử dụng (từ StartTime đến hiện tại)
                 TimeSpan usageTime = DateTime.Now - startTime.Value;
                 int totalSeconds = (int)usageTime.TotalSeconds;
                 int usedMinutes = totalSeconds / 60;
                 int usedHours = usedMinutes / 60;
                 int remainingMinutes = usedMinutes % 60;
                 TotalTimeLbl.Text = $"{usedHours}h {remainingMinutes}m";
-
-                // Tính tổng phí sử dụng (dựa trên costPerHour)
                 decimal costPerSecond = costPerHour / 3600m;
                 decimal totalFee = totalSeconds * costPerSecond;
                 TotalFeeLbl.Text = $"{totalFee:N0}đ";
@@ -164,24 +152,19 @@ namespace NetCafeManager.UserControls
         {
             string searchID = txtSearchByID.Text.Trim();
 
-            flpnComputerList.Controls.Clear(); // Xóa danh sách cũ
+            flpnComputerList.Controls.Clear();
 
             try
             {
                 if (string.IsNullOrEmpty(searchID))
                 {
-                    // Nếu không nhập ID, hiển thị toàn bộ danh sách máy tính
-                    isSearching = false; // Thoát trạng thái tìm kiếm
-                    refreshTimer.Start(); // Khởi động lại Timer
+                    isSearching = false;
+                    refreshTimer.Start();
                     LoadComputer();
                     return;
                 }
-
-                // Tạm ngưng Timer khi tìm kiếm
                 isSearching = true;
                 refreshTimer.Stop();
-
-                // Truy vấn máy tính theo ComputerID
                 string query = @"
                     SELECT ComputerID, UserID, StartTime, EndTime, Status
                     FROM Computer
@@ -195,9 +178,9 @@ namespace NetCafeManager.UserControls
                 if (dt == null || dt.Rows.Count == 0)
                 {
                     MessageBox.Show("Không tìm thấy máy tính với ID này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    isSearching = false; // Thoát trạng thái tìm kiếm
-                    refreshTimer.Start(); // Khởi động lại Timer
-                    LoadComputer(); // Hiển thị lại toàn bộ danh sách nếu không tìm thấy
+                    isSearching = false;
+                    refreshTimer.Start();
+                    LoadComputer();
                     return;
                 }
 
@@ -236,9 +219,9 @@ namespace NetCafeManager.UserControls
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi tìm kiếm máy tính: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                isSearching = false; // Thoát trạng thái tìm kiếm
-                refreshTimer.Start(); // Khởi động lại Timer
-                LoadComputer(); // Hiển thị lại toàn bộ danh sách nếu có lỗi
+                isSearching = false;
+                refreshTimer.Start();
+                LoadComputer();
             }
         }
 
@@ -246,7 +229,7 @@ namespace NetCafeManager.UserControls
         {
             ModifyComputerForm modifyComputerForm = new ModifyComputerForm();
             modifyComputerForm.ShowDialog();
-            LoadComputer(); // Tải lại danh sách sau khi chỉnh sửa
+            LoadComputer(); 
         }
 
         private void change_Color_page(int turn)
@@ -314,7 +297,7 @@ namespace NetCafeManager.UserControls
                         update_page(indexPage);
                     }
                 }
-                LoadComputer(); // Tải lại danh sách máy tính
+                LoadComputer();
             }
         }
 
@@ -343,7 +326,7 @@ namespace NetCafeManager.UserControls
                         update_page(indexPage);
                     }
                 }
-                LoadComputer(); // Tải lại danh sách máy tính
+                LoadComputer(); 
             }
         }
 
@@ -355,7 +338,7 @@ namespace NetCafeManager.UserControls
                 else if (currentPage == 3) indexPage--;
                 change_Color_page(2);
                 currentPage = 2;
-                LoadComputer(); // Tải lại danh sách máy tính
+                LoadComputer();
             }
         }
 
@@ -409,13 +392,12 @@ namespace NetCafeManager.UserControls
                     indexPage++;
                     update_page(indexPage);
                 }
-                LoadComputer(); // Tải lại danh sách máy tính
+                LoadComputer();
             }
         }
 
         protected override void OnHandleDestroyed(EventArgs e)
         {
-            // Dừng Timer khi UserControl bị hủy
             refreshTimer.Stop();
             base.OnHandleDestroyed(e);
         }

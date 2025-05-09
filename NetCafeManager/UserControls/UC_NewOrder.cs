@@ -33,7 +33,6 @@ namespace NetCafeManager.UserControls
                 dgvNewOrder.DataSource = dt;
                 dgvNewOrder.ColumnHeadersHeight = 40;
 
-                // Tùy chỉnh cột
                 dgvNewOrder.Columns["OrderID"].HeaderText = "Mã đơn hàng";
                 dgvNewOrder.Columns["CustomerID"].HeaderText = "ID Khách hàng";
                 dgvNewOrder.Columns["ServiceName"].HeaderText = "Tên món";
@@ -41,13 +40,10 @@ namespace NetCafeManager.UserControls
                 dgvNewOrder.Columns["Total"].HeaderText = "Thành tiền";
                 dgvNewOrder.Columns["OrderDate"].HeaderText = "Thời gian đặt";
 
-                // Định dạng cột
                 dgvNewOrder.Columns["Total"].DefaultCellStyle.Format = "N0";
                 dgvNewOrder.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvNewOrder.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvNewOrder.Columns["OrderDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-
-                // Đảm bảo không có hàng nào được chọn mặc định
                 dgvNewOrder.ClearSelection();
 
                 if (dt.Rows.Count == 0)
@@ -80,7 +76,7 @@ namespace NetCafeManager.UserControls
             if (rowsAffected > 0)
             {
                 MessageBox.Show("Đơn hàng đã được hủy!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadOrders(); // Làm mới danh sách
+                LoadOrders();
             }
             else
             {
@@ -99,8 +95,6 @@ namespace NetCafeManager.UserControls
             int orderID = Convert.ToInt32(dgvNewOrder.SelectedRows[0].Cells["OrderID"].Value);
             string customerID = dgvNewOrder.SelectedRows[0].Cells["CustomerID"].Value?.ToString();
             decimal total = Convert.ToDecimal(dgvNewOrder.SelectedRows[0].Cells["Total"].Value);
-
-            // Kiểm tra số dư của khách hàng
             string balanceQuery = "SELECT Balance FROM Customer WHERE UserID = @CustomerID";
             SqlParameter[] balanceParams = new SqlParameter[]
             {
@@ -120,8 +114,6 @@ namespace NetCafeManager.UserControls
                 MessageBox.Show("Số dư của khách hàng không đủ để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Cập nhật số dư khách hàng
             decimal newBalance = currentBalance - total;
             string updateBalanceQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @CustomerID";
             SqlParameter[] updateBalanceParams = new SqlParameter[]
@@ -130,8 +122,6 @@ namespace NetCafeManager.UserControls
                 new SqlParameter("@CustomerID", customerID)
             };
             DatabaseHelper.ExecuteNonQuery(updateBalanceQuery, updateBalanceParams);
-
-            // Cập nhật trạng thái đơn hàng thành Confirmed
             string confirmQuery = "UPDATE Orders SET Status = 'Confirmed' WHERE OrderID = @OrderID";
             SqlParameter[] confirmParams = new SqlParameter[]
             {
@@ -140,8 +130,6 @@ namespace NetCafeManager.UserControls
             DatabaseHelper.ExecuteNonQuery(confirmQuery, confirmParams);
 
             MessageBox.Show("Đơn hàng đã được xác nhận!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Tải lại danh sách đơn hàng
             LoadOrders();
         }
     }

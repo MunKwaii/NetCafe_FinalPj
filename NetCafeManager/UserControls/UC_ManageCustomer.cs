@@ -49,7 +49,6 @@ namespace NetCafeManager.UserControls
                 dgvCustomer.Columns["FullName"].HeaderText = "Full Name";
                 dgvCustomer.Columns["Email"].HeaderText = "Email";
                 dgvCustomer.Columns["Balance"].HeaderText = "Balance";
-
                 dgvCustomer.Columns["Balance"].DefaultCellStyle.Format = "N0";
 
                 dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

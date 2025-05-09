@@ -39,7 +39,6 @@ namespace NetCafeManager
             DateTime birthday = BirthDayDateTimePicker.Value;
             DateTime hireDate = HireDayDateTimePicker.Value;
 
-            // Validate inputs
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(phoneNumber))
             {
@@ -47,12 +46,10 @@ namespace NetCafeManager
                 return;
             }
 
-            // Gmail can be constructed or left as a default value if not provided
             string gmail = $"{username}@employee.com";
 
             try
             {
-                // Step 1: Insert into Users table
                 string insertUserQuery = "INSERT INTO Users (ID, Username, Password, Role) VALUES (@ID, @Username, @Password, @Role)";
                 SqlParameter[] userParams = new SqlParameter[]
                 {
@@ -70,7 +67,6 @@ namespace NetCafeManager
                     return;
                 }
 
-                // Step 2: Insert into Employee table using the same ID
                 string insertEmployeeQuery = "INSERT INTO Employee (ID, Name, Gmail, Salary, PhoneNumber, Birthday, StartDate) " +
                                             "VALUES (@ID, @Name, @Gmail, @Salary, @PhoneNumber, @Birthday, @StartDate)";
                 SqlParameter[] employeeParams = new SqlParameter[]
@@ -93,7 +89,6 @@ namespace NetCafeManager
                 }
                 else
                 {
-                    // If Employee insert fails, rollback the Users insert
                     string deleteUserQuery = "DELETE FROM Users WHERE ID = @ID";
                     SqlParameter[] deleteParams = new SqlParameter[]
                     {

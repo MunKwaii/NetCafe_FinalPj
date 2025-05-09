@@ -22,12 +22,12 @@ namespace NetCafeManager
             string query = "SELECT MAX(ID) FROM Users WHERE ID LIKE 'C%'";
             object result = DatabaseHelper.ExecuteScalar(query);
 
-            string newID = "C01"; // Giá trị mặc định nếu bảng rỗng
+            string newID = "C01";
             if (result != null && result != DBNull.Value)
             {
                 string maxID = result.ToString();
-                int number = int.Parse(maxID.Substring(1)) + 1; // Lấy số và tăng lên 1
-                newID = $"C{number:D2}"; // Định dạng: C03, C04, ...
+                int number = int.Parse(maxID.Substring(1)) + 1;
+                newID = $"C{number:D2}";
             }
             return newID;
         }
@@ -38,20 +38,19 @@ namespace NetCafeManager
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            string id = guna2TextBox9.Text.Trim(); // ID
+            string id = guna2TextBox9.Text.Trim();
             if (string.IsNullOrEmpty(id))
             {
-                id = GenerateNewID(); // Tự động sinh ID nếu người dùng không nhập
-                guna2TextBox9.Text = id; // Gán ID vào TextBox để hiển thị
+                id = GenerateNewID();
+                guna2TextBox9.Text = id;
             }
 
-            string fullName = guna2TextBox10.Text.Trim(); // FullName (từ guna2TextBox10)
-            string username = AccountTextBox.Text.Trim(); // USERNAME
-            string password = PasswordTextBox.Text.Trim(); // Password
-            string email = EmailTextBox.Text.Trim(); // Email
-            string balanceText = BalanceTextBox.Text.Trim(); // Balance
+            string fullName = guna2TextBox10.Text.Trim();
+            string username = AccountTextBox.Text.Trim();
+            string password = PasswordTextBox.Text.Trim();
+            string email = EmailTextBox.Text.Trim();
+            string balanceText = BalanceTextBox.Text.Trim();
 
-            // Kiểm tra dữ liệu đầu vào
             if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(balanceText))
@@ -61,7 +60,6 @@ namespace NetCafeManager
                 return;
             }
 
-            // Kiểm tra định dạng số cho Balance
             if (!decimal.TryParse(balanceText, out decimal balance))
             {
                 MessageBox.Show("Balance must be a valid number.", "Validation Error",
@@ -69,7 +67,6 @@ namespace NetCafeManager
                 return;
             }
 
-            // 1. Thêm vào bảng User
             string insertUserQuery = "INSERT INTO Users (ID, USERNAME, Password, Role) " +
                                      "VALUES (@ID, @Username, @Password, @Role)";
             SqlParameter[] userParams = new SqlParameter[]
@@ -83,16 +80,15 @@ namespace NetCafeManager
             int userRowsAffected = DatabaseHelper.ExecuteNonQuery(insertUserQuery, userParams);
             if (userRowsAffected == 0)
             {
-                return; // Nếu không thêm được vào bảng User, dừng lại (lỗi đã được hiển thị trong DatabaseHelper)
+                return;
             }
 
-            // 2. Thêm vào bảng Customer
             string insertCustomerQuery = "INSERT INTO Customer (UserID, FullName, Email, Balance) " +
                                          "VALUES (@UserID, @FullName, @Email, @Balance)";
             SqlParameter[] customerParams = new SqlParameter[]
             {
                 new SqlParameter("@UserID", id),
-                new SqlParameter("@FullName", fullName), // Sử dụng fullName từ guna2TextBox10
+                new SqlParameter("@FullName", fullName),
                 new SqlParameter("@Email", email),
                 new SqlParameter("@Balance", balance)
             };
@@ -102,7 +98,7 @@ namespace NetCafeManager
             {
                 MessageBox.Show("Customer added successfully!", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Đóng form sau khi thêm thành công
+                this.Close();
             }
         }
     }

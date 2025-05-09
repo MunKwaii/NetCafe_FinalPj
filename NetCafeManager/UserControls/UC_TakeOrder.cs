@@ -137,7 +137,6 @@ namespace NetCafeManager.UserControls
                 return;
             }
 
-            // Lưu đơn hàng vào bảng Orders
             // Nếu requireUserID = true (khách đặt), lưu với Status = 'Pending'
             // Nếu requireUserID = false (nhân viên đặt), lưu với Status = 'Confirmed'
             string orderStatus = requireUserID ? "Pending" : "Confirmed";
@@ -168,7 +167,6 @@ namespace NetCafeManager.UserControls
 
             if (requireUserID)
             {
-                // Không trừ số dư ngay lập tức, để UC_NewOrder xử lý khi xác nhận
                 if (this.ParentForm is CustomerForm customerForm)
                 {
                     customerForm.UpdateTotalFoodFee(totalAmount * 1000);
@@ -178,7 +176,6 @@ namespace NetCafeManager.UserControls
             }
             else
             {
-                // Hiển thị hộp thoại xác nhận thanh toán bằng tiền mặt
                 DialogResult result = MessageBox.Show($"Tổng tiền: {totalAmount * 1000:N0}đ\nKhách đã thanh toán bằng tiền mặt chưa?", "Xác nhận thanh toán", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {

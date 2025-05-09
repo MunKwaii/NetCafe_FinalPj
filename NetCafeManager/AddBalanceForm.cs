@@ -15,7 +15,7 @@ namespace NetCafeManager
     {
         private string userID;
         private decimal balance;
-        private const int costPerHour = 1100000; // Chi phí mỗi giờ (giữ giống UC_MyAccount)
+        private const int costPerHour = 1100000;
 
         public AddBalanceForm(string userID)
         {
@@ -45,7 +45,7 @@ namespace NetCafeManager
                 lblCustomerName.Text = dt.Rows[0]["FullName"].ToString();
                 balance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
                 lblBalance.Text = balance.ToString("N0") + "đ";
-                UpdateTimeDisplay(); // Cập nhật thời gian còn lại
+                UpdateTimeDisplay();
             }
             catch (Exception ex)
             {
@@ -73,7 +73,6 @@ namespace NetCafeManager
                     return;
                 }
 
-                // Lấy số dư hiện tại
                 string balanceQuery = "SELECT Balance FROM Customer WHERE UserID = @UserID";
                 SqlParameter[] balanceParams = new SqlParameter[]
                 {
@@ -90,7 +89,6 @@ namespace NetCafeManager
                 balance = Convert.ToDecimal(balanceDt.Rows[0]["Balance"]);
                 decimal newBalance = balance + depositAmount;
 
-                // Cập nhật số dư
                 string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @UserID";
                 SqlParameter[] updateParams = new SqlParameter[]
                 {
@@ -101,8 +99,8 @@ namespace NetCafeManager
 
                 MessageBox.Show($"Nạp tiền thành công! Số dư mới: {newBalance:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                balance = newBalance; // Cập nhật biến balance
-                LoadCustomerInfo(); // Cập nhật hiển thị số dư và thời gian còn lại
+                balance = newBalance;
+                LoadCustomerInfo();
             }
             catch (Exception ex)
             {

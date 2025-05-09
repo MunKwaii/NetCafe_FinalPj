@@ -19,7 +19,6 @@ namespace NetCafeManager.UserControls
         public UC_WorkLog()
         {
             InitializeComponent();
-            // Gán sự kiện CellFormatting để xử lý hiển thị cột EndTime
             dgvWorkLog.CellFormatting += DgvWorkLog_CellFormatting;
             LoadShiftInfo();
             LoadWorkLog();
@@ -27,7 +26,6 @@ namespace NetCafeManager.UserControls
 
         private void DgvWorkLog_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Kiểm tra nếu cột đang được định dạng là EndTime và giá trị là NULL
             if (e.ColumnIndex == dgvWorkLog.Columns["EndTime"].Index && e.Value == DBNull.Value)
             {
                 e.Value = "Chưa kết thúc";
@@ -35,7 +33,6 @@ namespace NetCafeManager.UserControls
             }
             else if (e.ColumnIndex == dgvWorkLog.Columns["EndTime"].Index && e.Value != null)
             {
-                // Định dạng giá trị DateTime nếu không phải NULL
                 if (DateTime.TryParse(e.Value.ToString(), out DateTime endTime))
                 {
                     e.Value = endTime.ToString("dd/MM/yyyy HH:mm");
@@ -93,7 +90,6 @@ namespace NetCafeManager.UserControls
         {
             try
             {
-                // Lấy danh sách ca làm việc từ bảng EmployeeShift
                 string query = @"
                     SELECT s.ShiftID, e.Name AS EmployeeName, s.StartTime, 
                            s.EndTime, s.TotalAmount
@@ -103,15 +99,11 @@ namespace NetCafeManager.UserControls
 
                 DataTable dt = DatabaseHelper.ExecuteQuery(query);
                 if (dt == null) throw new Exception("Không thể tải dữ liệu từ cơ sở dữ liệu");
-
-                // Tính và cập nhật TotalAmount cho từng ca làm việc
                 foreach (DataRow row in dt.Rows)
                 {
                     int shiftID = Convert.ToInt32(row["ShiftID"]);
                     DateTime startTime = Convert.ToDateTime(row["StartTime"]);
                     DateTime? endTime = row["EndTime"] != DBNull.Value ? Convert.ToDateTime(row["EndTime"]) : (DateTime?)null;
-
-                    // Tính tổng tiền từ các hóa đơn liên quan đến ca làm việc (dựa trên thời gian)
                     string billQuery;
                     SqlParameter[] billParams;
                     decimal totalAmount = 0;
@@ -147,8 +139,6 @@ namespace NetCafeManager.UserControls
                     {
                         totalAmount = Convert.ToDecimal(billDt.Rows[0]["Total"]);
                     }
-
-                    // Cập nhật TotalAmount vào bảng EmployeeShift
                     string updateQuery = @"
                         UPDATE EmployeeShift
                         SET TotalAmount = @TotalAmount
@@ -159,8 +149,6 @@ namespace NetCafeManager.UserControls
                         new SqlParameter("@ShiftID", shiftID)
                     };
                     DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
-
-                    // Cập nhật giá trị TotalAmount trong DataTable
                     row["TotalAmount"] = totalAmount;
                 }
 
@@ -178,8 +166,6 @@ namespace NetCafeManager.UserControls
                 dgvWorkLog.Columns["StartTime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
 
                 dgvWorkLog.ClearSelection();
-
-                // Tính tổng tiền của tất cả các ca làm việc
                 decimal grandTotal = 0;
                 foreach (DataRow row in dt.Rows)
                 {

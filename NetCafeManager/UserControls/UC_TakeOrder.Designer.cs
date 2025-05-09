@@ -52,7 +52,6 @@
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             label12 = new Label();
-            label13 = new Label();
             gunaAreaDataset1 = new Guna.Charts.WinForms.GunaAreaDataset();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             ProductName = new DataGridViewTextBoxColumn();
@@ -118,17 +117,6 @@
             label12.Size = new Size(31, 21);
             label12.TabIndex = 71;
             label12.Text = "ID:";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label13.ForeColor = Color.FromArgb(19, 250, 168);
-            label13.Location = new Point(24, 446);
-            label13.Name = "label13";
-            label13.Size = new Size(66, 21);
-            label13.TabIndex = 74;
-            label13.Text = "label13";
             // 
             // gunaAreaDataset1
             // 
@@ -310,7 +298,6 @@
             Controls.Add(label3);
             Controls.Add(label4);
             Controls.Add(guna2DataGridView1);
-            Controls.Add(label13);
             Controls.Add(guna2Panel2);
             Controls.Add(guna2TextBox2);
             Controls.Add(label12);
@@ -330,7 +317,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private Label label12;
-        private Label label13;
         private Guna.Charts.WinForms.GunaAreaDataset gunaAreaDataset1;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         

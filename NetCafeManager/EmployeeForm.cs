@@ -16,7 +16,7 @@ namespace NetCafeManager
     {
         string ID;
         private DateTime formStartTime;
-        private int shiftID; // Lưu ShiftID của ca làm việc hiện tại
+        private int shiftID;
 
         public EmployeeForm(string ID)
         {
@@ -25,13 +25,12 @@ namespace NetCafeManager
             this.ID = ID;
             this.formStartTime = DateTime.Now;
 
-            // Tạo ca làm việc mới khi nhân viên đăng nhập
             StartShift();
 
             ShowUserControl(new UC_WorkLog());
         }
 
-        public int ShiftID => shiftID; // Thuộc tính để truy cập ShiftID từ các form khác nếu cần
+        public int ShiftID => shiftID;
 
         private void StartShift()
         {
@@ -133,7 +132,6 @@ namespace NetCafeManager
             DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // Kết thúc ca làm việc khi nhân viên đăng xuất
                 EndShift();
                 this.Close();
             }

@@ -102,6 +102,7 @@
             Name = "UC_MenuItem";
             RightToLeft = RightToLeft.No;
             Size = new Size(200, 300);
+            Load += UC_MenuItem_Load;
             ((System.ComponentModel.ISupportInitialize)ptbProductImage).EndInit();
             ResumeLayout(false);
             PerformLayout();

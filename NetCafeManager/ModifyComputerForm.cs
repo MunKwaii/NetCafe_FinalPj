@@ -35,7 +35,6 @@ namespace NetCafeManager
 
             try
             {
-                // Kiểm tra xem ComputerID đã tồn tại chưa
                 string checkQuery = "SELECT COUNT(*) FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] checkParams = new SqlParameter[]
                 {
@@ -49,7 +48,6 @@ namespace NetCafeManager
                     return;
                 }
 
-                // Thêm máy tính mới với trạng thái Idle
                 string insertQuery = @"
                     INSERT INTO Computer (ComputerID, UserID, StartTime, EndTime, Status)
                     VALUES (@ComputerID, NULL, NULL, NULL, 'Idle')";
@@ -80,7 +78,6 @@ namespace NetCafeManager
 
             try
             {
-                // Kiểm tra xem ComputerID có tồn tại không
                 string checkQuery = "SELECT UserID FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] checkParams = new SqlParameter[]
                 {
@@ -94,14 +91,12 @@ namespace NetCafeManager
                     return;
                 }
 
-                // Kiểm tra xem máy có đang được sử dụng không
                 if (dt.Rows[0]["UserID"] != DBNull.Value)
                 {
                     MessageBox.Show("Máy tính này đang được sử dụng! Vui lòng đăng xuất khách hàng trước khi xóa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Xóa máy tính
                 string deleteQuery = "DELETE FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] deleteParams = new SqlParameter[]
                 {
@@ -130,7 +125,6 @@ namespace NetCafeManager
 
             try
             {
-                // Kiểm tra xem ComputerID có tồn tại không
                 string checkQuery = "SELECT UserID, Status FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] checkParams = new SqlParameter[]
                 {
@@ -144,14 +138,12 @@ namespace NetCafeManager
                     return;
                 }
 
-                // Kiểm tra xem máy có đang được sử dụng không
                 if (dt.Rows[0]["UserID"] != DBNull.Value)
                 {
                     MessageBox.Show("Máy tính này đang được sử dụng! Vui lòng đăng xuất khách hàng trước khi bảo trì.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Toggle trạng thái bảo trì
                 string currentStatus = dt.Rows[0]["Status"].ToString();
                 string newStatus = (currentStatus == "Maintain") ? "Idle" : "Maintain";
 

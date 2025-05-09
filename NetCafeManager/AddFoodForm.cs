@@ -35,10 +35,8 @@ namespace NetCafeManager
                 {
                     try
                     {
-                        // Đọc ảnh từ file và hiển thị lên PictureBox
                         ptbProductImage.Image = Image.FromFile(openFileDialog.FileName);
 
-                        // Chuyển ảnh thành mảng byte để lưu vào cơ sở dữ liệu
                         using (MemoryStream ms = new MemoryStream())
                         {
                             ptbProductImage.Image.Save(ms, ptbProductImage.Image.RawFormat);

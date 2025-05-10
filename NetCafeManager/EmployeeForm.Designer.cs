@@ -82,10 +82,10 @@
             // 
             pnlMainContent.CustomizableEdges = customizableEdges1;
             pnlMainContent.Dock = DockStyle.Bottom;
-            pnlMainContent.Location = new Point(0, 138);
+            pnlMainContent.Location = new Point(0, 134);
             pnlMainContent.Name = "pnlMainContent";
             pnlMainContent.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pnlMainContent.Size = new Size(1466, 730);
+            pnlMainContent.Size = new Size(1466, 734);
             pnlMainContent.TabIndex = 11;
             // 
             // btnComputerStatus

@@ -30,6 +30,7 @@ namespace NetCafeManager.UserControls
             this.requireUserID = requireUserID;
             this.Load += UC_TakeOrder_Load;
             guna2DataGridView1.CellContentClick += Guna2DataGridView1_CellContentClick;
+            ApplyCustomTheme();
         }
 
         private void Guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -98,14 +99,14 @@ namespace NetCafeManager.UserControls
         private void InitializeDataGridView()
         {
             guna2DataGridView1.Columns.Clear();
-            guna2DataGridView1.Columns.Add("ProductName", "Tên món");
-            guna2DataGridView1.Columns.Add("Price", "Đơn giá");
-            guna2DataGridView1.Columns.Add("Quantity", "Số lượng");
-            guna2DataGridView1.Columns.Add("Total", "Thành tiền");
+            guna2DataGridView1.Columns.Add("ProductName", "Product Name");
+            guna2DataGridView1.Columns.Add("Price", "Price");
+            guna2DataGridView1.Columns.Add("Quantity", "Quantity");
+            guna2DataGridView1.Columns.Add("Total", "Total");
             DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
             btnDelete.Name = "Delete";
-            btnDelete.HeaderText = "Thao tác";
-            btnDelete.Text = "Xóa";
+            btnDelete.HeaderText = "Action";
+            btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
             btnDelete.Width = 80;
             btnDelete.DefaultCellStyle.BackColor = Color.FromArgb(255, 80, 80);
@@ -190,6 +191,44 @@ namespace NetCafeManager.UserControls
 
             guna2DataGridView1.Rows.Clear();
             label4.Text = "0đ";
+        }
+         private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+            guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            guna2DataGridView1.EnableHeadersVisualStyles = false;
+
+
+            // Header
+            guna2DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
+            guna2DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+            guna2DataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            guna2DataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            guna2DataGridView1.ColumnHeadersHeight = 40;
+
+            // Dòng thường
+            guna2DataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
+            guna2DataGridView1.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+            guna2DataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            guna2DataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
+            guna2DataGridView1.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+            guna2DataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Dòng xen kẽ
+            guna2DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+
+            // DGV
+            guna2DataGridView1.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+            guna2DataGridView1.BorderStyle = BorderStyle.None;
+            guna2DataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            guna2DataGridView1.RowTemplate.Height = 35;
+         
+
+            guna2DataGridView1.ReadOnly = true;
+            guna2DataGridView1.AllowUserToAddRows = false;
+            guna2DataGridView1.AllowUserToResizeRows = false;
+            guna2DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            guna2DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

@@ -68,7 +68,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("SAIBA-45", 23.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(98, 39);
+            label1.Location = new Point(98, 30);
             label1.Name = "label1";
             label1.Size = new Size(246, 32);
             label1.TabIndex = 109;

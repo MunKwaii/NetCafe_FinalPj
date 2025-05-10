@@ -157,22 +157,22 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("SAIBA-45", 27.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
             label6.Location = new Point(422, 47);
             label6.Name = "label6";
-            label6.Size = new Size(176, 42);
+            label6.Size = new Size(205, 37);
             label6.TabIndex = 27;
             label6.Text = "Revenue";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Font = new Font("SAIBA-45", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(19, 250, 168);
             label8.Location = new Point(263, 10);
             label8.Name = "label8";
-            label8.Size = new Size(167, 42);
+            label8.Size = new Size(217, 37);
             label8.TabIndex = 27;
             label8.Text = "Monthly ";
             // 
@@ -209,7 +209,7 @@
             btnRefresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnRefresh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnRefresh.FillColor = Color.FromArgb(19, 250, 168);
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = Color.Black;
             btnRefresh.Location = new Point(143, 645);
             btnRefresh.Name = "btnRefresh";
@@ -311,11 +311,11 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            label9.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.White;
             label9.Location = new Point(137, 20);
             label9.Name = "label9";
-            label9.Size = new Size(142, 31);
+            label9.Size = new Size(171, 26);
             label9.TabIndex = 27;
             label9.Text = "Feedback";
             // 
@@ -355,7 +355,7 @@
             BrowseBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             BrowseBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             BrowseBtn.FillColor = Color.FromArgb(128, 255, 255);
-            BrowseBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BrowseBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold);
             BrowseBtn.ForeColor = Color.Black;
             BrowseBtn.Location = new Point(789, 189);
             BrowseBtn.Name = "BrowseBtn";
@@ -448,7 +448,7 @@
             AddFoodBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             AddFoodBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             AddFoodBtn.FillColor = Color.FromArgb(19, 250, 168);
-            AddFoodBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddFoodBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold);
             AddFoodBtn.ForeColor = Color.Black;
             AddFoodBtn.Location = new Point(537, 246);
             AddFoodBtn.Name = "AddFoodBtn";
@@ -480,7 +480,7 @@
             DeleteBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             DeleteBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             DeleteBtn.FillColor = Color.FromArgb(212, 102, 94);
-            DeleteBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DeleteBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold);
             DeleteBtn.ForeColor = Color.Black;
             DeleteBtn.Location = new Point(290, 246);
             DeleteBtn.Name = "DeleteBtn";
@@ -498,7 +498,7 @@
             SaveBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             SaveBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SaveBtn.FillColor = Color.FromArgb(19, 250, 168);
-            SaveBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold);
             SaveBtn.ForeColor = Color.Black;
             SaveBtn.Location = new Point(47, 246);
             SaveBtn.Name = "SaveBtn";

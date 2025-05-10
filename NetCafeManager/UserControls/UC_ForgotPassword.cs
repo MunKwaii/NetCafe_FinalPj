@@ -107,5 +107,6 @@ namespace NetCafeManager.UserControls
         {
             this.FindForm()?.Close(); 
         }
+
     }
 }

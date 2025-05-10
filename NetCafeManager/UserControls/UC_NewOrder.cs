@@ -17,6 +17,7 @@ namespace NetCafeManager.UserControls
         {
             InitializeComponent();
             LoadOrders();
+            ApplyCustomTheme();
         }
 
         private void LoadOrders()
@@ -33,12 +34,12 @@ namespace NetCafeManager.UserControls
                 dgvNewOrder.DataSource = dt;
                 dgvNewOrder.ColumnHeadersHeight = 40;
 
-                dgvNewOrder.Columns["OrderID"].HeaderText = "Mã đơn hàng";
-                dgvNewOrder.Columns["CustomerID"].HeaderText = "ID Khách hàng";
-                dgvNewOrder.Columns["ServiceName"].HeaderText = "Tên món";
-                dgvNewOrder.Columns["Quantity"].HeaderText = "Số lượng";
-                dgvNewOrder.Columns["Total"].HeaderText = "Thành tiền";
-                dgvNewOrder.Columns["OrderDate"].HeaderText = "Thời gian đặt";
+                dgvNewOrder.Columns["OrderID"].HeaderText = "Order ID";
+                dgvNewOrder.Columns["CustomerID"].HeaderText = "Customer ID";
+                dgvNewOrder.Columns["ServiceName"].HeaderText = "Service Name";
+                dgvNewOrder.Columns["Quantity"].HeaderText = "Quantity";
+                dgvNewOrder.Columns["Total"].HeaderText = "Total";
+                dgvNewOrder.Columns["OrderDate"].HeaderText = "OrderDate";
 
                 dgvNewOrder.Columns["Total"].DefaultCellStyle.Format = "N0";
                 dgvNewOrder.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -131,6 +132,44 @@ namespace NetCafeManager.UserControls
 
             MessageBox.Show("Đơn hàng đã được xác nhận!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadOrders();
+        }
+        private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+            dgvNewOrder.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            dgvNewOrder.EnableHeadersVisualStyles = false;
+
+
+            // Header
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvNewOrder.ColumnHeadersHeight = 40;
+
+            // Dòng thường
+            dgvNewOrder.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
+            dgvNewOrder.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+            dgvNewOrder.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvNewOrder.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
+            dgvNewOrder.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+            dgvNewOrder.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Dòng xen kẽ
+            dgvNewOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+
+            // DGV
+            dgvNewOrder.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+            dgvNewOrder.BorderStyle = BorderStyle.None;
+            dgvNewOrder.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvNewOrder.RowTemplate.Height = 35;
+
+
+            dgvNewOrder.ReadOnly = true;
+            dgvNewOrder.AllowUserToAddRows = false;
+            dgvNewOrder.AllowUserToResizeRows = false;
+            dgvNewOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvNewOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

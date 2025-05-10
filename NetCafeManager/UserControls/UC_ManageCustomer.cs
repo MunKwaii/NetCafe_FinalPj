@@ -17,6 +17,8 @@ namespace NetCafeManager.UserControls
         {
             InitializeComponent();
             LoadCustomerData();
+            ApplyCustomTheme();
+
         }
         private void LoadCustomerData(string searchKeyword = "")
         {
@@ -234,6 +236,45 @@ namespace NetCafeManager.UserControls
         {
             string searchKeyword = SearchTextBox.Text.Trim();
             LoadCustomerData(searchKeyword);
+        }
+
+        private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+            dgvCustomer.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            dgvCustomer.EnableHeadersVisualStyles = false;
+
+
+            // Header
+            dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
+            dgvCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+            dgvCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dgvCustomer.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCustomer.ColumnHeadersHeight = 40;
+
+            // Dòng thường
+            dgvCustomer.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
+            dgvCustomer.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+            dgvCustomer.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvCustomer.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
+            dgvCustomer.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+            dgvCustomer.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Dòng xen kẽ
+            dgvCustomer.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+
+            // DGV
+            dgvCustomer.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+            dgvCustomer.BorderStyle = BorderStyle.None;
+            dgvCustomer.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCustomer.RowTemplate.Height = 35;
+         
+
+            dgvCustomer.ReadOnly = true;
+            dgvCustomer.AllowUserToAddRows = false;
+            dgvCustomer.AllowUserToResizeRows = false;
+            dgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

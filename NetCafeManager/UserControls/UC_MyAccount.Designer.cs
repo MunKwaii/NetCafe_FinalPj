@@ -145,20 +145,20 @@
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.FromArgb(19, 250, 168);
-            label9.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            label9.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
             label9.Location = new Point(223, 87);
             label9.Name = "label9";
-            label9.Size = new Size(122, 31);
+            label9.Size = new Size(138, 26);
             label9.TabIndex = 40;
-            label9.Text = " Deposit";
+            label9.Text = "Profile";
             // 
             // guna2PictureBox2
             // 
             guna2PictureBox2.CustomizableEdges = customizableEdges1;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
-            guna2PictureBox2.Location = new Point(55, 554);
+            guna2PictureBox2.Location = new Point(55, 451);
             guna2PictureBox2.Name = "guna2PictureBox2";
             guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2PictureBox2.Size = new Size(70, 95);
@@ -171,7 +171,7 @@
             BalanceLb.AutoSize = true;
             BalanceLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             BalanceLb.ForeColor = Color.FromArgb(19, 250, 168);
-            BalanceLb.Location = new Point(268, 309);
+            BalanceLb.Location = new Point(268, 356);
             BalanceLb.Name = "BalanceLb";
             BalanceLb.Size = new Size(57, 21);
             BalanceLb.TabIndex = 35;
@@ -182,7 +182,7 @@
             TimeleftLb.AutoSize = true;
             TimeleftLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             TimeleftLb.ForeColor = Color.FromArgb(19, 250, 168);
-            TimeleftLb.Location = new Point(268, 256);
+            TimeleftLb.Location = new Point(268, 303);
             TimeleftLb.Name = "TimeleftLb";
             TimeleftLb.Size = new Size(57, 21);
             TimeleftLb.TabIndex = 34;
@@ -193,7 +193,7 @@
             memberLb.AutoSize = true;
             memberLb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             memberLb.ForeColor = Color.FromArgb(19, 250, 168);
-            memberLb.Location = new Point(268, 203);
+            memberLb.Location = new Point(268, 250);
             memberLb.Name = "memberLb";
             memberLb.Size = new Size(57, 21);
             memberLb.TabIndex = 33;
@@ -204,7 +204,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(121, 309);
+            label1.Location = new Point(121, 356);
             label1.Name = "label1";
             label1.Size = new Size(74, 21);
             label1.TabIndex = 30;
@@ -215,7 +215,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(121, 256);
+            label3.Location = new Point(121, 303);
             label3.Name = "label3";
             label3.Size = new Size(82, 21);
             label3.TabIndex = 29;
@@ -226,7 +226,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(121, 203);
+            label2.Location = new Point(121, 250);
             label2.Name = "label2";
             label2.Size = new Size(79, 21);
             label2.TabIndex = 28;
@@ -237,7 +237,7 @@
             guna2PictureBox1.CustomizableEdges = customizableEdges3;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(337, 554);
+            guna2PictureBox1.Location = new Point(337, 451);
             guna2PictureBox1.Name = "guna2PictureBox1";
             guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2PictureBox1.Size = new Size(71, 95);
@@ -265,7 +265,7 @@
             guna2PictureBox4.FillColor = Color.FromArgb(20, 20, 20);
             guna2PictureBox4.Image = (Image)resources.GetObject("guna2PictureBox4.Image");
             guna2PictureBox4.ImageRotate = 0F;
-            guna2PictureBox4.Location = new Point(93, 554);
+            guna2PictureBox4.Location = new Point(93, 451);
             guna2PictureBox4.Name = "guna2PictureBox4";
             guna2PictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2PictureBox4.Size = new Size(278, 95);
@@ -293,7 +293,7 @@
             guna2PictureBox6.FillColor = Color.FromArgb(40, 40, 40);
             guna2PictureBox6.Image = (Image)resources.GetObject("guna2PictureBox6.Image");
             guna2PictureBox6.ImageRotate = 0F;
-            guna2PictureBox6.Location = new Point(-182, 184);
+            guna2PictureBox6.Location = new Point(-182, 201);
             guna2PictureBox6.Name = "guna2PictureBox6";
             guna2PictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2PictureBox6.Size = new Size(231, 321);
@@ -319,7 +319,7 @@
             // 
             guna2Panel6.BackColor = Color.FromArgb(19, 250, 168);
             guna2Panel6.CustomizableEdges = customizableEdges15;
-            guna2Panel6.Location = new Point(497, 87);
+            guna2Panel6.Location = new Point(468, 87);
             guna2Panel6.Name = "guna2Panel6";
             guna2Panel6.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2Panel6.Size = new Size(4, 600);
@@ -329,7 +329,7 @@
             // 
             guna2Panel1.BackColor = Color.FromArgb(19, 250, 168);
             guna2Panel1.CustomizableEdges = customizableEdges17;
-            guna2Panel1.Location = new Point(992, 87);
+            guna2Panel1.Location = new Point(964, 87);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2Panel1.Size = new Size(4, 600);
@@ -357,13 +357,13 @@
             txtFeedback.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtFeedback.Font = new Font("Segoe UI", 9F);
             txtFeedback.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtFeedback.Location = new Point(1033, 236);
+            txtFeedback.Location = new Point(996, 236);
             txtFeedback.MaxLength = 300;
             txtFeedback.Name = "txtFeedback";
             txtFeedback.PlaceholderText = "";
             txtFeedback.SelectedText = "";
             txtFeedback.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            txtFeedback.Size = new Size(392, 41);
+            txtFeedback.Size = new Size(444, 41);
             txtFeedback.TabIndex = 119;
             // 
             // btnSubmit
@@ -374,9 +374,9 @@
             btnSubmit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSubmit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSubmit.FillColor = Color.FromArgb(19, 250, 168);
-            btnSubmit.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSubmit.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSubmit.ForeColor = Color.Black;
-            btnSubmit.Location = new Point(1151, 309);
+            btnSubmit.Location = new Point(1140, 304);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.ShadowDecoration.CustomizableEdges = customizableEdges22;
             btnSubmit.Size = new Size(171, 44);
@@ -407,10 +407,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvTransaction.DefaultCellStyle = dataGridViewCellStyle3;
             dgvTransaction.GridColor = Color.FromArgb(231, 229, 255);
-            dgvTransaction.Location = new Point(1033, 476);
+            dgvTransaction.Location = new Point(996, 454);
             dgvTransaction.Name = "dgvTransaction";
             dgvTransaction.RowHeadersVisible = false;
-            dgvTransaction.Size = new Size(392, 138);
+            dgvTransaction.Size = new Size(444, 179);
             dgvTransaction.TabIndex = 123;
             dgvTransaction.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvTransaction.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -440,7 +440,7 @@
             guna2PictureBox9.FillColor = Color.FromArgb(20, 20, 20);
             guna2PictureBox9.Image = (Image)resources.GetObject("guna2PictureBox9.Image");
             guna2PictureBox9.ImageRotate = 0F;
-            guna2PictureBox9.Location = new Point(1019, 369);
+            guna2PictureBox9.Location = new Point(1023, 353);
             guna2PictureBox9.Name = "guna2PictureBox9";
             guna2PictureBox9.ShadowDecoration.CustomizableEdges = customizableEdges24;
             guna2PictureBox9.Size = new Size(406, 101);
@@ -454,7 +454,7 @@
             guna2PictureBox8.FillColor = Color.FromArgb(20, 20, 20);
             guna2PictureBox8.Image = (Image)resources.GetObject("guna2PictureBox8.Image");
             guna2PictureBox8.ImageRotate = 0F;
-            guna2PictureBox8.Location = new Point(548, 3);
+            guna2PictureBox8.Location = new Point(518, 3);
             guna2PictureBox8.Name = "guna2PictureBox8";
             guna2PictureBox8.ShadowDecoration.CustomizableEdges = customizableEdges26;
             guna2PictureBox8.Size = new Size(406, 118);
@@ -466,11 +466,11 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.FromArgb(19, 250, 168);
-            label8.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            label8.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Black;
             label8.Location = new Point(1201, 87);
             label8.Name = "label8";
-            label8.Size = new Size(142, 31);
+            label8.Size = new Size(171, 26);
             label8.TabIndex = 110;
             label8.Text = "Feedback";
             // 
@@ -478,11 +478,11 @@
             // 
             label11.AutoSize = true;
             label11.BackColor = Color.FromArgb(20, 20, 20);
-            label11.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            label11.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(1114, 404);
+            label11.Location = new Point(1118, 388);
             label11.Name = "label11";
-            label11.Size = new Size(222, 31);
+            label11.Size = new Size(218, 26);
             label11.TabIndex = 122;
             label11.Text = "TRANSACTION";
             // 
@@ -509,7 +509,7 @@
             pnRight.Controls.Add(guna2Panel8);
             pnRight.Controls.Add(guna2DataGridView2);
             pnRight.CustomizableEdges = customizableEdges43;
-            pnRight.Location = new Point(533, 100);
+            pnRight.Location = new Point(505, 99);
             pnRight.Name = "pnRight";
             pnRight.ShadowDecoration.CustomizableEdges = customizableEdges44;
             pnRight.Size = new Size(433, 579);
@@ -694,11 +694,11 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            label12.Font = new Font("SAIBA-45", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.White;
             label12.Location = new Point(44, 6);
             label12.Name = "label12";
-            label12.Size = new Size(283, 31);
+            label12.Size = new Size(355, 26);
             label12.TabIndex = 35;
             label12.Text = "Payment Information";
             // 
@@ -783,9 +783,9 @@
             btnRefresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnRefresh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnRefresh.FillColor = Color.FromArgb(19, 250, 168);
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = Color.Black;
-            btnRefresh.Location = new Point(1151, 635);
+            btnRefresh.Location = new Point(1140, 651);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.ShadowDecoration.CustomizableEdges = customizableEdges46;
             btnRefresh.Size = new Size(171, 44);

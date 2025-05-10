@@ -199,7 +199,7 @@
             AddButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             AddButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             AddButton.FillColor = Color.FromArgb(19, 250, 168);
-            AddButton.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddButton.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AddButton.ForeColor = Color.Black;
             AddButton.Location = new Point(206, 447);
             AddButton.Name = "AddButton";

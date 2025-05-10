@@ -22,6 +22,7 @@ namespace NetCafeManager.UserControls
             dgvWorkLog.CellFormatting += DgvWorkLog_CellFormatting;
             LoadShiftInfo();
             LoadWorkLog();
+            ApplyCustomTheme();
         }
 
         private void DgvWorkLog_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -155,11 +156,11 @@ namespace NetCafeManager.UserControls
                 dgvWorkLog.DataSource = dt;
                 dgvWorkLog.ColumnHeadersHeight = 40;
 
-                dgvWorkLog.Columns["ShiftID"].HeaderText = "Mã ca làm việc";
-                dgvWorkLog.Columns["EmployeeName"].HeaderText = "Tên nhân viên";
-                dgvWorkLog.Columns["StartTime"].HeaderText = "Thời gian bắt đầu";
-                dgvWorkLog.Columns["EndTime"].HeaderText = "Thời gian kết thúc";
-                dgvWorkLog.Columns["TotalAmount"].HeaderText = "Tổng tiền";
+                dgvWorkLog.Columns["ShiftID"].HeaderText = "Shift ID";
+                dgvWorkLog.Columns["EmployeeName"].HeaderText = "Employee Name";
+                dgvWorkLog.Columns["StartTime"].HeaderText = "Start Time";
+                dgvWorkLog.Columns["EndTime"].HeaderText = "End Time";
+                dgvWorkLog.Columns["TotalAmount"].HeaderText = "Total Amount";
 
                 dgvWorkLog.Columns["TotalAmount"].DefaultCellStyle.Format = "N0";
                 dgvWorkLog.Columns["TotalAmount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -238,6 +239,44 @@ namespace NetCafeManager.UserControls
                     }
                 }
             }
+        }
+        private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+            dgvWorkLog.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            dgvWorkLog.EnableHeadersVisualStyles = false;
+
+
+            // Header
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvWorkLog.ColumnHeadersHeight = 40;
+
+            // Dòng thường
+            dgvWorkLog.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
+            dgvWorkLog.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+            dgvWorkLog.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvWorkLog.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
+            dgvWorkLog.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+            dgvWorkLog.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Dòng xen kẽ
+            dgvWorkLog.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+
+            // DGV
+            dgvWorkLog.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+            dgvWorkLog.BorderStyle = BorderStyle.None;
+            dgvWorkLog.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvWorkLog.RowTemplate.Height = 35;
+
+
+            dgvWorkLog.ReadOnly = true;
+            dgvWorkLog.AllowUserToAddRows = false;
+            dgvWorkLog.AllowUserToResizeRows = false;
+            dgvWorkLog.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvWorkLog.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

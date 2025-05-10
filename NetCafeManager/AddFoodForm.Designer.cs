@@ -83,22 +83,22 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Font = new Font("SAIBA-45", 20.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.White;
             label9.Location = new Point(343, 62);
             label9.Name = "label9";
-            label9.Size = new Size(84, 31);
+            label9.Size = new Size(113, 26);
             label9.TabIndex = 105;
             label9.Text = "Detail";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 35.9999962F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Font = new Font("SAIBA-45", 35.9999962F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(19, 250, 168);
             label8.Location = new Point(157, 9);
             label8.Name = "label8";
-            label8.Size = new Size(190, 55);
+            label8.Size = new Size(255, 48);
             label8.TabIndex = 106;
             label8.Text = "Product";
             // 
@@ -217,7 +217,7 @@
             AddImageBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             AddImageBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             AddImageBtn.FillColor = Color.FromArgb(128, 255, 255);
-            AddImageBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddImageBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddImageBtn.ForeColor = Color.Black;
             AddImageBtn.Location = new Point(431, 271);
             AddImageBtn.Name = "AddImageBtn";
@@ -235,7 +235,7 @@
             btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSave.FillColor = Color.FromArgb(19, 250, 168);
-            btnSave.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.Black;
             btnSave.Location = new Point(65, 349);
             btnSave.Name = "btnSave";

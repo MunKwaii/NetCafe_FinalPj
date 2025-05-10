@@ -320,7 +320,7 @@
             guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button4.FillColor = Color.FromArgb(19, 250, 168);
-            guna2Button4.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2Button4.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button4.ForeColor = Color.Black;
             guna2Button4.Location = new Point(201, 396);
             guna2Button4.Name = "guna2Button4";
@@ -587,11 +587,11 @@
             // 
             // dgvCustomer
             // 
-            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(247, 188, 208);
             dgvCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvCustomer.BackgroundColor = Color.FromArgb(20, 20, 20);
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(232, 30, 99);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
@@ -601,40 +601,41 @@
             dgvCustomer.ColumnHeadersHeight = 4;
             dgvCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(249, 210, 223);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(239, 105, 151);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvCustomer.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvCustomer.GridColor = Color.FromArgb(231, 229, 255);
+            dgvCustomer.GridColor = Color.FromArgb(245, 180, 203);
             dgvCustomer.Location = new Point(23, 132);
             dgvCustomer.Name = "dgvCustomer";
             dgvCustomer.RowHeadersVisible = false;
             dgvCustomer.Size = new Size(831, 559);
             dgvCustomer.TabIndex = 39;
-            dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvCustomer.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Pink;
+            dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(247, 188, 208);
             dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
             dgvCustomer.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
             dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
             dgvCustomer.ThemeStyle.BackColor = Color.FromArgb(20, 20, 20);
-            dgvCustomer.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            dgvCustomer.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvCustomer.ThemeStyle.GridColor = Color.FromArgb(245, 180, 203);
+            dgvCustomer.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(232, 30, 99);
             dgvCustomer.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvCustomer.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvCustomer.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvCustomer.ThemeStyle.HeaderStyle.Height = 4;
             dgvCustomer.ThemeStyle.ReadOnly = false;
-            dgvCustomer.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgvCustomer.ThemeStyle.RowsStyle.BackColor = Color.FromArgb(249, 210, 223);
             dgvCustomer.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvCustomer.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            dgvCustomer.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgvCustomer.ThemeStyle.RowsStyle.ForeColor = Color.Black;
             dgvCustomer.ThemeStyle.RowsStyle.Height = 25;
-            dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dgvCustomer.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(239, 105, 151);
+            dgvCustomer.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black;
             dgvCustomer.SelectionChanged += dgvCustomer_SelectionChanged;
             // 
             // DeleteBtn
@@ -645,7 +646,7 @@
             DeleteBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             DeleteBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             DeleteBtn.FillColor = Color.FromArgb(212, 102, 94);
-            DeleteBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DeleteBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DeleteBtn.ForeColor = Color.Black;
             DeleteBtn.Location = new Point(1173, 39);
             DeleteBtn.Name = "DeleteBtn";
@@ -663,7 +664,7 @@
             btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnAdd.FillColor = Color.White;
-            btnAdd.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdd.ForeColor = Color.Black;
             btnAdd.Location = new Point(877, 39);
             btnAdd.Name = "btnAdd";
@@ -681,7 +682,7 @@
             guna2Panel7.Location = new Point(23, 78);
             guna2Panel7.Name = "guna2Panel7";
             guna2Panel7.ShadowDecoration.CustomizableEdges = customizableEdges50;
-            guna2Panel7.Size = new Size(710, 10);
+            guna2Panel7.Size = new Size(710, 5);
             guna2Panel7.TabIndex = 47;
             // 
             // SearchTextBox

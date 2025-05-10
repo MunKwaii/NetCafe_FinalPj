@@ -34,13 +34,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             lblStartDate = new Label();
             label1 = new Label();
             lblStartTime = new Label();
@@ -63,26 +60,6 @@
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2Panel2.Size = new Size(249, 5);
             guna2Panel2.TabIndex = 34;
-            // 
-            // guna2ComboBox1
-            // 
-            guna2ComboBox1.BackColor = Color.Transparent;
-            guna2ComboBox1.BorderColor = Color.FromArgb(20, 20, 20);
-            guna2ComboBox1.BorderThickness = 0;
-            guna2ComboBox1.CustomizableEdges = customizableEdges3;
-            guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            guna2ComboBox1.FillColor = Color.FromArgb(20, 20, 20);
-            guna2ComboBox1.FocusedColor = Color.FromArgb(94, 148, 255);
-            guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2ComboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            guna2ComboBox1.ForeColor = Color.FromArgb(68, 88, 112);
-            guna2ComboBox1.ItemHeight = 30;
-            guna2ComboBox1.Location = new Point(607, 20);
-            guna2ComboBox1.Name = "guna2ComboBox1";
-            guna2ComboBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2ComboBox1.Size = new Size(249, 36);
-            guna2ComboBox1.TabIndex = 33;
             // 
             // lblStartDate
             // 
@@ -119,7 +96,7 @@
             // 
             // btnViewDetails
             // 
-            btnViewDetails.CustomizableEdges = customizableEdges5;
+            btnViewDetails.CustomizableEdges = customizableEdges3;
             btnViewDetails.DisabledState.BorderColor = Color.DarkGray;
             btnViewDetails.DisabledState.CustomBorderColor = Color.DarkGray;
             btnViewDetails.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -129,7 +106,7 @@
             btnViewDetails.ForeColor = Color.Black;
             btnViewDetails.Location = new Point(1007, 20);
             btnViewDetails.Name = "btnViewDetails";
-            btnViewDetails.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnViewDetails.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnViewDetails.Size = new Size(171, 36);
             btnViewDetails.TabIndex = 38;
             btnViewDetails.Text = "View Details";
@@ -137,7 +114,7 @@
             // 
             // btnShiftSummary
             // 
-            btnShiftSummary.CustomizableEdges = customizableEdges7;
+            btnShiftSummary.CustomizableEdges = customizableEdges5;
             btnShiftSummary.DisabledState.BorderColor = Color.DarkGray;
             btnShiftSummary.DisabledState.CustomBorderColor = Color.DarkGray;
             btnShiftSummary.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -147,7 +124,7 @@
             btnShiftSummary.ForeColor = Color.Black;
             btnShiftSummary.Location = new Point(1257, 20);
             btnShiftSummary.Name = "btnShiftSummary";
-            btnShiftSummary.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnShiftSummary.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnShiftSummary.Size = new Size(171, 36);
             btnShiftSummary.TabIndex = 39;
             btnShiftSummary.Text = "Shift Summary";
@@ -251,7 +228,6 @@
             Controls.Add(label1);
             Controls.Add(lblStartDate);
             Controls.Add(guna2Panel2);
-            Controls.Add(guna2ComboBox1);
             Name = "UC_WorkLog";
             Size = new Size(1466, 735);
             ((System.ComponentModel.ISupportInitialize)dgvWorkLog).EndInit();
@@ -262,7 +238,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Label lblStartDate;
         private Label label1;
         private Label lblStartTime;

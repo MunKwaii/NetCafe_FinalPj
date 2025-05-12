@@ -37,7 +37,7 @@ namespace NetCafeManager
 
                 if (dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Customer information not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
                 }
@@ -49,7 +49,7 @@ namespace NetCafeManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải thông tin khách hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading customer information: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
         }
@@ -69,7 +69,7 @@ namespace NetCafeManager
             {
                 if (!decimal.TryParse(txtDepositAmount.Text, out decimal depositAmount) || depositAmount <= 0)
                 {
-                    MessageBox.Show("Vui lòng nhập số tiền hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please enter a valid amount!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -82,7 +82,7 @@ namespace NetCafeManager
 
                 if (balanceDt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Customer information not found!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -97,14 +97,14 @@ namespace NetCafeManager
                 };
                 DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
 
-                MessageBox.Show($"Nạp tiền thành công! Số dư mới: {newBalance:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Deposit successful! New balance: {newBalance:N0}đ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 balance = newBalance;
                 LoadCustomerInfo();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi nạp tiền: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error during deposit: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

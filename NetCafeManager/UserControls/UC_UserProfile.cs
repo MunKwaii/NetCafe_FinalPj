@@ -57,7 +57,7 @@ namespace NetCafeManager.UserControls
                     {
                         UsernameLb.Text = employeeDt.Rows[0]["Name"].ToString();
                         UserIDLB.Text = ID;
-                        ComputerIDLb.Text = "Nhân viên"; 
+                        ComputerIDLb.Text = "Employee"; 
                     }
                     else
                     {
@@ -74,24 +74,24 @@ namespace NetCafeManager.UserControls
                         {
                             UsernameLb.Text = managerDt.Rows[0]["Name"].ToString();
                             UserIDLB.Text = ID;
-                            ComputerIDLb.Text = "Quản lý"; 
+                            ComputerIDLb.Text = "Manager"; 
                         }
                         else
                         {
-                            MessageBox.Show("Không tìm thấy thông tin người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            UsernameLb.Text = "Không xác định";
+                            MessageBox.Show("User information not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsernameLb.Text = "Unknown";
                             UserIDLB.Text = ID;
-                            ComputerIDLb.Text = "Không xác định";
+                            ComputerIDLb.Text = "Unknown";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải thông tin người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                UsernameLb.Text = "Lỗi tải dữ liệu";
+                MessageBox.Show($"Error loading user information: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UsernameLb.Text = "Data loading error";
                 UserIDLB.Text = ID;
-                ComputerIDLb.Text = "Lỗi tải dữ liệu";
+                ComputerIDLb.Text = "Data loading error";
             }
         }
     }

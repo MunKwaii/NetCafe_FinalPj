@@ -28,7 +28,7 @@ namespace NetCafeManager
 
             if (string.IsNullOrEmpty(computerID))
             {
-                MessageBox.Show("Không xác định được máy tính để đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unable to identify the computer for login!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -62,7 +62,7 @@ namespace NetCafeManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi bắt đầu phiên làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error starting the session: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -83,7 +83,7 @@ namespace NetCafeManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi kết thúc phiên làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error ending the session: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

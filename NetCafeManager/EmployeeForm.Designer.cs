@@ -315,7 +315,6 @@
             pnlProfileContent.ShadowDecoration.CustomizableEdges = customizableEdges28;
             pnlProfileContent.Size = new Size(300, 250);
             pnlProfileContent.TabIndex = 126;
-            pnlProfileContent.Paint += pnlProfileContent_Paint;
             // 
             // EmployeeForm
             // 

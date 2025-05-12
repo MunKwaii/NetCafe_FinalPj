@@ -47,14 +47,10 @@ namespace NetCafeManager.UserControls
                 dgvNewOrder.Columns["OrderDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
                 dgvNewOrder.ClearSelection();
 
-                if (dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("Hiện tại không có đơn hàng nào đang chờ xử lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải danh sách đơn hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading order list: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -62,7 +58,7 @@ namespace NetCafeManager.UserControls
         {
             if (dgvNewOrder.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một đơn hàng để hủy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select an order to cancel!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -76,12 +72,12 @@ namespace NetCafeManager.UserControls
             int rowsAffected = DatabaseHelper.ExecuteNonQuery(updateQuery, parameters);
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Đơn hàng đã được hủy!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Order has been cancelled!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadOrders();
             }
             else
             {
-                MessageBox.Show("Không thể hủy đơn hàng. Vui lòng thử lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to cancel the order. Please try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -89,7 +85,7 @@ namespace NetCafeManager.UserControls
         {
             if (dgvNewOrder.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một đơn hàng để xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select an order to confirm!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -105,14 +101,14 @@ namespace NetCafeManager.UserControls
 
             if (balanceDt.Rows.Count == 0)
             {
-                MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Customer information not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             decimal currentBalance = Convert.ToDecimal(balanceDt.Rows[0]["Balance"]);
             if (currentBalance < total)
             {
-                MessageBox.Show("Số dư của khách hàng không đủ để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Customer's balance is not enough to pay!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             decimal newBalance = currentBalance - total;
@@ -130,36 +126,34 @@ namespace NetCafeManager.UserControls
             };
             DatabaseHelper.ExecuteNonQuery(confirmQuery, confirmParams);
 
-            MessageBox.Show("Đơn hàng đã được xác nhận!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Order has been confirmed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadOrders();
         }
         private void ApplyCustomTheme()
         {
-            // Set DataGridView  Theme
             dgvNewOrder.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             dgvNewOrder.EnableHeadersVisualStyles = false;
 
-
             // Header
-            dgvNewOrder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
-            dgvNewOrder.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
             dgvNewOrder.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
             dgvNewOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvNewOrder.ColumnHeadersHeight = 40;
 
-            // Dòng thường
-            dgvNewOrder.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
-            dgvNewOrder.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+            // Normal line
+            dgvNewOrder.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            dgvNewOrder.DefaultCellStyle.ForeColor = Color.White; 
             dgvNewOrder.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-            dgvNewOrder.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
-            dgvNewOrder.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+            dgvNewOrder.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+            dgvNewOrder.DefaultCellStyle.SelectionForeColor = Color.White; 
             dgvNewOrder.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Dòng xen kẽ
-            dgvNewOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+            // Next Line
+            dgvNewOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
 
             // DGV
-            dgvNewOrder.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+            dgvNewOrder.BackgroundColor = Color.FromArgb(20, 20, 20); 
             dgvNewOrder.BorderStyle = BorderStyle.None;
             dgvNewOrder.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvNewOrder.RowTemplate.Height = 35;

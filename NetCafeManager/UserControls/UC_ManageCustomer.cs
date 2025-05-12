@@ -246,25 +246,25 @@ namespace NetCafeManager.UserControls
 
 
             // Header
-            dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
-            dgvCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+            dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+            dgvCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
             dgvCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
             dgvCustomer.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCustomer.ColumnHeadersHeight = 40;
 
-            // Dòng thường
-            dgvCustomer.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
-            dgvCustomer.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+            // Normal line
+            dgvCustomer.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            dgvCustomer.DefaultCellStyle.ForeColor = Color.White; 
             dgvCustomer.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-            dgvCustomer.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
-            dgvCustomer.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+            dgvCustomer.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+            dgvCustomer.DefaultCellStyle.SelectionForeColor = Color.White; 
             dgvCustomer.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Dòng xen kẽ
-            dgvCustomer.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+            // Next line
+            dgvCustomer.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
 
             // DGV
-            dgvCustomer.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+            dgvCustomer.BackgroundColor = Color.FromArgb(20, 20, 20); 
             dgvCustomer.BorderStyle = BorderStyle.None;
             dgvCustomer.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvCustomer.RowTemplate.Height = 35;

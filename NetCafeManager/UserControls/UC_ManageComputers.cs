@@ -19,7 +19,7 @@ namespace NetCafeManager.UserControls
         private List<Guna2Button> List_buttonPage;
         private Timer refreshTimer;
         private bool isSearching;
-        private const int costPerHour = 1100000; // Chi phí mỗi giờ (giữ giống UC_MyAccount)
+        private const int costPerHour = 1100000; 
 
         public UC_ManageComputers()
         {
@@ -52,17 +52,31 @@ namespace NetCafeManager.UserControls
 
                 if (dt == null || dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không có máy tính nào trong cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No computers found in the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 foreach (DataRow row in dt.Rows)
                 {
                     string computerID = row["ComputerID"].ToString();
-                    string userID = row["UserID"] != DBNull.Value ? row["UserID"].ToString() : null;
+                    string userID = null;
+                    if (row["UserID"] != DBNull.Value)
+                    {
+                        userID = row["UserID"].ToString();
+                    }
                     string status = row["Status"].ToString();
-                    DateTime? startTime = row["StartTime"] != DBNull.Value ? (DateTime?)row["StartTime"] : null;
-                    DateTime? endTime = row["EndTime"] != DBNull.Value ? (DateTime?)row["EndTime"] : null;
+
+                    DateTime? startTime = null;
+                    if (row["StartTime"] != DBNull.Value)
+                    {
+                        startTime = (DateTime)row["StartTime"];
+                    }
+
+                    DateTime? endTime = null;
+                    if (row["EndTime"] != DBNull.Value)
+                    {
+                        endTime = (DateTime)row["EndTime"];
+                    }
 
                     string imagePath;
                     string displayStatus;
@@ -90,7 +104,7 @@ namespace NetCafeManager.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải danh sách máy tính: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading computer list: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -111,19 +125,27 @@ namespace NetCafeManager.UserControls
 
                 if (dt == null || dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy thông tin máy tính!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Computer information not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 DataRow row = dt.Rows[0];
-                string userID = row["UserID"] != DBNull.Value ? row["UserID"].ToString() : null;
+                string userID = null;
+                if (row["UserID"] != DBNull.Value)
+                {
+                    userID = row["UserID"].ToString();
+                }
                 string status = row["Status"].ToString();
-                DateTime? startTime = row["StartTime"] != DBNull.Value ? (DateTime?)row["StartTime"] : null;
+                DateTime? startTime = null;
+                if (row["StartTime"] != DBNull.Value)
+                {
+                    startTime = (DateTime)row["StartTime"];
+                }
 
                 if (status != "Active" || userID == null || startTime == null)
                 {
                     ComLB.Text = computerID;
-                    CusNameLB.Text = "Không có khách hàng";
+                    CusNameLB.Text = "No customers";
                     TotalTimeLbl.Text = "0h 0m";
                     TotalFeeLbl.Text = "0đ";
                     return;
@@ -144,7 +166,7 @@ namespace NetCafeManager.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi cập nhật thông tin: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error updating information: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -177,7 +199,7 @@ namespace NetCafeManager.UserControls
 
                 if (dt == null || dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy máy tính với ID này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No computer found with this ID!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     isSearching = false;
                     refreshTimer.Start();
                     LoadComputer();
@@ -218,7 +240,7 @@ namespace NetCafeManager.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tìm kiếm máy tính: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error searching for computer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 isSearching = false;
                 refreshTimer.Start();
                 LoadComputer();

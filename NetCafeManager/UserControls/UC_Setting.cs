@@ -150,7 +150,7 @@ namespace NetCafeManager.UserControls
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Lỗi khi tải ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -160,12 +160,12 @@ namespace NetCafeManager.UserControls
         {
             if (ServiceNameComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn một món ăn để xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a food item to delete!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string selectedServiceName = ServiceNameComboBox.SelectedItem.ToString();
-            DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa món '{selectedServiceName}'?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete the item '{selectedServiceName}'?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -178,12 +178,12 @@ namespace NetCafeManager.UserControls
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Xóa món ăn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Food item deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadServiceNames(); 
                 }
                 else
                 {
-                    MessageBox.Show("Xóa món ăn thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to delete food item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -192,13 +192,13 @@ namespace NetCafeManager.UserControls
         {
             if (ServiceNameComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn một món ăn để sửa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a food item to update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(PriceTextBox.Text) || !decimal.TryParse(PriceTextBox.Text, out decimal price))
             {
-                MessageBox.Show("Vui lòng nhập giá hợp lệ!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -232,12 +232,12 @@ namespace NetCafeManager.UserControls
             int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Cập nhật món ăn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Food item updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadServiceNames();
             }
             else
             {
-                MessageBox.Show("Cập nhật món ăn thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to update food item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -333,9 +333,6 @@ namespace NetCafeManager.UserControls
                 MessageBox.Show($"Error retrieving feedback: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void refreshButton_Click(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }

@@ -37,13 +37,13 @@ namespace NetCafeManager
                 }
                 else
                 {
-                    MessageBox.Show("Không có máy tính nào khả dụng để đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No computers are available for login!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return null;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tìm máy tính khả dụng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error finding available computer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

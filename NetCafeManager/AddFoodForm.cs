@@ -45,7 +45,7 @@ namespace NetCafeManager
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Lỗi khi tải ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -55,19 +55,19 @@ namespace NetCafeManager
         {
             if (string.IsNullOrWhiteSpace(FoodNameTextBox.Text))
             {
-                MessageBox.Show("Vui lòng nhập tên món!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter the item name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(PriceTextBox.Text) || !decimal.TryParse(PriceTextBox.Text, out decimal price))
             {
-                MessageBox.Show("Vui lòng nhập giá hợp lệ!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (productImageBytes == null)
             {
-                MessageBox.Show("Vui lòng chọn ảnh cho món!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select an image for the item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -79,7 +79,7 @@ namespace NetCafeManager
             int count = (int)DatabaseHelper.ExecuteScalar(checkQuery, checkParams);
             if (count > 0)
             {
-                MessageBox.Show("Tên món đã tồn tại! Vui lòng chọn tên khác.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("The item name already exists! Please choose a different name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -106,12 +106,12 @@ namespace NetCafeManager
 
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Thêm món thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Item added successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Thêm món thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to add item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

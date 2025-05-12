@@ -41,12 +41,17 @@ namespace NetCafeManager
 
                 if (shiftDt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy ca làm việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Shift not found!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 DateTime startTime = Convert.ToDateTime(shiftDt.Rows[0]["StartTime"]);
-                DateTime? endTime = shiftDt.Rows[0]["EndTime"] != DBNull.Value ? Convert.ToDateTime(shiftDt.Rows[0]["EndTime"]) : (DateTime?)null;
+                DateTime? endTime = null;
+
+                if (shiftDt.Rows[0]["EndTime"] != DBNull.Value)
+                {
+                    endTime = Convert.ToDateTime(shiftDt.Rows[0]["EndTime"]);
+                }
 
                 string billQuery;
                 SqlParameter[] billParams;
@@ -81,26 +86,24 @@ namespace NetCafeManager
 
                 if (billDt == null || billDt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không có chi tiết hóa đơn cho ca làm việc này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No bill details found for this shift!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 dgvBillDetails.DataSource = billDt;
                 dgvBillDetails.ColumnHeadersHeight = 40;
 
-                dgvBillDetails.Columns["ServiceName"].HeaderText = "Tên món";
-                dgvBillDetails.Columns["Quantity"].HeaderText = "Số lượng";
-                dgvBillDetails.Columns["Total"].HeaderText = "Thành tiền";
+                dgvBillDetails.Columns["ServiceName"].HeaderText = "Service Name";
+                dgvBillDetails.Columns["Quantity"].HeaderText = "Quantity";
+                dgvBillDetails.Columns["Total"].HeaderText = "Total";
 
                 dgvBillDetails.Columns["Total"].DefaultCellStyle.Format = "N0";
                 dgvBillDetails.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                //dgvWorkLog.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
                 dgvBillDetails.ClearSelection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải chi tiết hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading bill details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -116,25 +119,25 @@ namespace NetCafeManager
 
 
             // Header
-            dgvBillDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
-            dgvBillDetails.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+            dgvBillDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+            dgvBillDetails.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
             dgvBillDetails.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             dgvBillDetails.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvBillDetails.ColumnHeadersHeight = 40;
 
-            // Dòng thường
-            dgvBillDetails.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
-            dgvBillDetails.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+            // Normal line
+            dgvBillDetails.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            dgvBillDetails.DefaultCellStyle.ForeColor = Color.White; 
             dgvBillDetails.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-            dgvBillDetails.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
-            dgvBillDetails.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+            dgvBillDetails.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+            dgvBillDetails.DefaultCellStyle.SelectionForeColor = Color.White;
             dgvBillDetails.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Dòng xen kẽ
-            dgvBillDetails.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+            // Next line 
+            dgvBillDetails.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
 
             // DGV
-            dgvBillDetails.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+            dgvBillDetails.BackgroundColor = Color.FromArgb(20, 20, 20); 
             dgvBillDetails.BorderStyle = BorderStyle.None;
             dgvBillDetails.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvBillDetails.RowTemplate.Height = 35;

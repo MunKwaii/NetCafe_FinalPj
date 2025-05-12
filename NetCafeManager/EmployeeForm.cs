@@ -52,7 +52,7 @@ namespace NetCafeManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi bắt đầu ca làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error starting the shift: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -75,7 +75,7 @@ namespace NetCafeManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi kết thúc ca làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error ending the shift: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -137,12 +137,7 @@ namespace NetCafeManager
             }
         }
 
-        private void uC_UserProfile1_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void pnlProfileContent_Paint(object sender, PaintEventArgs e)
-        {
-        }
+ 
+   
     }
 }

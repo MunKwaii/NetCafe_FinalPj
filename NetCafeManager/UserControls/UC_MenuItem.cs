@@ -37,10 +37,5 @@ namespace NetCafeManager.UserControls
         {
             OrderClicked?.Invoke(this, (ProductName, ProductPrice));
         }
-
-        private void UC_MenuItem_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

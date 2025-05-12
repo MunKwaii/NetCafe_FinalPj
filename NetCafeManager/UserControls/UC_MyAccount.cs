@@ -140,7 +140,7 @@ namespace NetCafeManager.UserControls
             }
             else
             {
-                MessageBox.Show("Lưu doanh thu thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to save revenue!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -173,7 +173,7 @@ namespace NetCafeManager.UserControls
             if (dt.Rows.Count == 0)
             {
                 timer.Stop();
-                MessageBox.Show("Không tìm thấy người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("User not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -228,58 +228,6 @@ namespace NetCafeManager.UserControls
             TotalTimeLbl.Text = $"{usedHours}h {remainingMinutes}m";
         }
 
-        //private void depositBtn_Click(object sender, EventArgs e)
-        //{
-        //    if (guna2ComboBox2.SelectedIndex == -1)
-        //    {
-        //        MessageBox.Show("Vui lòng chọn phương thức thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    string query = "SELECT Balance FROM Customer WHERE UserID = @ID";
-        //    SqlParameter[] parameters = new SqlParameter[]
-        //    {
-        //        new SqlParameter("@ID", ID)
-        //    };
-        //    DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
-
-        //    if (dt.Rows.Count == 0)
-        //    {
-        //        MessageBox.Show("Không tìm thấy người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return;
-        //    }
-
-        //    balance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
-
-        //    if (decimal.TryParse(depositTxt.Text, out decimal depositAmount) && depositAmount > 0)
-        //    {
-        //        balance += depositAmount;
-
-        //        string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
-        //        SqlParameter[] updateParams = new SqlParameter[]
-        //        {
-        //            new SqlParameter("@Balance", balance),
-        //            new SqlParameter("@ID", ID)
-        //        };
-        //        DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
-
-        //        BalanceLb.Text = balance.ToString("N0");
-        //        UpdateTimeDisplay();
-        //        UpdateUsageDisplay();
-
-        //        if (!timer.Enabled)
-        //        {
-        //            timer.Start();
-        //        }
-
-        //        MessageBox.Show($"Nạp tiền thành công: {depositAmount:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Vui lòng nhập số tiền hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //    depositTxt.Clear();
-        //}
 
         public void RefreshBalance()
         {
@@ -339,29 +287,28 @@ namespace NetCafeManager.UserControls
 
         private void ApplyCustomTheme()
         {
-            // Set DataGridView  Theme
            dgvTransaction.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
            dgvTransaction.EnableHeadersVisualStyles = false;
-            // Header
-           dgvTransaction.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); // Xám đậm với tông cyan
-           dgvTransaction.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); // Cyan chủ đạo
+
+           dgvTransaction.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+           dgvTransaction.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
            dgvTransaction.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
            dgvTransaction.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
            dgvTransaction.ColumnHeadersHeight = 40;
 
             // Dòng thường
-           dgvTransaction.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm với tông xanh lam
-           dgvTransaction.DefaultCellStyle.ForeColor = Color.White; // Trắng với chút sắc cyan
+           dgvTransaction.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+           dgvTransaction.DefaultCellStyle.ForeColor = Color.White; 
            dgvTransaction.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-           dgvTransaction.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); // Cyan đậm khi chọn
-           dgvTransaction.DefaultCellStyle.SelectionForeColor = Color.White; // Chữ trắng khi chọn
+           dgvTransaction.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+           dgvTransaction.DefaultCellStyle.SelectionForeColor = Color.White; 
            dgvTransaction.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             // Dòng xen kẽ
-           dgvTransaction.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Xám đậm hơn một chút
+           dgvTransaction.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
 
             // DGV
-           dgvTransaction.BackgroundColor = Color.FromArgb(20, 20, 20); // Xám rất đậm, gần đen
+           dgvTransaction.BackgroundColor = Color.FromArgb(20, 20, 20); 
            dgvTransaction.BorderStyle = BorderStyle.None;
            dgvTransaction.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
            dgvTransaction.RowTemplate.Height = 35;

@@ -931,3 +931,5 @@ C:\Users\Khanh\Documents\New folder (2)\NetCafe_FinalPj\NetCafeManager\obj\Debug
 C:\Users\Khanh\Documents\New folder (2)\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\ref\NetCafeManager.dll
 C:\Users\Khanh\Documents\New folder (2)\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.VerificationForm.resources
 E:\Winform\FinalProject\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.VerificationForm.resources
+D:\hope3\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.UserControls.UC_ForgotPassword.resources
+D:\hope3\NetCafe_FinalPj\NetCafeManager\obj\Debug\net8.0-windows\NetCafeManager.VerificationForm.resources

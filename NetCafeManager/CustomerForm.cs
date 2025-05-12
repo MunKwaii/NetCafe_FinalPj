@@ -17,19 +17,18 @@ namespace NetCafeManager
         string ID;
         private UC_Service ucService;
         private UC_MyAccount ucMyAccount;
-        private string computerID; // Lưu ComputerID của máy khách đang sử dụng
+        private string computerID; 
 
         public CustomerForm(string ID, string computerID = null)
         {
             InitializeComponent();
             pnlProfileContent.Visible = false;
             this.ID = ID;
-            this.computerID = computerID; // Lưu ComputerID (nếu có)
+            this.computerID = computerID; 
 
-            // Kiểm tra computerID trước khi bắt đầu phiên làm việc
             if (string.IsNullOrEmpty(computerID))
             {
-                MessageBox.Show("Không xác định được máy tính để đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unable to identify the computer for login!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -63,7 +62,7 @@ namespace NetCafeManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi bắt đầu phiên làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error starting the session: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,7 +83,7 @@ namespace NetCafeManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi kết thúc phiên làm việc: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error ending the session: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,12 +97,6 @@ namespace NetCafeManager
             }
             activeButton.FillColor = Color.FromArgb(19, 250, 168);
             activeButton.ForeColor = Color.Black;
-        }
-
-        private void ShowUserControl(UserControl uc)
-        {
-            pnlMainContent.Controls.Clear();
-            pnlMainContent.Controls.Add(uc);
         }
 
         public void UpdateTotalFoodFee(decimal foodFee)
@@ -138,7 +131,6 @@ namespace NetCafeManager
             pnlProfileContent.Visible = !pnlProfileContent.Visible;
             pnlProfileContent.Controls.Add(new UC_UserProfile(ID));
         }
-
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -153,10 +145,8 @@ namespace NetCafeManager
                 this.Close();
             }
         }
-
         private void CustomerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Kết thúc phiên làm việc khi form đóng (bao gồm cả khi nhấn nút X)
             if (!string.IsNullOrEmpty(computerID))
             {
                 EndSession();

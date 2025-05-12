@@ -17,6 +17,7 @@ namespace NetCafeManager.UserControls
         {
             InitializeComponent();
             LoadOrders();
+            ApplyCustomTheme();
         }
 
         private void LoadOrders()
@@ -33,31 +34,23 @@ namespace NetCafeManager.UserControls
                 dgvNewOrder.DataSource = dt;
                 dgvNewOrder.ColumnHeadersHeight = 40;
 
-                // Tùy chỉnh cột
-                dgvNewOrder.Columns["OrderID"].HeaderText = "Mã đơn hàng";
-                dgvNewOrder.Columns["CustomerID"].HeaderText = "ID Khách hàng";
-                dgvNewOrder.Columns["ServiceName"].HeaderText = "Tên món";
-                dgvNewOrder.Columns["Quantity"].HeaderText = "Số lượng";
-                dgvNewOrder.Columns["Total"].HeaderText = "Thành tiền";
-                dgvNewOrder.Columns["OrderDate"].HeaderText = "Thời gian đặt";
+                dgvNewOrder.Columns["OrderID"].HeaderText = "Order ID";
+                dgvNewOrder.Columns["CustomerID"].HeaderText = "Customer ID";
+                dgvNewOrder.Columns["ServiceName"].HeaderText = "Service Name";
+                dgvNewOrder.Columns["Quantity"].HeaderText = "Quantity";
+                dgvNewOrder.Columns["Total"].HeaderText = "Total";
+                dgvNewOrder.Columns["OrderDate"].HeaderText = "OrderDate";
 
-                // Định dạng cột
                 dgvNewOrder.Columns["Total"].DefaultCellStyle.Format = "N0";
                 dgvNewOrder.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvNewOrder.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvNewOrder.Columns["OrderDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-
-                // Đảm bảo không có hàng nào được chọn mặc định
                 dgvNewOrder.ClearSelection();
 
-                if (dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("Hiện tại không có đơn hàng nào đang chờ xử lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải danh sách đơn hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading order list: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,7 +58,7 @@ namespace NetCafeManager.UserControls
         {
             if (dgvNewOrder.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một đơn hàng để hủy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select an order to cancel!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -79,12 +72,12 @@ namespace NetCafeManager.UserControls
             int rowsAffected = DatabaseHelper.ExecuteNonQuery(updateQuery, parameters);
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Đơn hàng đã được hủy!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadOrders(); // Làm mới danh sách
+                MessageBox.Show("Order has been cancelled!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadOrders();
             }
             else
             {
-                MessageBox.Show("Không thể hủy đơn hàng. Vui lòng thử lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to cancel the order. Please try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -92,15 +85,13 @@ namespace NetCafeManager.UserControls
         {
             if (dgvNewOrder.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một đơn hàng để xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select an order to confirm!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int orderID = Convert.ToInt32(dgvNewOrder.SelectedRows[0].Cells["OrderID"].Value);
             string customerID = dgvNewOrder.SelectedRows[0].Cells["CustomerID"].Value?.ToString();
             decimal total = Convert.ToDecimal(dgvNewOrder.SelectedRows[0].Cells["Total"].Value);
-
-            // Kiểm tra số dư của khách hàng
             string balanceQuery = "SELECT Balance FROM Customer WHERE UserID = @CustomerID";
             SqlParameter[] balanceParams = new SqlParameter[]
             {
@@ -110,18 +101,16 @@ namespace NetCafeManager.UserControls
 
             if (balanceDt.Rows.Count == 0)
             {
-                MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Customer information not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             decimal currentBalance = Convert.ToDecimal(balanceDt.Rows[0]["Balance"]);
             if (currentBalance < total)
             {
-                MessageBox.Show("Số dư của khách hàng không đủ để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Customer's balance is not enough to pay!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Cập nhật số dư khách hàng
             decimal newBalance = currentBalance - total;
             string updateBalanceQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @CustomerID";
             SqlParameter[] updateBalanceParams = new SqlParameter[]
@@ -130,8 +119,6 @@ namespace NetCafeManager.UserControls
                 new SqlParameter("@CustomerID", customerID)
             };
             DatabaseHelper.ExecuteNonQuery(updateBalanceQuery, updateBalanceParams);
-
-            // Cập nhật trạng thái đơn hàng thành Confirmed
             string confirmQuery = "UPDATE Orders SET Status = 'Confirmed' WHERE OrderID = @OrderID";
             SqlParameter[] confirmParams = new SqlParameter[]
             {
@@ -139,10 +126,44 @@ namespace NetCafeManager.UserControls
             };
             DatabaseHelper.ExecuteNonQuery(confirmQuery, confirmParams);
 
-            MessageBox.Show("Đơn hàng đã được xác nhận!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Tải lại danh sách đơn hàng
+            MessageBox.Show("Order has been confirmed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadOrders();
+        }
+        private void ApplyCustomTheme()
+        {
+            dgvNewOrder.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            dgvNewOrder.EnableHeadersVisualStyles = false;
+
+            // Header
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dgvNewOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvNewOrder.ColumnHeadersHeight = 40;
+
+            // Normal line
+            dgvNewOrder.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            dgvNewOrder.DefaultCellStyle.ForeColor = Color.White; 
+            dgvNewOrder.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvNewOrder.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+            dgvNewOrder.DefaultCellStyle.SelectionForeColor = Color.White; 
+            dgvNewOrder.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Next Line
+            dgvNewOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+
+            // DGV
+            dgvNewOrder.BackgroundColor = Color.FromArgb(20, 20, 20); 
+            dgvNewOrder.BorderStyle = BorderStyle.None;
+            dgvNewOrder.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvNewOrder.RowTemplate.Height = 35;
+
+
+            dgvNewOrder.ReadOnly = true;
+            dgvNewOrder.AllowUserToAddRows = false;
+            dgvNewOrder.AllowUserToResizeRows = false;
+            dgvNewOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvNewOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

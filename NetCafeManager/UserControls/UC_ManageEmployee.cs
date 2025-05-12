@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Common;
 
 namespace NetCafeManager.UserControls
 {
@@ -17,7 +18,7 @@ namespace NetCafeManager.UserControls
         {
             InitializeComponent();
             LoadEmployeeData();
-
+            ApplyCustomTheme();
         }
         private void ClearFormFields()
         {
@@ -34,7 +35,6 @@ namespace NetCafeManager.UserControls
         {
             try
             {
-                // Query to fetch data from Employee and Users tables
                 string query = @"
                     SELECT e.ID, e.Name, e.Gmail, e.Salary, e.PhoneNumber, e.Birthday, e.StartDate, 
                            u.Username, u.Password
@@ -57,10 +57,7 @@ namespace NetCafeManager.UserControls
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    // Bind the DataTable to the DataGridView
                     dgvCustomer.DataSource = dt;
-
-                    // Set the column headers for better readability
                     dgvCustomer.Columns["ID"].HeaderText = "Employee ID";
                     dgvCustomer.Columns["Name"].HeaderText = "Full Name";
                     dgvCustomer.Columns["Gmail"].HeaderText = "Email";
@@ -82,8 +79,8 @@ namespace NetCafeManager.UserControls
                 else
                 {
                     MessageBox.Show("No employees found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvCustomer.DataSource = null; // Clear the grid if no data
-                    ClearFormFields(); // Clear the form fields if no data
+                    dgvCustomer.DataSource = null; 
+                    ClearFormFields(); 
                 }
             }
             catch (Exception ex)
@@ -103,8 +100,6 @@ namespace NetCafeManager.UserControls
             if (dgvCustomer.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvCustomer.SelectedRows[0];
-
-                // Populate the form fields with the selected employee's data
                 IDTextBox.Text = selectedRow.Cells["ID"].Value.ToString();
                 FullNameTextBox.Text = selectedRow.Cells["Name"].Value.ToString();
                 salaryTexBox.Text = selectedRow.Cells["Salary"].Value.ToString();
@@ -132,8 +127,6 @@ namespace NetCafeManager.UserControls
                 try
                 {
                     string id = dgvCustomer.SelectedRows[0].Cells["ID"].Value.ToString();
-
-                    // Step 1: Delete from Employee table first (due to foreign key constraint)
                     string deleteEmployeeQuery = "DELETE FROM Employee WHERE ID = @ID";
                     SqlParameter[] employeeParams = new SqlParameter[]
                     {
@@ -147,8 +140,6 @@ namespace NetCafeManager.UserControls
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-                    // Step 2: Delete from Users table
                     string deleteUserQuery = "DELETE FROM Users WHERE ID = @ID";
                     SqlParameter[] userParams = new SqlParameter[]
                     {
@@ -159,7 +150,7 @@ namespace NetCafeManager.UserControls
                     if (userRowsAffected > 0)
                     {
                         MessageBox.Show("Employee deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadEmployeeData(); // Refresh the DataGridView
+                        LoadEmployeeData();
                     }
                     else
                     {
@@ -181,8 +172,6 @@ namespace NetCafeManager.UserControls
                 MessageBox.Show("Please select an employee to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Retrieve updated values from the form
             string id = IDTextBox.Text.Trim();
             string fullName = FullNameTextBox.Text.Trim();
             string username = UsernameTextBox.Text.Trim();
@@ -196,21 +185,16 @@ namespace NetCafeManager.UserControls
             }
             DateTime birthday = BirthDayDateTimePicker.Value;
             DateTime hireDate = HireDateDateTimePicker.Value;
-
-            // Validate inputs
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(phoneNumber))
             {
                 MessageBox.Show("Please fill in all required fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            // Gmail can be constructed or updated
             string gmail = $"{username}@employee.com";
 
             try
             {
-                // Step 1: Update the Users table
                 string updateUserQuery = "UPDATE Users SET Username = @Username, Password = @Password WHERE ID = @ID";
                 SqlParameter[] userParams = new SqlParameter[]
                 {
@@ -226,8 +210,6 @@ namespace NetCafeManager.UserControls
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                // Step 2: Update the Employee table
                 string updateEmployeeQuery = @"
                     UPDATE Employee 
                     SET Name = @Name, Gmail = @Gmail, Salary = @Salary, PhoneNumber = @PhoneNumber, 
@@ -248,7 +230,7 @@ namespace NetCafeManager.UserControls
                 if (employeeRowsAffected > 0)
                 {
                     MessageBox.Show("Employee updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadEmployeeData(); // Refresh the DataGridView
+                    LoadEmployeeData();
                 }
                 else
                 {
@@ -267,6 +249,43 @@ namespace NetCafeManager.UserControls
         {
             string searchKeyword = SearchTextBox.Text.Trim();
             LoadEmployeeData(searchKeyword);
+        }
+
+        private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+           dgvCustomer.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+           dgvCustomer.EnableHeadersVisualStyles = false;
+            
+            // Header
+           dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+           dgvCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
+           dgvCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+           dgvCustomer.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+           dgvCustomer.ColumnHeadersHeight = 40;
+
+            // line
+           dgvCustomer.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20);
+           dgvCustomer.DefaultCellStyle.ForeColor = Color.White; 
+           dgvCustomer.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+           dgvCustomer.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+           dgvCustomer.DefaultCellStyle.SelectionForeColor = Color.White; 
+           dgvCustomer.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // next line 
+           dgvCustomer.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            
+            // DGV
+           dgvCustomer.BackgroundColor = Color.FromArgb(20, 20, 20); 
+           dgvCustomer.BorderStyle = BorderStyle.None;
+           dgvCustomer.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+           dgvCustomer.RowTemplate.Height = 35;
+
+           dgvCustomer.ReadOnly = true;
+           dgvCustomer.AllowUserToAddRows = false;
+           dgvCustomer.AllowUserToResizeRows = false;
+           dgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+           dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

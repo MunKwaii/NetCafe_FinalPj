@@ -26,7 +26,6 @@ namespace NetCafeManager.UserControls
         {
             try
             {
-                // check id trong bang customeer
                 string customerQuery = @"SELECT FullName, ComputerID 
                                         FROM Customer 
                                         LEFT JOIN Computer ON Customer.UserID = Computer.UserID 
@@ -39,14 +38,12 @@ namespace NetCafeManager.UserControls
 
                 if (customerDt.Rows.Count > 0)
                 {
-                    // id customer
-                    Usernamelb.Text = customerDt.Rows[0]["FullName"].ToString();
+                    UsernameLb.Text = customerDt.Rows[0]["FullName"].ToString();
                     UserIDLB.Text = ID;
                     ComputerIDLb.Text = customerDt.Rows[0]["ComputerID"] != DBNull.Value ? customerDt.Rows[0]["ComputerID"].ToString() : "Không có máy";
                 }
                 else
                 {
-                    // check bang employee
                     string employeeQuery = @"SELECT Name 
                                             FROM Employee 
                                             WHERE ID = @ID";
@@ -58,14 +55,12 @@ namespace NetCafeManager.UserControls
 
                     if (employeeDt.Rows.Count > 0)
                     {
-                        // id employeee
-                        Usernamelb.Text = employeeDt.Rows[0]["Name"].ToString();
+                        UsernameLb.Text = employeeDt.Rows[0]["Name"].ToString();
                         UserIDLB.Text = ID;
-                        ComputerIDLb.Text = "Nhân viên"; 
+                        ComputerIDLb.Text = "Employee"; 
                     }
                     else
                     {
-                        // chec bang manager
                         string managerQuery = @"SELECT Name 
                                                FROM Manager 
                                                WHERE ID = @ID";
@@ -77,27 +72,26 @@ namespace NetCafeManager.UserControls
 
                         if (managerDt.Rows.Count > 0)
                         {
-                            // id manager
-                            Usernamelb.Text = managerDt.Rows[0]["Name"].ToString();
+                            UsernameLb.Text = managerDt.Rows[0]["Name"].ToString();
                             UserIDLB.Text = ID;
-                            ComputerIDLb.Text = "Quản lý"; 
+                            ComputerIDLb.Text = "Manager"; 
                         }
                         else
                         {
-                            MessageBox.Show("Không tìm thấy thông tin người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Usernamelb.Text = "Không xác định";
+                            MessageBox.Show("User information not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsernameLb.Text = "Unknown";
                             UserIDLB.Text = ID;
-                            ComputerIDLb.Text = "Không xác định";
+                            ComputerIDLb.Text = "Unknown";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải thông tin người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Usernamelb.Text = "Lỗi tải dữ liệu";
+                MessageBox.Show($"Error loading user information: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UsernameLb.Text = "Data loading error";
                 UserIDLB.Text = ID;
-                ComputerIDLb.Text = "Lỗi tải dữ liệu";
+                ComputerIDLb.Text = "Data loading error";
             }
         }
     }

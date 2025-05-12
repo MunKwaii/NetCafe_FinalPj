@@ -31,6 +31,7 @@ namespace NetCafeManager.UserControls
             this.ID = ID;
             this.ptbNotify = ptbNotify;
             LoadData();
+            ApplyCustomTheme();
         }
 
         public decimal TotalFoodFee
@@ -70,13 +71,15 @@ namespace NetCafeManager.UserControls
         private void InitializeTransactionDataGridView()
         {
             dgvTransaction.Columns.Clear();
-            dgvTransaction.Columns.Add("OrderID", "Mã đơn hàng");
-            dgvTransaction.Columns.Add("ServiceName", "Tên món");
-            dgvTransaction.Columns.Add("Quantity", "Số lượng");
-            dgvTransaction.Columns.Add("Total", "Thành tiền");
-            dgvTransaction.Columns.Add("OrderDate", "Ngày đặt");
-            dgvTransaction.Columns.Add("Status", "Trạng thái");
+            dgvTransaction.Columns.Add("OrderID", "Order ID");
+            dgvTransaction.Columns.Add("ServiceName", "Service Name");
+            dgvTransaction.Columns.Add("Quantity", "Quantity");
+            dgvTransaction.Columns.Add("Total", "Total");
+            dgvTransaction.Columns.Add("OrderDate", "Order Date");
+            dgvTransaction.Columns.Add("Status", "Status");
             dgvTransaction.ColumnHeadersHeight = 40;
+            dgvTransaction.Columns["Quantity"].Width = 55;
+            dgvTransaction.Columns["OrderID"].Width = 50;
 
             dgvTransaction.Columns["Total"].DefaultCellStyle.Format = "N0";
             dgvTransaction.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -84,7 +87,6 @@ namespace NetCafeManager.UserControls
             dgvTransaction.Columns["OrderDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
         }
 
-        // Lấy dữ liệu từ bảng Orders và hiển thị vào dgvTransaction
         private void LoadOrdersToDataGridView()
         {
             string orderQuery = @"
@@ -121,8 +123,8 @@ namespace NetCafeManager.UserControls
 
         private void SaveRevenueToDatabase()
         {
-            decimal totalTimeRevenue = usedBalance; // Tổng tiền thời gian chơi
-            decimal totalFoodRevenue = totalFoodFeeSum; // Tổng tiền thức ăn
+            decimal totalTimeRevenue = usedBalance;
+            decimal totalFoodRevenue = totalFoodFeeSum;
 
             string insertQuery = "INSERT INTO Revenue (TotalFoodRevenue, TotalTimeRevenue) VALUES (@TotalFoodRevenue, @TotalTimeRevenue)";
             SqlParameter[] parameters = new SqlParameter[]
@@ -138,7 +140,7 @@ namespace NetCafeManager.UserControls
             }
             else
             {
-                MessageBox.Show("Lưu doanh thu thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to save revenue!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -148,7 +150,7 @@ namespace NetCafeManager.UserControls
             int totalMinutes = (int)(totalHours * 60);
             int hours = totalMinutes / 60;
             int minutes = totalMinutes % 60;
-            label6.Text = $"{hours}h {minutes}m";
+            TimeleftLb.Text = $"{hours}h {minutes}m";
         }
 
         private void StartTimer()
@@ -171,7 +173,7 @@ namespace NetCafeManager.UserControls
             if (dt.Rows.Count == 0)
             {
                 timer.Stop();
-                MessageBox.Show("Không tìm thấy người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("User not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -226,58 +228,6 @@ namespace NetCafeManager.UserControls
             TotalTimeLbl.Text = $"{usedHours}h {remainingMinutes}m";
         }
 
-        private void depositBtn_Click(object sender, EventArgs e)
-        {
-            if (guna2ComboBox2.SelectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn phương thức thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string query = "SELECT Balance FROM Customer WHERE UserID = @ID";
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@ID", ID)
-            };
-            DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
-
-            if (dt.Rows.Count == 0)
-            {
-                MessageBox.Show("Không tìm thấy người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            balance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
-
-            if (decimal.TryParse(depositTxt.Text, out decimal depositAmount) && depositAmount > 0)
-            {
-                balance += depositAmount;
-
-                string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @ID";
-                SqlParameter[] updateParams = new SqlParameter[]
-                {
-                    new SqlParameter("@Balance", balance),
-                    new SqlParameter("@ID", ID)
-                };
-                DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
-
-                BalanceLb.Text = balance.ToString("N0");
-                UpdateTimeDisplay();
-                UpdateUsageDisplay();
-
-                if (!timer.Enabled)
-                {
-                    timer.Start();
-                }
-
-                MessageBox.Show($"Nạp tiền thành công: {depositAmount:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập số tiền hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            depositTxt.Clear();
-        }
 
         public void RefreshBalance()
         {
@@ -305,25 +255,22 @@ namespace NetCafeManager.UserControls
         {
             string feedbackContent = txtFeedback.Text.Trim();
 
-            // Kiểm tra TextBox rỗng
             if (string.IsNullOrEmpty(feedbackContent))
             {
                 MessageBox.Show("Please enter feedback!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Lưu feedback vào bảng Feedback
             string insertQuery = "INSERT INTO Feedback (UserID, Content, CreatedAt, Status) VALUES (@UserID, @Content, GETDATE(), 0)";
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@UserID", this.ID), // UserID lấy từ this.ID (kiểu VARCHAR(50))
+                new SqlParameter("@UserID", this.ID),
                 new SqlParameter("@Content", feedbackContent)
             };
 
             int rowsAffected = DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
             if (rowsAffected > 0)
             {
-                // Xóa TextBox và hiển thị thông báo
                 txtFeedback.Text = "";
                 MessageBox.Show("Feedback sent!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -336,6 +283,41 @@ namespace NetCafeManager.UserControls
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadOrdersToDataGridView();
+        }
+
+        private void ApplyCustomTheme()
+        {
+           dgvTransaction.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+           dgvTransaction.EnableHeadersVisualStyles = false;
+
+           dgvTransaction.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+           dgvTransaction.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
+           dgvTransaction.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+           dgvTransaction.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+           dgvTransaction.ColumnHeadersHeight = 40;
+
+            // Dòng thường
+           dgvTransaction.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+           dgvTransaction.DefaultCellStyle.ForeColor = Color.White; 
+           dgvTransaction.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+           dgvTransaction.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+           dgvTransaction.DefaultCellStyle.SelectionForeColor = Color.White; 
+           dgvTransaction.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Dòng xen kẽ
+           dgvTransaction.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+
+            // DGV
+           dgvTransaction.BackgroundColor = Color.FromArgb(20, 20, 20); 
+           dgvTransaction.BorderStyle = BorderStyle.None;
+           dgvTransaction.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+           dgvTransaction.RowTemplate.Height = 35;
+
+           dgvTransaction.ReadOnly = true;
+           dgvTransaction.AllowUserToAddRows = false;
+           dgvTransaction.AllowUserToResizeRows = false;
+           dgvTransaction.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+           dgvTransaction.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

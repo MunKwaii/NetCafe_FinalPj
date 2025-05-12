@@ -17,13 +17,13 @@ namespace NetCafeManager.UserControls
         string CurrentUserID;
         private int indexPage = 1, lengthPage = 10, currentPage = 1;
         private List<Guna2Button> List_buttonPage;
-        private UC_TakeOrder ucTakeOrder; // Lưu trữ instance của UC_TakeOrder
+        private UC_TakeOrder ucTakeOrder; 
         
         public UC_Service(string userID, bool flag = false, bool requireUserID = true)
         {
             InitializeComponent();
             this.CurrentUserID = userID;
-            ucTakeOrder = new UC_TakeOrder(CurrentUserID, requireUserID); // Khởi tạo và lưu instance
+            ucTakeOrder = new UC_TakeOrder(CurrentUserID, requireUserID);
             ShowUserControl(ucTakeOrder);
             LoadMenu();
             List_buttonPage = new List<Guna2Button> { btnFirst_page, btnSecond_page, btnThird_page };
@@ -39,11 +39,10 @@ namespace NetCafeManager.UserControls
             return result != null ? Convert.ToInt32(result) : 0;
         }
 
-        // Phương thức cập nhật trạng thái hiển thị của ptbNotify
         private void UpdateNotifyStatus()
         {
             int orderCount = GetPendingOrderCount();
-            ptbNotify.Visible = orderCount > 0; // Hiển thị nếu có đơn hàng, ẩn nếu không có
+            ptbNotify.Visible = orderCount > 0; 
         }
         private void change_Color_page(int turn)
         {
@@ -214,7 +213,7 @@ namespace NetCafeManager.UserControls
 
         private void btnTakeOrder_Click(object sender, EventArgs e)
         {
-            ShowUserControl(ucTakeOrder); // Hiển thị lại UC_TakeOrder
+            ShowUserControl(ucTakeOrder); 
             UpdateNotifyStatus();
         }
 

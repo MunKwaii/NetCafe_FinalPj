@@ -29,13 +29,12 @@ namespace NetCafeManager
 
             if (string.IsNullOrEmpty(computerID))
             {
-                MessageBox.Show("Vui lòng nhập ComputerID!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter ComputerID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // Kiểm tra xem ComputerID đã tồn tại chưa
                 string checkQuery = "SELECT COUNT(*) FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] checkParams = new SqlParameter[]
                 {
@@ -45,11 +44,10 @@ namespace NetCafeManager
 
                 if (count > 0)
                 {
-                    MessageBox.Show("ComputerID đã tồn tại! Vui lòng nhập ID khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ComputerID already exists! Please enter a different ID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Thêm máy tính mới với trạng thái Idle
                 string insertQuery = @"
                     INSERT INTO Computer (ComputerID, UserID, StartTime, EndTime, Status)
                     VALUES (@ComputerID, NULL, NULL, NULL, 'Idle')";
@@ -59,12 +57,12 @@ namespace NetCafeManager
                 };
                 DatabaseHelper.ExecuteNonQuery(insertQuery, insertParams);
 
-                MessageBox.Show($"Đã thêm máy tính {computerID} thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Computer {computerID} added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtComputerID.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi thêm máy tính: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error adding computer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -74,13 +72,12 @@ namespace NetCafeManager
 
             if (string.IsNullOrEmpty(computerID))
             {
-                MessageBox.Show("Vui lòng nhập ComputerID!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter ComputerID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // Kiểm tra xem ComputerID có tồn tại không
                 string checkQuery = "SELECT UserID FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] checkParams = new SqlParameter[]
                 {
@@ -90,18 +87,16 @@ namespace NetCafeManager
 
                 if (dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("ComputerID không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ComputerID does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Kiểm tra xem máy có đang được sử dụng không
                 if (dt.Rows[0]["UserID"] != DBNull.Value)
                 {
-                    MessageBox.Show("Máy tính này đang được sử dụng! Vui lòng đăng xuất khách hàng trước khi xóa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("This computer is currently in use! Please log out the customer before deleting!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Xóa máy tính
                 string deleteQuery = "DELETE FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] deleteParams = new SqlParameter[]
                 {
@@ -109,12 +104,12 @@ namespace NetCafeManager
                 };
                 DatabaseHelper.ExecuteNonQuery(deleteQuery, deleteParams);
 
-                MessageBox.Show($"Đã xóa máy tính {computerID} thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Computer {computerID} deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtComputerID.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi xóa máy tính: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error deleting computer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -124,13 +119,12 @@ namespace NetCafeManager
 
             if (string.IsNullOrEmpty(computerID))
             {
-                MessageBox.Show("Vui lòng nhập ComputerID!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter ComputerID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // Kiểm tra xem ComputerID có tồn tại không
                 string checkQuery = "SELECT UserID, Status FROM Computer WHERE ComputerID = @ComputerID";
                 SqlParameter[] checkParams = new SqlParameter[]
                 {
@@ -140,20 +134,27 @@ namespace NetCafeManager
 
                 if (dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("ComputerID không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ComputerID does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Kiểm tra xem máy có đang được sử dụng không
                 if (dt.Rows[0]["UserID"] != DBNull.Value)
                 {
-                    MessageBox.Show("Máy tính này đang được sử dụng! Vui lòng đăng xuất khách hàng trước khi bảo trì.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("This computer is currently in use! Please log out the customer before maintenance.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Toggle trạng thái bảo trì
                 string currentStatus = dt.Rows[0]["Status"].ToString();
-                string newStatus = (currentStatus == "Maintain") ? "Idle" : "Maintain";
+
+                string newStatus;
+                if (currentStatus == "Maintain")
+                {
+                    newStatus = "Idle";
+                }
+                else
+                {
+                    newStatus = "Maintain";
+                }
 
                 string updateQuery = "UPDATE Computer SET Status = @Status WHERE ComputerID = @ComputerID";
                 SqlParameter[] updateParams = new SqlParameter[]
@@ -163,13 +164,22 @@ namespace NetCafeManager
                 };
                 DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
 
-                string message = (newStatus == "Maintain") ? "Đã đặt máy tính vào trạng thái bảo trì!" : "Đã bỏ trạng thái bảo trì cho máy tính!";
-                MessageBox.Show(message, "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string message;
+                if (newStatus == "Maintain")
+                {
+                    message = "The computer has been set to maintenance status!";
+                }
+                else
+                {
+                    message = "The maintenance status has been removed for the computer!";
+                }
+
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtComputerID.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi thay đổi trạng thái bảo trì: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error changing maintenance status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

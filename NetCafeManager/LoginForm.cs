@@ -25,7 +25,6 @@ namespace NetCafeManager
         {
             try
             {
-                // Truy vấn máy tính khả dụng (UserID là NULL và không ở trạng thái Maintain)
                 string query = @"
                     SELECT TOP 1 ComputerID
                     FROM Computer
@@ -38,13 +37,13 @@ namespace NetCafeManager
                 }
                 else
                 {
-                    MessageBox.Show("Không có máy tính nào khả dụng để đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No computers are available for login!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return null;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tìm máy tính khả dụng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error finding available computer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -78,7 +77,6 @@ namespace NetCafeManager
                                 string role = reader["Role"].ToString().Trim();
                                 string ID = reader["ID"].ToString().Trim();
 
-                                //MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 Form newForm = null;
                                 switch (role)
@@ -90,7 +88,6 @@ namespace NetCafeManager
                                         newForm = new EmployeeForm(ID);
                                         break;
                                     case "Customer":
-                                        // Tự động gán máy tính khả dụng cho khách hàng
                                         string computerID = GetAvailableComputer();
                                         if (computerID != null)
                                         {
@@ -101,11 +98,11 @@ namespace NetCafeManager
 
                                 if (newForm != null)
                                 {
-                                    this.Hide(); // Ẩn LoginForm nhưng không đóng
-                                    newForm.ShowDialog(); // Chờ đến khi form mới đóng
+                                    this.Hide();
+                                    newForm.ShowDialog();
                                     txtUsername.Clear();
                                     txtPassword.Clear();
-                                    this.Show(); // Khi form mới đóng, LoginForm xuất hiện lại
+                                    this.Show();
                                 }
                             }
                             else

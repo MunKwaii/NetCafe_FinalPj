@@ -12,11 +12,10 @@ namespace NetCafeManager.UserControls
 {
     public partial class UC_ComputerStatus : UserControl
     {
-        private string userID; // Lưu UserID của khách hàng (nếu máy Active)
-        private string computerStatus; // Trạng thái máy (Idle, Active, Maintain)
-        private string computerID; // Lưu ComputerID
+        private string userID; 
+        private string computerStatus; 
+        private string computerID; 
 
-        // Sự kiện để thông báo UC_ManageComputers cập nhật thông tin
         public event EventHandler<string> OnComputerSelected;
 
         public UC_ComputerStatus()
@@ -29,36 +28,40 @@ namespace NetCafeManager.UserControls
             InitializeComponent();
             lblID.Text = id;
             lblID.TextAlign = ContentAlignment.MiddleCenter;
-            this.userID = userID; // Lưu UserID
-            this.computerStatus = status; // Lưu trạng thái máy
-            this.computerID = id; // Lưu ComputerID
+            this.userID = userID; 
+            this.computerStatus = status; 
+            this.computerID = id; 
 
-            // Tải hình ảnh trạng thái
             string projectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
             string fullPath = Path.Combine(projectPath, "ComputerStatusPic", imagePath);
 
             if (File.Exists(fullPath))
                 ptbComputer.Image = Image.FromFile(fullPath);
             else
-                MessageBox.Show($"Không tìm thấy ảnh: {fullPath}");
+                MessageBox.Show($"Image not found: {fullPath}");
 
-            // Gán sự kiện Click cho PictureBox
-            ptbComputer.Click += (s, e) => OnComputerSelected?.Invoke(this, computerID);
+            ptbComputer.Click += (s, e) =>
+            {
+                if (OnComputerSelected != null) 
+                {
+                    OnComputerSelected(this, computerID); 
+                }
+            };
         }
 
         private void btnAddBalance_Click(object sender, EventArgs e)
         {
-            // Chỉ cho phép nạp tiền nếu máy ở trạng thái Active
             if (computerStatus != "Active")
             {
-                MessageBox.Show("Máy tính này hiện không có khách hàng sử dụng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("This computer is not currently in use by any customer!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Gọi sự kiện để cập nhật thông tin trong UC_ManageComputers
-            OnComputerSelected?.Invoke(this, computerID);
+            if (OnComputerSelected != null) 
+            {
+                OnComputerSelected(this, computerID); 
+            }
 
-            // Mở AddBalanceForm và truyền UserID
             AddBalanceForm addBalanceForm = new AddBalanceForm(userID);
             addBalanceForm.ShowDialog();
         }

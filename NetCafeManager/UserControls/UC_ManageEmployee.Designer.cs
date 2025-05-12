@@ -195,7 +195,7 @@
             DeleteBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             DeleteBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             DeleteBtn.FillColor = Color.FromArgb(212, 102, 94);
-            DeleteBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DeleteBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DeleteBtn.ForeColor = Color.Black;
             DeleteBtn.Location = new Point(1173, 40);
             DeleteBtn.Name = "DeleteBtn";
@@ -213,7 +213,7 @@
             AddBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             AddBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             AddBtn.FillColor = Color.White;
-            AddBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddBtn.ForeColor = Color.Black;
             AddBtn.Location = new Point(877, 40);
             AddBtn.Name = "AddBtn";
@@ -241,7 +241,7 @@
             guna2Panel7.Location = new Point(24, 78);
             guna2Panel7.Name = "guna2Panel7";
             guna2Panel7.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Panel7.Size = new Size(700, 10);
+            guna2Panel7.Size = new Size(700, 5);
             guna2Panel7.TabIndex = 36;
             // 
             // SearchTextBox
@@ -460,7 +460,7 @@
             ChangeBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             ChangeBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             ChangeBtn.FillColor = Color.FromArgb(19, 250, 168);
-            ChangeBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ChangeBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ChangeBtn.ForeColor = Color.Black;
             ChangeBtn.Location = new Point(201, 521);
             ChangeBtn.Name = "ChangeBtn";

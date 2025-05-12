@@ -24,7 +24,6 @@ namespace NetCafeManager.UserControls
         }
         private void LoadRevenueChart()
         {
-            // Query to get revenue data
             string query = "SELECT TotalFoodRevenue, TotalTimeRevenue FROM Revenue";
             DataTable dt = DatabaseHelper.ExecuteQuery(query);
 
@@ -34,23 +33,19 @@ namespace NetCafeManager.UserControls
                 return;
             }
 
-            // Get the first row of data
             DataRow row = dt.Rows[0];
             decimal totalFoodRevenue = row["TotalFoodRevenue"] != DBNull.Value ? Convert.ToDecimal(row["TotalFoodRevenue"]) : 0;
             decimal totalTimeRevenue = row["TotalTimeRevenue"] != DBNull.Value ? Convert.ToDecimal(row["TotalTimeRevenue"]) : 0;
 
-            // Create a Chart control
             Chart revenueChart = new Chart();
             revenueChart.Size = new Size(ChartPanel.Width - 20, ChartPanel.Height - 20);
             revenueChart.Location = new Point(10, 10);
             revenueChart.BackColor = Color.FromArgb(50, 50, 50);
 
-            // Create a ChartArea
             ChartArea chartArea = new ChartArea();
             chartArea.BackColor = Color.FromArgb(50, 50, 50);
             revenueChart.ChartAreas.Add(chartArea);
 
-            // Create a Series for the pie chart
             Series series = new Series("Revenue");
             series.ChartType = SeriesChartType.Pie;
             series["PieLabelStyle"] = "Outside";
@@ -59,13 +54,11 @@ namespace NetCafeManager.UserControls
             series.LabelForeColor = Color.White;
             series.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
-            // Add data points
             if (totalFoodRevenue > 0)
                 series.Points.AddXY("Food Revenue", totalFoodRevenue);
             if (totalTimeRevenue > 0)
                 series.Points.AddXY("Time Revenue", totalTimeRevenue);
 
-            // Customize colors
             if (series.Points.Count > 0)
             {
                 series.Points[0].Color = Color.FromArgb(19, 250, 168);
@@ -73,17 +66,14 @@ namespace NetCafeManager.UserControls
                     series.Points[1].Color = Color.FromArgb(94, 148, 255);
             }
 
-            // Add series to chart
             revenueChart.Series.Add(series);
 
-            // Add legend
             Legend legend = new Legend();
             legend.BackColor = Color.FromArgb(50, 50, 50);
             legend.ForeColor = Color.White;
             legend.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             revenueChart.Legends.Add(legend);
 
-            // Clear existing controls and add chart to ChartPanel
             ChartPanel.Controls.Clear();
             ChartPanel.Controls.Add(revenueChart);
         }
@@ -91,17 +81,11 @@ namespace NetCafeManager.UserControls
         {
             string query = "SELECT Name FROM Service";
             DataTable dt = DatabaseHelper.ExecuteQuery(query);
-
-            // Xóa các mục hiện có trong ComboBox
             ServiceNameComboBox.Items.Clear();
-
-            // Thêm các tên dịch vụ vào ComboBox
             foreach (DataRow row in dt.Rows)
             {
                 ServiceNameComboBox.Items.Add(row["Name"].ToString());
             }
-
-            // Nếu có ít nhất một dịch vụ, chọn dịch vụ đầu tiên và hiển thị chi tiết
             if (ServiceNameComboBox.Items.Count > 0)
             {
                 ServiceNameComboBox.SelectedIndex = 0;
@@ -129,14 +113,8 @@ namespace NetCafeManager.UserControls
             if (dt.Rows.Count > 0)
             {
                 DataRow row = dt.Rows[0];
-
-                // Hiển thị giá
                 PriceTextBox.Text = row["Price"].ToString();
-
-                // Hiển thị trạng thái (Status)
                 StatusCheckBox.Checked = Convert.ToInt32(row["Status"]) == 1;
-
-                // Hiển thị ảnh
                 if (row["Image"] != DBNull.Value)
                 {
                     byte[] imageBytes = (byte[])row["Image"];
@@ -147,7 +125,7 @@ namespace NetCafeManager.UserControls
                 }
                 else
                 {
-                    ptbProductImage.Image = null; // Nếu không có ảnh, xóa PictureBox
+                    ptbProductImage.Image = null;
                 }
             }
         }
@@ -172,7 +150,7 @@ namespace NetCafeManager.UserControls
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Lỗi khi tải ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -182,12 +160,12 @@ namespace NetCafeManager.UserControls
         {
             if (ServiceNameComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn một món ăn để xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a food item to delete!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string selectedServiceName = ServiceNameComboBox.SelectedItem.ToString();
-            DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa món '{selectedServiceName}'?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete the item '{selectedServiceName}'?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -200,12 +178,12 @@ namespace NetCafeManager.UserControls
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Xóa món ăn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadServiceNames(); // Làm mới danh sách
+                    MessageBox.Show("Food item deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadServiceNames(); 
                 }
                 else
                 {
-                    MessageBox.Show("Xóa món ăn thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to delete food item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -214,13 +192,13 @@ namespace NetCafeManager.UserControls
         {
             if (ServiceNameComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn một món ăn để sửa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a food item to update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(PriceTextBox.Text) || !decimal.TryParse(PriceTextBox.Text, out decimal price))
             {
-                MessageBox.Show("Vui lòng nhập giá hợp lệ!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -242,7 +220,6 @@ namespace NetCafeManager.UserControls
             }
             else
             {
-                // Nếu không có ảnh mới, không cập nhật cột Image
                 query = "UPDATE Service SET Price = @Price, Status = @Status WHERE Name = @Name";
                 parameters = new SqlParameter[]
                 {
@@ -255,12 +232,12 @@ namespace NetCafeManager.UserControls
             int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Cập nhật món ăn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadServiceNames(); // Làm mới danh sách
+                MessageBox.Show("Food item updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadServiceNames();
             }
             else
             {
-                MessageBox.Show("Cập nhật món ăn thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to update food item!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -295,14 +272,9 @@ namespace NetCafeManager.UserControls
                     content = content.Substring(0, 22) + "...";
 
                 string nameAndContent = $"{fullName}: {content}";
-                // Thời gian trên dòng tiếp theo
                 string timeLine = $"Time: ({createdAt})";
-
-                // Thêm hai dòng vào ListBox
                 lstFeedback.Items.Add(nameAndContent);
                 lstFeedback.Items.Add(timeLine);
-
-                // Lưu ánh xạ: chỉ lưu FeedbackID cho dòng nameAndContent
                 feedbackIdMap[nameAndContent] = feedbackID;
             }
         }
@@ -332,8 +304,6 @@ namespace NetCafeManager.UserControls
                 }
 
                 string nameAndContent = lstFeedback.Items[index].ToString();
-
-                // Lấy FeedbackID từ ánh xạ
                 if (!feedbackIdMap.ContainsKey(nameAndContent))
                 {
                     MessageBox.Show("Feedback ID not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -341,8 +311,6 @@ namespace NetCafeManager.UserControls
                 }
 
                 int feedbackID = feedbackIdMap[nameAndContent];
-
-                // Truy vấn nội dung đầy đủ dựa trên FeedbackID
                 string query = "SELECT Content FROM Feedback WHERE FeedbackID = @FeedbackID";
                 SqlParameter[] parameters = new SqlParameter[]
                 {
@@ -365,10 +333,6 @@ namespace NetCafeManager.UserControls
                 MessageBox.Show($"Error retrieving feedback: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void refreshButton_Click(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }

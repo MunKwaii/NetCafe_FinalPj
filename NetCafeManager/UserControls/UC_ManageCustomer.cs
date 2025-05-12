@@ -17,6 +17,8 @@ namespace NetCafeManager.UserControls
         {
             InitializeComponent();
             LoadCustomerData();
+            ApplyCustomTheme();
+
         }
         private void LoadCustomerData(string searchKeyword = "")
         {
@@ -49,7 +51,6 @@ namespace NetCafeManager.UserControls
                 dgvCustomer.Columns["FullName"].HeaderText = "Full Name";
                 dgvCustomer.Columns["Email"].HeaderText = "Email";
                 dgvCustomer.Columns["Balance"].HeaderText = "Balance";
-
                 dgvCustomer.Columns["Balance"].DefaultCellStyle.Format = "N0";
 
                 dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -235,6 +236,45 @@ namespace NetCafeManager.UserControls
         {
             string searchKeyword = SearchTextBox.Text.Trim();
             LoadCustomerData(searchKeyword);
+        }
+
+        private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+            dgvCustomer.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            dgvCustomer.EnableHeadersVisualStyles = false;
+
+
+            // Header
+            dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+            dgvCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
+            dgvCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dgvCustomer.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCustomer.ColumnHeadersHeight = 40;
+
+            // Normal line
+            dgvCustomer.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            dgvCustomer.DefaultCellStyle.ForeColor = Color.White; 
+            dgvCustomer.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvCustomer.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+            dgvCustomer.DefaultCellStyle.SelectionForeColor = Color.White; 
+            dgvCustomer.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Next line
+            dgvCustomer.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+
+            // DGV
+            dgvCustomer.BackgroundColor = Color.FromArgb(20, 20, 20); 
+            dgvCustomer.BorderStyle = BorderStyle.None;
+            dgvCustomer.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCustomer.RowTemplate.Height = 35;
+         
+
+            dgvCustomer.ReadOnly = true;
+            dgvCustomer.AllowUserToAddRows = false;
+            dgvCustomer.AllowUserToResizeRows = false;
+            dgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace NetCafeManager
     {
         private string userID;
         private decimal balance;
-        private const int costPerHour = 1100000; // Chi phí mỗi giờ (giữ giống UC_MyAccount)
+        private const int costPerHour = 1100000;
 
         public AddBalanceForm(string userID)
         {
@@ -37,7 +37,7 @@ namespace NetCafeManager
 
                 if (dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Customer information not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
                 }
@@ -45,11 +45,11 @@ namespace NetCafeManager
                 lblCustomerName.Text = dt.Rows[0]["FullName"].ToString();
                 balance = Convert.ToDecimal(dt.Rows[0]["Balance"]);
                 lblBalance.Text = balance.ToString("N0") + "đ";
-                UpdateTimeDisplay(); // Cập nhật thời gian còn lại
+                UpdateTimeDisplay();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải thông tin khách hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading customer information: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
         }
@@ -69,11 +69,10 @@ namespace NetCafeManager
             {
                 if (!decimal.TryParse(txtDepositAmount.Text, out decimal depositAmount) || depositAmount <= 0)
                 {
-                    MessageBox.Show("Vui lòng nhập số tiền hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please enter a valid amount!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Lấy số dư hiện tại
                 string balanceQuery = "SELECT Balance FROM Customer WHERE UserID = @UserID";
                 SqlParameter[] balanceParams = new SqlParameter[]
                 {
@@ -83,14 +82,13 @@ namespace NetCafeManager
 
                 if (balanceDt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Customer information not found!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 balance = Convert.ToDecimal(balanceDt.Rows[0]["Balance"]);
                 decimal newBalance = balance + depositAmount;
 
-                // Cập nhật số dư
                 string updateQuery = "UPDATE Customer SET Balance = @Balance WHERE UserID = @UserID";
                 SqlParameter[] updateParams = new SqlParameter[]
                 {
@@ -99,14 +97,14 @@ namespace NetCafeManager
                 };
                 DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
 
-                MessageBox.Show($"Nạp tiền thành công! Số dư mới: {newBalance:N0}đ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Deposit successful! New balance: {newBalance:N0}đ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                balance = newBalance; // Cập nhật biến balance
-                LoadCustomerInfo(); // Cập nhật hiển thị số dư và thời gian còn lại
+                balance = newBalance;
+                LoadCustomerInfo();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi nạp tiền: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error during deposit: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

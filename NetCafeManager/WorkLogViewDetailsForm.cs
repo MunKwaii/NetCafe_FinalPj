@@ -20,6 +20,7 @@ namespace NetCafeManager
             InitializeComponent();
             _shiftID = shiftID;
             LoadBillDetails();
+            ApplyCustomTheme();
         }
 
         private void LoadBillDetails()
@@ -28,7 +29,6 @@ namespace NetCafeManager
             {
                 lblWorkLogID.Text = _shiftID.ToString();
 
-                // Lấy StartTime và EndTime của ca làm việc từ EmployeeShift
                 string shiftQuery = @"
                     SELECT StartTime, EndTime
                     FROM EmployeeShift
@@ -41,14 +41,18 @@ namespace NetCafeManager
 
                 if (shiftDt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy ca làm việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Shift not found!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 DateTime startTime = Convert.ToDateTime(shiftDt.Rows[0]["StartTime"]);
-                DateTime? endTime = shiftDt.Rows[0]["EndTime"] != DBNull.Value ? Convert.ToDateTime(shiftDt.Rows[0]["EndTime"]) : (DateTime?)null;
+                DateTime? endTime = null;
 
-                // Lấy danh sách hóa đơn dựa trên thời gian, bao gồm cả hóa đơn có CustomerID là NULL
+                if (shiftDt.Rows[0]["EndTime"] != DBNull.Value)
+                {
+                    endTime = Convert.ToDateTime(shiftDt.Rows[0]["EndTime"]);
+                }
+
                 string billQuery;
                 SqlParameter[] billParams;
 
@@ -82,32 +86,68 @@ namespace NetCafeManager
 
                 if (billDt == null || billDt.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không có chi tiết hóa đơn cho ca làm việc này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No bill details found for this shift!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 dgvBillDetails.DataSource = billDt;
                 dgvBillDetails.ColumnHeadersHeight = 40;
 
-                dgvBillDetails.Columns["ServiceName"].HeaderText = "Tên món";
-                dgvBillDetails.Columns["Quantity"].HeaderText = "Số lượng";
-                dgvBillDetails.Columns["Total"].HeaderText = "Thành tiền";
+                dgvBillDetails.Columns["ServiceName"].HeaderText = "Service Name";
+                dgvBillDetails.Columns["Quantity"].HeaderText = "Quantity";
+                dgvBillDetails.Columns["Total"].HeaderText = "Total";
 
                 dgvBillDetails.Columns["Total"].DefaultCellStyle.Format = "N0";
                 dgvBillDetails.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                //dgvWorkLog.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
                 dgvBillDetails.ClearSelection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải chi tiết hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading bill details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+            dgvBillDetails.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            dgvBillDetails.EnableHeadersVisualStyles = false;
+
+
+            // Header
+            dgvBillDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+            dgvBillDetails.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
+            dgvBillDetails.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvBillDetails.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBillDetails.ColumnHeadersHeight = 40;
+
+            // Normal line
+            dgvBillDetails.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            dgvBillDetails.DefaultCellStyle.ForeColor = Color.White; 
+            dgvBillDetails.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvBillDetails.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+            dgvBillDetails.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvBillDetails.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Next line 
+            dgvBillDetails.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+
+            // DGV
+            dgvBillDetails.BackgroundColor = Color.FromArgb(20, 20, 20); 
+            dgvBillDetails.BorderStyle = BorderStyle.None;
+            dgvBillDetails.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvBillDetails.RowTemplate.Height = 35;
+
+
+            dgvBillDetails.ReadOnly = true;
+            dgvBillDetails.AllowUserToAddRows = false;
+            dgvBillDetails.AllowUserToResizeRows = false;
+            dgvBillDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBillDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

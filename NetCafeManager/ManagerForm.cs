@@ -62,50 +62,42 @@ namespace NetCafeManager
         }
         private void btnComputerStatus_Click(object sender, EventArgs e)
         {
-            //pnlMainContent.Controls.Clear();
             ucSetting.Visible = false;
             ucComputers.Visible = true;
             ucEmployee.Visible = false;
             ucCustomer.Visible = false;
             ChangeActivateButton(btnComputerStatus);
-            //ShowUserControl(new UC_ManageComputers());
         }
 
 
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            //pnlMainContent.Controls.Clear();
             ucSetting.Visible = false;
             ucComputers.Visible = false;
             ucEmployee.Visible = true;
             ucCustomer.Visible = false;
             ChangeActivateButton(btnEmployee);
-            //ShowUserControl(new UC_ManageEmployee());
 
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            //pnlMainContent.Controls.Clear();
             ucSetting.Visible = false;
             ucComputers.Visible = false;
             ucEmployee.Visible = false;
             ucCustomer.Visible = true;
             ChangeActivateButton(btnCustomer);
-            //ShowUserControl(new UC_ManageCustomer());
 
         }
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            //pnlMainContent.Controls.Clear();
             ucSetting.Visible = true;
             ucComputers.Visible = false;
             ucEmployee.Visible = false;
             ucCustomer.Visible = false;
             ChangeActivateButton(btnSetting);
-            //ShowUserControl(new UC_Setting());
 
         }
 

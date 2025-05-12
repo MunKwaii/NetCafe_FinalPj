@@ -171,7 +171,7 @@
             AddBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             AddBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             AddBtn.FillColor = Color.FromArgb(19, 250, 168);
-            AddBtn.Font = new Font("Microsoft Sans Serif", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddBtn.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AddBtn.ForeColor = Color.Black;
             AddBtn.Location = new Point(201, 519);
             AddBtn.Name = "AddBtn";

@@ -19,23 +19,21 @@ namespace NetCafeManager.UserControls
         public UC_WorkLog()
         {
             InitializeComponent();
-            // Gán sự kiện CellFormatting để xử lý hiển thị cột EndTime
             dgvWorkLog.CellFormatting += DgvWorkLog_CellFormatting;
             LoadShiftInfo();
             LoadWorkLog();
+            ApplyCustomTheme();
         }
 
         private void DgvWorkLog_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Kiểm tra nếu cột đang được định dạng là EndTime và giá trị là NULL
             if (e.ColumnIndex == dgvWorkLog.Columns["EndTime"].Index && e.Value == DBNull.Value)
             {
-                e.Value = "Chưa kết thúc";
+                e.Value = "Not Ended";
                 e.FormattingApplied = true;
             }
             else if (e.ColumnIndex == dgvWorkLog.Columns["EndTime"].Index && e.Value != null)
             {
-                // Định dạng giá trị DateTime nếu không phải NULL
                 if (DateTime.TryParse(e.Value.ToString(), out DateTime endTime))
                 {
                     e.Value = endTime.ToString("dd/MM/yyyy HH:mm");
@@ -48,7 +46,7 @@ namespace NetCafeManager.UserControls
         {
             if (dgvWorkLog.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một ca làm việc để xem chi tiết!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a work shift to view details!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -73,19 +71,19 @@ namespace NetCafeManager.UserControls
                     DateTime startTime = (DateTime)dt.Rows[0]["StartTime"];
                     string employeeName = dt.Rows[0]["EmployeeName"].ToString();
                     lblStartDate.Text = startTime.ToString("dd/MM/yyyy");
-                    lblStartTime.Text = startTime.ToString("HH:mm") + $" (Nhân viên: {employeeName})";
+                    lblStartTime.Text = startTime.ToString("HH:mm") + $" (Employee: {employeeName})";
                 }
                 else
                 {
-                    lblStartDate.Text = "Chưa có ca làm việc";
-                    lblStartTime.Text = "Chưa có ca làm việc";
+                    lblStartDate.Text = "No Work Shift Available";
+                    lblStartTime.Text = "No Work Shift Available";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải thông tin ca: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblStartDate.Text = "Lỗi tải dữ liệu";
-                lblStartTime.Text = "Lỗi tải dữ liệu";
+                MessageBox.Show($"Error loading shift information: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblStartDate.Text = "Error Loading Data";
+                lblStartTime.Text = "Error Loading Data";
             }
         }
 
@@ -93,7 +91,6 @@ namespace NetCafeManager.UserControls
         {
             try
             {
-                // Lấy danh sách ca làm việc từ bảng EmployeeShift
                 string query = @"
                     SELECT s.ShiftID, e.Name AS EmployeeName, s.StartTime, 
                            s.EndTime, s.TotalAmount
@@ -102,16 +99,12 @@ namespace NetCafeManager.UserControls
                     ORDER BY s.StartTime DESC";
 
                 DataTable dt = DatabaseHelper.ExecuteQuery(query);
-                if (dt == null) throw new Exception("Không thể tải dữ liệu từ cơ sở dữ liệu");
-
-                // Tính và cập nhật TotalAmount cho từng ca làm việc
+                if (dt == null) throw new Exception("Cannot load data from the database");
                 foreach (DataRow row in dt.Rows)
                 {
                     int shiftID = Convert.ToInt32(row["ShiftID"]);
                     DateTime startTime = Convert.ToDateTime(row["StartTime"]);
                     DateTime? endTime = row["EndTime"] != DBNull.Value ? Convert.ToDateTime(row["EndTime"]) : (DateTime?)null;
-
-                    // Tính tổng tiền từ các hóa đơn liên quan đến ca làm việc (dựa trên thời gian)
                     string billQuery;
                     SqlParameter[] billParams;
                     decimal totalAmount = 0;
@@ -147,8 +140,6 @@ namespace NetCafeManager.UserControls
                     {
                         totalAmount = Convert.ToDecimal(billDt.Rows[0]["Total"]);
                     }
-
-                    // Cập nhật TotalAmount vào bảng EmployeeShift
                     string updateQuery = @"
                         UPDATE EmployeeShift
                         SET TotalAmount = @TotalAmount
@@ -159,27 +150,23 @@ namespace NetCafeManager.UserControls
                         new SqlParameter("@ShiftID", shiftID)
                     };
                     DatabaseHelper.ExecuteNonQuery(updateQuery, updateParams);
-
-                    // Cập nhật giá trị TotalAmount trong DataTable
                     row["TotalAmount"] = totalAmount;
                 }
 
                 dgvWorkLog.DataSource = dt;
                 dgvWorkLog.ColumnHeadersHeight = 40;
 
-                dgvWorkLog.Columns["ShiftID"].HeaderText = "Mã ca làm việc";
-                dgvWorkLog.Columns["EmployeeName"].HeaderText = "Tên nhân viên";
-                dgvWorkLog.Columns["StartTime"].HeaderText = "Thời gian bắt đầu";
-                dgvWorkLog.Columns["EndTime"].HeaderText = "Thời gian kết thúc";
-                dgvWorkLog.Columns["TotalAmount"].HeaderText = "Tổng tiền";
+                dgvWorkLog.Columns["ShiftID"].HeaderText = "Shift ID";
+                dgvWorkLog.Columns["EmployeeName"].HeaderText = "Employee Name";
+                dgvWorkLog.Columns["StartTime"].HeaderText = "Start Time";
+                dgvWorkLog.Columns["EndTime"].HeaderText = "End Time";
+                dgvWorkLog.Columns["TotalAmount"].HeaderText = "Total Amount";
 
                 dgvWorkLog.Columns["TotalAmount"].DefaultCellStyle.Format = "N0";
                 dgvWorkLog.Columns["TotalAmount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvWorkLog.Columns["StartTime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
 
                 dgvWorkLog.ClearSelection();
-
-                // Tính tổng tiền của tất cả các ca làm việc
                 decimal grandTotal = 0;
                 foreach (DataRow row in dt.Rows)
                 {
@@ -192,7 +179,7 @@ namespace NetCafeManager.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải danh sách ca: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading work log: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -200,11 +187,11 @@ namespace NetCafeManager.UserControls
         {
             if (dgvWorkLog.Rows.Count == 0)
             {
-                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No data to export!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DialogResult confirm = MessageBox.Show("Bạn có chắc chắn muốn xuất Shift Summary không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult confirm = MessageBox.Show("Are you sure you want to export the Shift Summary?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm != DialogResult.Yes) return;
 
             using (SaveFileDialog sfd = new SaveFileDialog())
@@ -218,11 +205,11 @@ namespace NetCafeManager.UserControls
                         using (var writer = new StreamWriter(sfd.FileName, false, new UTF8Encoding(true)))
                         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                         {
-                            csv.WriteField("Mã ca làm việc");
-                            csv.WriteField("Tên nhân viên");
-                            csv.WriteField("Thời gian bắt đầu");
-                            csv.WriteField("Thời gian kết thúc");
-                            csv.WriteField("Tổng tiền");
+                            csv.WriteField("Shift ID");
+                            csv.WriteField("Employee Name");
+                            csv.WriteField("Start Time");
+                            csv.WriteField("End Time");
+                            csv.WriteField("Total Amount");
                             csv.NextRecord();
 
                             foreach (DataGridViewRow row in dgvWorkLog.Rows)
@@ -232,7 +219,7 @@ namespace NetCafeManager.UserControls
                                 csv.WriteField(row.Cells["StartTime"].Value != null ? Convert.ToDateTime(row.Cells["StartTime"].Value).ToString("dd/MM/yyyy HH:mm") : "");
                                 if (row.Cells["EndTime"].Value == null || row.Cells["EndTime"].Value == DBNull.Value)
                                 {
-                                    csv.WriteField("Chưa kết thúc");
+                                    csv.WriteField("Not Ended");
                                 }
                                 else
                                 {
@@ -243,15 +230,53 @@ namespace NetCafeManager.UserControls
                             }
 
                             writer.Flush();
-                            MessageBox.Show("Xuất Shift Summary thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Shift Summary exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Lỗi khi xuất file: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error exporting file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+        }
+        private void ApplyCustomTheme()
+        {
+            // Set DataGridView  Theme
+            dgvWorkLog.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            dgvWorkLog.EnableHeadersVisualStyles = false;
+
+
+            // Header
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(10, 50, 50); 
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(19, 250, 168); 
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvWorkLog.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvWorkLog.ColumnHeadersHeight = 40;
+
+            // Normal line
+            dgvWorkLog.DefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+            dgvWorkLog.DefaultCellStyle.ForeColor = Color.White; 
+            dgvWorkLog.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvWorkLog.DefaultCellStyle.SelectionBackColor = Color.FromArgb(10, 150, 100); 
+            dgvWorkLog.DefaultCellStyle.SelectionForeColor = Color.White; 
+            dgvWorkLog.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Next line
+            dgvWorkLog.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); 
+
+            // DGV
+            dgvWorkLog.BackgroundColor = Color.FromArgb(20, 20, 20); 
+            dgvWorkLog.BorderStyle = BorderStyle.None;
+            dgvWorkLog.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvWorkLog.RowTemplate.Height = 35;
+
+
+            dgvWorkLog.ReadOnly = true;
+            dgvWorkLog.AllowUserToAddRows = false;
+            dgvWorkLog.AllowUserToResizeRows = false;
+            dgvWorkLog.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvWorkLog.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

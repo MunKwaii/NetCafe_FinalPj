@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:usercontrols\\uc_service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|e:\\winform\\new folder\\netcafe_finalpj\\netcafemanager\\usercontrols\\uc_service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\usercontrols\\uc_service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B66FDC33-A01B-45BB-A06F-FC5A32186A88}|NetCafeManager.csproj|solutionrelative:usercontrols\\uc_service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
@@ -39,8 +39,7 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T13:29:43.711Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -52,33 +51,7 @@
               "RelativeToolTip": "Class\\ClassDiagram1.cd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
               "WhenOpened": "2025-05-15T15:15:16.272Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UC_Service.cs [Design]",
-              "DocumentMoniker": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
-              "RelativeDocumentMoniker": "UserControls\\UC_Service.cs",
-              "ToolTip": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs [Design]",
-              "RelativeToolTip": "UserControls\\UC_Service.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T15:22:37.032Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UC_Service.cs",
-              "DocumentMoniker": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
-              "RelativeDocumentMoniker": "UserControls\\UC_Service.cs",
-              "ToolTip": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
-              "RelativeToolTip": "UserControls\\UC_Service.cs",
-              "ViewState": "AgIAACEBAAAAAAAAAAAAACUBAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T15:22:47.311Z",
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -103,6 +76,31 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UC_Service.cs [Design]",
+              "DocumentMoniker": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
+              "RelativeDocumentMoniker": "UserControls\\UC_Service.cs",
+              "ToolTip": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs [Design]",
+              "RelativeToolTip": "UserControls\\UC_Service.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T15:22:37.032Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UC_Service.cs",
+              "DocumentMoniker": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
+              "RelativeDocumentMoniker": "UserControls\\UC_Service.cs",
+              "ToolTip": "E:\\Winform\\New folder\\NetCafe_FinalPj\\NetCafeManager\\UserControls\\UC_Service.cs",
+              "RelativeToolTip": "UserControls\\UC_Service.cs",
+              "ViewState": "AgIAACEBAAAAAAAAAAAAACgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T15:22:47.311Z",
+              "EditorCaption": ""
             }
           ]
         }

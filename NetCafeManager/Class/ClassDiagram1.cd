@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NetCafeManager.BaseEntity">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Computer">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEBAAAFIAAAgAAAAAAAAAgAIAggAAAAAAAAICAAAAA=</HashCode>
+      <FileName>Class\Computer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Customer">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAAACAAAIAAAAgCAAIAAAAAAAAAAAAAAAABBAE=</HashCode>
+      <FileName>Class\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Employee">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABICAAAAAAIAAAAEAAQEQAAAAIIAAAAAAAAEQAAIA=</HashCode>
+      <FileName>Class\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.EmployeeShift">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAMAACAAIAIQAQAAAAACAAAAKAAgAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Class\EmployeeShift.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Feedback">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAAAGAgAAAAgBACAAAAgAAAgAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Class\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Manager">
+    <Position X="5.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Class\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Orders">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DFEAQDAUAAAAAAABAAACAAAAEAAAQAAAAAAAgAAABAA=</HashCode>
+      <FileName>Class\Orders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Revenue">
+    <Position X="8" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAiIAQAAAAAAAAIAAAABAAAAAAA=</HashCode>
+      <FileName>Class\Revenue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.Service">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAIAAEAQAAgAAAAABAAAQAEAAAQBAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCafeManager.UserBase">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAIBgAAAAAA=</HashCode>
+      <FileName>Class\UserBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NetCafeManager.Users">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAACAAABBAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NetCafeManager.IUser">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\IUser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

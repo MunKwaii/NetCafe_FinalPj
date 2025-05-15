@@ -17,8 +17,8 @@ namespace NetCafeManager.UserControls
         string CurrentUserID;
         private int indexPage = 1, lengthPage = 10, currentPage = 1;
         private List<Guna2Button> List_buttonPage;
-        private UC_TakeOrder ucTakeOrder; 
-        
+        private UC_TakeOrder ucTakeOrder;
+
         public UC_Service(string userID, bool flag = false, bool requireUserID = true)
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace NetCafeManager.UserControls
         private void UpdateNotifyStatus()
         {
             int orderCount = GetPendingOrderCount();
-            ptbNotify.Visible = orderCount > 0; 
+            ptbNotify.Visible = orderCount > 0;
         }
         private void change_Color_page(int turn)
         {
@@ -213,7 +213,7 @@ namespace NetCafeManager.UserControls
 
         private void btnTakeOrder_Click(object sender, EventArgs e)
         {
-            ShowUserControl(ucTakeOrder); 
+            ShowUserControl(ucTakeOrder);
             UpdateNotifyStatus();
         }
 
@@ -287,6 +287,11 @@ namespace NetCafeManager.UserControls
                 };
                 flpnMenuContent.Controls.Add(menuItem);
             }
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            LoadMenu();
         }
     }
 

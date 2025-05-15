@@ -84,6 +84,8 @@ namespace NetCafeManager.UserControls
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges56 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnTakeOrder = new Guna.UI2.WinForms.Guna2Button();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
@@ -124,6 +126,7 @@ namespace NetCafeManager.UserControls
             btnNewOrder = new Guna.UI2.WinForms.Guna2Button();
             ptbNotify = new Guna.UI2.WinForms.Guna2PictureBox();
             pnlNewOrders = new Guna.UI2.WinForms.Guna2Panel();
+            RefreshButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox5).BeginInit();
             flpnMenuContent.SuspendLayout();
@@ -693,11 +696,30 @@ namespace NetCafeManager.UserControls
             pnlNewOrders.Size = new Size(252, 100);
             pnlNewOrders.TabIndex = 121;
             // 
+            // RefreshButton
+            // 
+            RefreshButton.CustomizableEdges = customizableEdges55;
+            RefreshButton.DisabledState.BorderColor = Color.DarkGray;
+            RefreshButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            RefreshButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            RefreshButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            RefreshButton.FillColor = Color.FromArgb(19, 250, 168);
+            RefreshButton.Font = new Font("SAIBA-45", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RefreshButton.ForeColor = Color.Black;
+            RefreshButton.Location = new Point(13, 45);
+            RefreshButton.Name = "RefreshButton";
+            RefreshButton.ShadowDecoration.CustomizableEdges = customizableEdges56;
+            RefreshButton.Size = new Size(195, 52);
+            RefreshButton.TabIndex = 122;
+            RefreshButton.Text = "Refresh";
+            RefreshButton.Click += RefreshButton_Click;
+            // 
             // UC_Service
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
+            Controls.Add(RefreshButton);
             Controls.Add(pnlNewOrders);
             Controls.Add(btnTakeOrder);
             Controls.Add(flpnMenuContent);
@@ -772,5 +794,6 @@ namespace NetCafeManager.UserControls
         private UC_MenuItem uC_MenuItem10;
         private UC_MenuItem uC_MenuItem11;
         private UC_MenuItem uC_MenuItem12;
+        private Guna.UI2.WinForms.Guna2Button RefreshButton;
     }
 }
